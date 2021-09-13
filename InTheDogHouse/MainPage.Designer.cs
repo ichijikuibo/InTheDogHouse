@@ -31,8 +31,6 @@ namespace InTheDogHouse
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabDogHouse = new System.Windows.Forms.TabControl();
             this.tabDisplay = new System.Windows.Forms.TabPage();
             this.btnDisplayExit = new System.Windows.Forms.Button();
@@ -124,7 +122,7 @@ namespace InTheDogHouse
             this.tabDogHouse.Name = "tabDogHouse";
             this.tabDogHouse.Padding = new System.Drawing.Point(0, 0);
             this.tabDogHouse.SelectedIndex = 0;
-            this.tabDogHouse.Size = new System.Drawing.Size(755, 521);
+            this.tabDogHouse.Size = new System.Drawing.Size(760, 521);
             this.tabDogHouse.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabDogHouse.TabIndex = 0;
             // 
@@ -141,17 +139,18 @@ namespace InTheDogHouse
             this.tabDisplay.Location = new System.Drawing.Point(4, 34);
             this.tabDisplay.Name = "tabDisplay";
             this.tabDisplay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDisplay.Size = new System.Drawing.Size(747, 483);
+            this.tabDisplay.Size = new System.Drawing.Size(752, 483);
             this.tabDisplay.TabIndex = 0;
             this.tabDisplay.Text = "Display";
             // 
             // btnDisplayExit
             // 
+            this.btnDisplayExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDisplayExit.FlatAppearance.BorderSize = 0;
             this.btnDisplayExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayExit.Image = global::InTheDogHouse.Properties.Resources.pepsiIcon2;
             this.btnDisplayExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayExit.Location = new System.Drawing.Point(560, 186);
+            this.btnDisplayExit.Location = new System.Drawing.Point(565, 186);
             this.btnDisplayExit.Name = "btnDisplayExit";
             this.btnDisplayExit.Size = new System.Drawing.Size(181, 55);
             this.btnDisplayExit.TabIndex = 5;
@@ -163,11 +162,12 @@ namespace InTheDogHouse
             // 
             // btnDisplayDelete
             // 
+            this.btnDisplayDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDisplayDelete.FlatAppearance.BorderSize = 0;
             this.btnDisplayDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayDelete.Image")));
             this.btnDisplayDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayDelete.Location = new System.Drawing.Point(560, 126);
+            this.btnDisplayDelete.Location = new System.Drawing.Point(565, 126);
             this.btnDisplayDelete.Name = "btnDisplayDelete";
             this.btnDisplayDelete.Size = new System.Drawing.Size(181, 55);
             this.btnDisplayDelete.TabIndex = 4;
@@ -179,11 +179,12 @@ namespace InTheDogHouse
             // 
             // btnDisplayEdit
             // 
+            this.btnDisplayEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDisplayEdit.FlatAppearance.BorderSize = 0;
             this.btnDisplayEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayEdit.Image = global::InTheDogHouse.Properties.Resources.keanoIcon;
             this.btnDisplayEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayEdit.Location = new System.Drawing.Point(560, 66);
+            this.btnDisplayEdit.Location = new System.Drawing.Point(565, 66);
             this.btnDisplayEdit.Name = "btnDisplayEdit";
             this.btnDisplayEdit.Size = new System.Drawing.Size(181, 55);
             this.btnDisplayEdit.TabIndex = 3;
@@ -195,11 +196,12 @@ namespace InTheDogHouse
             // 
             // btnDisplayAdd
             // 
+            this.btnDisplayAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDisplayAdd.FlatAppearance.BorderSize = 0;
             this.btnDisplayAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayAdd.Image")));
             this.btnDisplayAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayAdd.Location = new System.Drawing.Point(560, 6);
+            this.btnDisplayAdd.Location = new System.Drawing.Point(565, 6);
             this.btnDisplayAdd.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnDisplayAdd.Name = "btnDisplayAdd";
             this.btnDisplayAdd.Size = new System.Drawing.Size(181, 55);
@@ -216,7 +218,7 @@ namespace InTheDogHouse
             this.imgAddDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.imgAddDog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgAddDog.Image = global::InTheDogHouse.Properties.Resources.pepsi;
-            this.imgAddDog.Location = new System.Drawing.Point(560, 242);
+            this.imgAddDog.Location = new System.Drawing.Point(565, 242);
             this.imgAddDog.Name = "imgAddDog";
             this.imgAddDog.Size = new System.Drawing.Size(181, 238);
             this.imgAddDog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -229,14 +231,6 @@ namespace InTheDogHouse
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDisplay.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customerNumberDataGridViewTextBoxColumn,
@@ -249,17 +243,9 @@ namespace InTheDogHouse
             this.postcodeDataGridViewTextBoxColumn,
             this.telephoneDataGridViewTextBoxColumn});
             this.dgvDisplay.DataSource = this.customerModelBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDisplay.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDisplay.Location = new System.Drawing.Point(6, 6);
             this.dgvDisplay.Name = "dgvDisplay";
-            this.dgvDisplay.Size = new System.Drawing.Size(548, 471);
+            this.dgvDisplay.Size = new System.Drawing.Size(553, 471);
             this.dgvDisplay.TabIndex = 0;
             // 
             // tabAdd
@@ -296,6 +282,7 @@ namespace InTheDogHouse
             // 
             // btnAddCancel
             // 
+            this.btnAddCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddCancel.FlatAppearance.BorderSize = 0;
             this.btnAddCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCancel.Image = global::InTheDogHouse.Properties.Resources._2DogsIcon;
@@ -312,6 +299,7 @@ namespace InTheDogHouse
             // 
             // btnAddAdd
             // 
+            this.btnAddAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddAdd.FlatAppearance.BorderSize = 0;
             this.btnAddAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAdd.Image")));
@@ -550,6 +538,7 @@ namespace InTheDogHouse
             // 
             // btnEditEdit
             // 
+            this.btnEditEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditEdit.FlatAppearance.BorderSize = 0;
             this.btnEditEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditEdit.Image = global::InTheDogHouse.Properties.Resources.keanoIcon;
@@ -566,6 +555,7 @@ namespace InTheDogHouse
             // 
             // btnEditCancel
             // 
+            this.btnEditCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditCancel.FlatAppearance.BorderSize = 0;
             this.btnEditCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditCancel.Image = global::InTheDogHouse.Properties.Resources._2DogsIcon;
@@ -778,7 +768,7 @@ namespace InTheDogHouse
             this.pictureBox4.ImageLocation = "";
             this.pictureBox4.Location = new System.Drawing.Point(12, 12);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(755, 178);
+            this.pictureBox4.Size = new System.Drawing.Size(760, 178);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 20;
             this.pictureBox4.TabStop = false;
@@ -845,10 +835,11 @@ namespace InTheDogHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 729);
+            this.ClientSize = new System.Drawing.Size(784, 729);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.tabDogHouse);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(562, 768);
             this.Name = "MainPage";
             this.Text = "In the Dog House";
             this.Load += new System.EventHandler(this.MainPage_Load);
