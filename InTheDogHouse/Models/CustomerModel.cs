@@ -13,19 +13,19 @@ namespace InTheDogHouse.Models
     {
         public CustomerModel(int customerNumber, string title, string surname, string forename, string street, string town, string county, string postcode, string telephone)
         {
-            this.customerNumber = customerNumber;
-            this.title = title;
-            this.surname = surname;
-            this.forename = forename;
-            this.street = street;
-            this.town = town;
-            this.county = county;
-            this.postcode = postcode;
-            this.telephone = telephone;
+            this.customerNumberValue = customerNumber;
+            this.titleValue = title;
+            this.surnameValue = surname;
+            this.forenameValue = forename;
+            this.streetValue = street;
+            this.townValue = town;
+            this.countyValue = county;
+            this.postcodeValue = postcode;
+            this.telephoneValue = telephone;
         }
         public CustomerModel(int customerNumber)
         {
-            this.customerNumber = customerNumber;
+            this.customerNumberValue = customerNumber;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,7 +35,7 @@ namespace InTheDogHouse.Models
         }
         [Key]
         private int customerNumberValue = 0;
-        public int customerNumber {
+        public int CustomerNo {
             get { return customerNumberValue; }
             set
             {
@@ -48,7 +48,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string titleValue = "Mr";
-        public string title {
+        public string Title {
             get { return titleValue; }
             set
             {
@@ -61,7 +61,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string surnameValue = "";
-        public string surname {
+        public string Surname {
             get { return surnameValue; }
             set
             {
@@ -74,7 +74,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string forenameValue = "";
-        public string forename {
+        public string Forename {
             get { return forenameValue; }
             set
             {
@@ -87,7 +87,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string streetValue = "";
-        public string street {
+        public string Street {
             get { return streetValue; }
             set
             {
@@ -100,7 +100,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string townValue = "";
-        public string town {
+        public string Town {
             get { return townValue; }
             set
             {
@@ -113,7 +113,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string countyValue = "";
-        public string county {
+        public string County {
             get { return countyValue; }
             set
             {
@@ -126,7 +126,7 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string postcodeValue = "";
-        public string postcode {
+        public string PostCode {
             get { return postcodeValue; }
             set
             {
@@ -139,9 +139,8 @@ namespace InTheDogHouse.Models
         }
         [Required]
         private string telephoneValue = "";
-        private int v;
 
-        public string telephone {
+        public string TelNo {
             get { return telephoneValue; }
             set
             {

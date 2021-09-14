@@ -84,15 +84,15 @@ namespace InTheDogHouse
             this.lblEditTitle = new System.Windows.Forms.Label();
             this.lblEditCustomerNo = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.customerNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.forenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.townDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.postcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabDogHouse.SuspendLayout();
             this.tabDisplay.SuspendLayout();
@@ -231,17 +231,18 @@ namespace InTheDogHouse
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDisplay.AutoGenerateColumns = false;
+            this.dgvDisplay.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.customerNumberDataGridViewTextBoxColumn,
+            this.customerNoDataGridViewTextBoxColumn,
             this.titleDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn,
             this.forenameDataGridViewTextBoxColumn,
             this.streetDataGridViewTextBoxColumn,
             this.townDataGridViewTextBoxColumn,
             this.countyDataGridViewTextBoxColumn,
-            this.postcodeDataGridViewTextBoxColumn,
-            this.telephoneDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn1,
+            this.telNoDataGridViewTextBoxColumn});
             this.dgvDisplay.DataSource = this.customerModelBindingSource;
             this.dgvDisplay.Location = new System.Drawing.Point(6, 6);
             this.dgvDisplay.Name = "dgvDisplay";
@@ -276,7 +277,7 @@ namespace InTheDogHouse
             this.tabAdd.Location = new System.Drawing.Point(4, 34);
             this.tabAdd.Name = "tabAdd";
             this.tabAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdd.Size = new System.Drawing.Size(747, 483);
+            this.tabAdd.Size = new System.Drawing.Size(752, 483);
             this.tabAdd.TabIndex = 1;
             this.tabAdd.Text = "Add";
             // 
@@ -332,7 +333,7 @@ namespace InTheDogHouse
             // 
             this.txtAddTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddTelephone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "telephone", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtAddTelephone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "TelNo", true));
             this.txtAddTelephone.Location = new System.Drawing.Point(199, 440);
             this.txtAddTelephone.Name = "txtAddTelephone";
             this.txtAddTelephone.Size = new System.Drawing.Size(307, 31);
@@ -417,7 +418,7 @@ namespace InTheDogHouse
             // lblCustomerNumber
             // 
             this.lblCustomerNumber.AutoSize = true;
-            this.lblCustomerNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "customerNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.lblCustomerNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "CustomerNo", true));
             this.lblCustomerNumber.Location = new System.Drawing.Point(194, 28);
             this.lblCustomerNumber.Name = "lblCustomerNumber";
             this.lblCustomerNumber.Size = new System.Drawing.Size(19, 25);
@@ -532,7 +533,7 @@ namespace InTheDogHouse
             this.tabEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabEdit.Location = new System.Drawing.Point(4, 34);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(747, 483);
+            this.tabEdit.Size = new System.Drawing.Size(752, 483);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Edit";
             // 
@@ -587,7 +588,7 @@ namespace InTheDogHouse
             // 
             this.txtEditTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEditTelephone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "telephone", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtEditTelephone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "TelNo", true));
             this.txtEditTelephone.Location = new System.Drawing.Point(199, 440);
             this.txtEditTelephone.Name = "txtEditTelephone";
             this.txtEditTelephone.Size = new System.Drawing.Size(307, 31);
@@ -671,7 +672,7 @@ namespace InTheDogHouse
             // lblEditCustomerNumber
             // 
             this.lblEditCustomerNumber.AutoSize = true;
-            this.lblEditCustomerNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "customerNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.lblEditCustomerNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerModelBindingSource, "CustomerNo", true));
             this.lblEditCustomerNumber.Location = new System.Drawing.Point(194, 28);
             this.lblEditCustomerNumber.Name = "lblEditCustomerNumber";
             this.lblEditCustomerNumber.Size = new System.Drawing.Size(19, 25);
@@ -773,59 +774,59 @@ namespace InTheDogHouse
             this.pictureBox4.TabIndex = 20;
             this.pictureBox4.TabStop = false;
             // 
-            // customerNumberDataGridViewTextBoxColumn
+            // customerNoDataGridViewTextBoxColumn
             // 
-            this.customerNumberDataGridViewTextBoxColumn.DataPropertyName = "customerNumber";
-            this.customerNumberDataGridViewTextBoxColumn.HeaderText = "customerNumber";
-            this.customerNumberDataGridViewTextBoxColumn.Name = "customerNumberDataGridViewTextBoxColumn";
+            this.customerNoDataGridViewTextBoxColumn.DataPropertyName = "CustomerNo";
+            this.customerNoDataGridViewTextBoxColumn.HeaderText = "CustomerNo";
+            this.customerNoDataGridViewTextBoxColumn.Name = "customerNoDataGridViewTextBoxColumn";
             // 
             // titleDataGridViewTextBoxColumn
             // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "title";
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             // 
             // surnameDataGridViewTextBoxColumn
             // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "surname";
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
             this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
             // 
             // forenameDataGridViewTextBoxColumn
             // 
-            this.forenameDataGridViewTextBoxColumn.DataPropertyName = "forename";
-            this.forenameDataGridViewTextBoxColumn.HeaderText = "forename";
+            this.forenameDataGridViewTextBoxColumn.DataPropertyName = "Forename";
+            this.forenameDataGridViewTextBoxColumn.HeaderText = "Forename";
             this.forenameDataGridViewTextBoxColumn.Name = "forenameDataGridViewTextBoxColumn";
             // 
             // streetDataGridViewTextBoxColumn
             // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "street";
+            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
             this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
             // 
             // townDataGridViewTextBoxColumn
             // 
-            this.townDataGridViewTextBoxColumn.DataPropertyName = "town";
-            this.townDataGridViewTextBoxColumn.HeaderText = "town";
+            this.townDataGridViewTextBoxColumn.DataPropertyName = "Town";
+            this.townDataGridViewTextBoxColumn.HeaderText = "Town";
             this.townDataGridViewTextBoxColumn.Name = "townDataGridViewTextBoxColumn";
             // 
             // countyDataGridViewTextBoxColumn
             // 
-            this.countyDataGridViewTextBoxColumn.DataPropertyName = "county";
-            this.countyDataGridViewTextBoxColumn.HeaderText = "county";
+            this.countyDataGridViewTextBoxColumn.DataPropertyName = "County";
+            this.countyDataGridViewTextBoxColumn.HeaderText = "County";
             this.countyDataGridViewTextBoxColumn.Name = "countyDataGridViewTextBoxColumn";
             // 
-            // postcodeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.postcodeDataGridViewTextBoxColumn.DataPropertyName = "postcode";
-            this.postcodeDataGridViewTextBoxColumn.HeaderText = "postcode";
-            this.postcodeDataGridViewTextBoxColumn.Name = "postcodeDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PostCode";
+            this.dataGridViewTextBoxColumn1.HeaderText = "PostCode";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // telephoneDataGridViewTextBoxColumn
+            // telNoDataGridViewTextBoxColumn
             // 
-            this.telephoneDataGridViewTextBoxColumn.DataPropertyName = "telephone";
-            this.telephoneDataGridViewTextBoxColumn.HeaderText = "telephone";
-            this.telephoneDataGridViewTextBoxColumn.Name = "telephoneDataGridViewTextBoxColumn";
+            this.telNoDataGridViewTextBoxColumn.DataPropertyName = "TelNo";
+            this.telNoDataGridViewTextBoxColumn.HeaderText = "TelNo";
+            this.telNoDataGridViewTextBoxColumn.Name = "telNoDataGridViewTextBoxColumn";
             // 
             // customerModelBindingSource
             // 
@@ -841,7 +842,7 @@ namespace InTheDogHouse
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(562, 768);
             this.Name = "MainPage";
-            this.Text = "In the Dog House";
+            this.Text = "0   0 ";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.SizeChanged += new System.EventHandler(this.MainPage_SizeChanged);
             this.tabDogHouse.ResumeLayout(false);
@@ -915,16 +916,17 @@ namespace InTheDogHouse
         private System.Windows.Forms.Label lblEditTitle;
         private System.Windows.Forms.Label lblEditCustomerNo;
         private System.Windows.Forms.Button btnEditEdit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource customerModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn forenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn streetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn townDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn postcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource customerModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telNoDataGridViewTextBoxColumn;
     }
 }
 
