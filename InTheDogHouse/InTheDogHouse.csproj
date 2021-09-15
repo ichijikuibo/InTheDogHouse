@@ -55,6 +55,9 @@
     <StartupObject>InTheDogHouse.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ProgrammingIII">
+      <HintPath>..\..\ProgrammingIII\ProgrammingIII\bin\Debug\net5.0\ProgrammingIII.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -75,7 +78,9 @@
     <Compile Include="MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\Entity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainPage.resx">

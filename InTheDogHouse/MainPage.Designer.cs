@@ -39,6 +39,16 @@ namespace InTheDogHouse
             this.btnDisplayAdd = new System.Windows.Forms.Button();
             this.imgAddDog = new System.Windows.Forms.PictureBox();
             this.dgvDisplay = new System.Windows.Forms.DataGridView();
+            this.customerNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.forenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.townDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabAdd = new System.Windows.Forms.TabPage();
             this.btnAddCancel = new System.Windows.Forms.Button();
             this.btnAddAdd = new System.Windows.Forms.Button();
@@ -84,26 +94,18 @@ namespace InTheDogHouse
             this.lblEditTitle = new System.Windows.Forms.Label();
             this.lblEditCustomerNo = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.customerNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.forenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.townDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabDogHouse.SuspendLayout();
             this.tabDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerModelBindingSource)).BeginInit();
             this.tabAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDogHouse
@@ -248,6 +250,64 @@ namespace InTheDogHouse
             this.dgvDisplay.Name = "dgvDisplay";
             this.dgvDisplay.Size = new System.Drawing.Size(553, 471);
             this.dgvDisplay.TabIndex = 0;
+            // 
+            // customerNoDataGridViewTextBoxColumn
+            // 
+            this.customerNoDataGridViewTextBoxColumn.DataPropertyName = "CustomerNo";
+            this.customerNoDataGridViewTextBoxColumn.HeaderText = "CustomerNo";
+            this.customerNoDataGridViewTextBoxColumn.Name = "customerNoDataGridViewTextBoxColumn";
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            // 
+            // forenameDataGridViewTextBoxColumn
+            // 
+            this.forenameDataGridViewTextBoxColumn.DataPropertyName = "Forename";
+            this.forenameDataGridViewTextBoxColumn.HeaderText = "Forename";
+            this.forenameDataGridViewTextBoxColumn.Name = "forenameDataGridViewTextBoxColumn";
+            // 
+            // streetDataGridViewTextBoxColumn
+            // 
+            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
+            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
+            // 
+            // townDataGridViewTextBoxColumn
+            // 
+            this.townDataGridViewTextBoxColumn.DataPropertyName = "Town";
+            this.townDataGridViewTextBoxColumn.HeaderText = "Town";
+            this.townDataGridViewTextBoxColumn.Name = "townDataGridViewTextBoxColumn";
+            // 
+            // countyDataGridViewTextBoxColumn
+            // 
+            this.countyDataGridViewTextBoxColumn.DataPropertyName = "County";
+            this.countyDataGridViewTextBoxColumn.HeaderText = "County";
+            this.countyDataGridViewTextBoxColumn.Name = "countyDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PostCode";
+            this.dataGridViewTextBoxColumn1.HeaderText = "PostCode";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // telNoDataGridViewTextBoxColumn
+            // 
+            this.telNoDataGridViewTextBoxColumn.DataPropertyName = "TelNo";
+            this.telNoDataGridViewTextBoxColumn.HeaderText = "TelNo";
+            this.telNoDataGridViewTextBoxColumn.Name = "telNoDataGridViewTextBoxColumn";
+            // 
+            // customerModelBindingSource
+            // 
+            this.customerModelBindingSource.DataSource = typeof(InTheDogHouse.Models.CustomerModel);
             // 
             // tabAdd
             // 
@@ -774,63 +834,9 @@ namespace InTheDogHouse
             this.pictureBox4.TabIndex = 20;
             this.pictureBox4.TabStop = false;
             // 
-            // customerNoDataGridViewTextBoxColumn
+            // errP
             // 
-            this.customerNoDataGridViewTextBoxColumn.DataPropertyName = "CustomerNo";
-            this.customerNoDataGridViewTextBoxColumn.HeaderText = "CustomerNo";
-            this.customerNoDataGridViewTextBoxColumn.Name = "customerNoDataGridViewTextBoxColumn";
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            // 
-            // forenameDataGridViewTextBoxColumn
-            // 
-            this.forenameDataGridViewTextBoxColumn.DataPropertyName = "Forename";
-            this.forenameDataGridViewTextBoxColumn.HeaderText = "Forename";
-            this.forenameDataGridViewTextBoxColumn.Name = "forenameDataGridViewTextBoxColumn";
-            // 
-            // streetDataGridViewTextBoxColumn
-            // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
-            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
-            // 
-            // townDataGridViewTextBoxColumn
-            // 
-            this.townDataGridViewTextBoxColumn.DataPropertyName = "Town";
-            this.townDataGridViewTextBoxColumn.HeaderText = "Town";
-            this.townDataGridViewTextBoxColumn.Name = "townDataGridViewTextBoxColumn";
-            // 
-            // countyDataGridViewTextBoxColumn
-            // 
-            this.countyDataGridViewTextBoxColumn.DataPropertyName = "County";
-            this.countyDataGridViewTextBoxColumn.HeaderText = "County";
-            this.countyDataGridViewTextBoxColumn.Name = "countyDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PostCode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "PostCode";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // telNoDataGridViewTextBoxColumn
-            // 
-            this.telNoDataGridViewTextBoxColumn.DataPropertyName = "TelNo";
-            this.telNoDataGridViewTextBoxColumn.HeaderText = "TelNo";
-            this.telNoDataGridViewTextBoxColumn.Name = "telNoDataGridViewTextBoxColumn";
-            // 
-            // customerModelBindingSource
-            // 
-            this.customerModelBindingSource.DataSource = typeof(InTheDogHouse.Models.CustomerModel);
+            this.errP.ContainerControl = this;
             // 
             // MainPage
             // 
@@ -849,6 +855,7 @@ namespace InTheDogHouse
             this.tabDisplay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerModelBindingSource)).EndInit();
             this.tabAdd.ResumeLayout(false);
             this.tabAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -856,7 +863,7 @@ namespace InTheDogHouse
             this.tabEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -927,6 +934,7 @@ namespace InTheDogHouse
         private System.Windows.Forms.DataGridViewTextBoxColumn countyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn telNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ErrorProvider errP;
     }
 }
 
