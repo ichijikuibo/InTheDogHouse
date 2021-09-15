@@ -9,17 +9,23 @@ namespace InTheDogHouse.Models
 {
     class Entity
     {
+        int idNo;
         private string address, town, county, postcode,telNo;
 
-        public Entity(string address, string town, string county, string postcode, string telNo)
+        public Entity(int iNo,string address, string town, string county, string postcode, string telNo)
         {
+            idNo = iNo;
             Address = address;
             Town = town;
             County = county;
             Postcode = postcode;
-            TelNo = telNo
+            TelNo = telNo;
         }
-
+        public int IDDNo
+        {
+            get => idNo;
+            set => idNo = value;
+        }
         public string Address {
             get => address; 
             set
@@ -28,7 +34,7 @@ namespace InTheDogHouse.Models
                 {
                     if (Validation.validLength(value, 4, 30) && Validation.validLetterWhiteSpaceNumber(value))
                     {
-                        address = value;
+                        address = StringManipulator.firstLetterEachWordToUpper(value); 
                     }
                     else
                     {
@@ -48,7 +54,7 @@ namespace InTheDogHouse.Models
                 {
                     if (Validation.validLength(value, 2, 20) && Validation.validLetter(value))
                     {
-                        town = value;
+                        town = StringManipulator.firstLetterEachWordToUpper(value);
                     }
                     else
                     {
@@ -66,7 +72,7 @@ namespace InTheDogHouse.Models
                 {
                     if (Validation.validLength(value, 4, 20) && Validation.validLetter(value))
                     {
-                        county = value;
+                        county = StringManipulator.firstLetterEachWordToUpper(value);
                     }
                     else
                     {

@@ -10,13 +10,14 @@ namespace InTheDogHouse.Models
     class Customer :Entity
     {
         int customerNo;
-        string foreName, surname;
+        string foreName, surname, title;
 
-        public Customer(int customerNo, string foreName, string surname, string address, string town, string county, string postcode,string telNo) :base(address, town, county, postcode, telNo)
+        public Customer(int customerNo, string foreName, string surname, string address, string town, string county, string postcode,string telNo) :base(customerNo,address, town, county, postcode, telNo)
         {
             this.customerNo = customerNo;
             ForeName = foreName;
             Surname = surname;
+            Title = title;
         }
 
         public string ForeName
@@ -28,7 +29,7 @@ namespace InTheDogHouse.Models
                 {
                     if (Validation.validLength(value, 2, 30) && Validation.validForename(value))
                     {
-                        foreName = value;
+                        foreName = StringManipulator.firstLetterEachWordToUpper(value); ;
                     }
                     else
                     {
@@ -42,11 +43,11 @@ namespace InTheDogHouse.Models
             get => surname;
             set
             {
-                if (value != foreName)
+                if (value != surname)
                 {
                     if (Validation.validLength(value, 2, 30) && Validation.validSurname(value))
                     {
-                        foreName = value;
+                        surname = StringManipulator.firstLetterEachWordToUpper(value);
                     }
                     else
                     {
@@ -55,10 +56,17 @@ namespace InTheDogHouse.Models
                 }
             }
         }
-        public int CustomerNo
+
+        public string Title
         {
-            get => customerNo;
-            set => customerNo = value;  
+            get => title;
+            set
+            {
+                if (value.ToUpper() != "MR" && value.ToUpper() != "MRS" && value.ToUpper() != "MISS" && value.ToUpper() != "MS")
+                    throw new MyException("Title must be Mr, Mrs, Miss or Ms.");
+                else
+                    title = StringManipulator.firstLetterEachWordToUpper(value);
+            }
         }
     }
 }
