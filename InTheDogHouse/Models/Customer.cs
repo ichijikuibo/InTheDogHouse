@@ -1,4 +1,5 @@
-﻿using ProgrammingIII;
+﻿
+using ProgrammingIII;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +10,32 @@ namespace InTheDogHouse.Models
 {
     class Customer :Entity
     {
-        int customerNo;
-        string foreName, surname, title;
+        string forename, surname, title;
 
-        public Customer(int customerNo, string foreName, string surname, string address, string town, string county, string postcode,string telNo) :base(customerNo,address, town, county, postcode, telNo)
+        public Customer():base()
         {
-            this.customerNo = customerNo;
-            ForeName = foreName;
+            forename = "";
+            surname = "";
+            title = "Mr";
+        }
+
+        public Customer(int customerNo, string forename, string surname, string address, string town, string county, string postcode,string telNo) :base(customerNo,address, town, county, postcode, telNo)
+        {
+            Forename = forename;
             Surname = surname;
             Title = title;
         }
 
-        public string ForeName
+        public string Forename
         {
-            get => foreName; 
+            get => forename; 
             set
             {
-                if (value != foreName)
+                if (value != forename)
                 {
                     if (Validation.validLength(value, 2, 30) && Validation.validForename(value))
                     {
-                        foreName = StringManipulator.firstLetterEachWordToUpper(value); ;
+                        forename = StringManipulator.firstLetterEachWordToUpper(value); ;
                     }
                     else
                     {

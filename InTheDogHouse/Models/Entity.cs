@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ProgrammingIII;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProgrammingIII;
 
 namespace InTheDogHouse.Models
 {
@@ -21,7 +21,16 @@ namespace InTheDogHouse.Models
             Postcode = postcode;
             TelNo = telNo;
         }
-        public int IDDNo
+        public Entity()
+        {
+            idNo = 0;
+            address = "";
+            town = "";
+            county = "";
+            postcode = "";
+            telNo = "";
+        }
+        public int IDNo
         {
             get => idNo;
             set => idNo = value;
@@ -88,13 +97,13 @@ namespace InTheDogHouse.Models
             {
                 if (value != postcode)
                 {
-                    if (Validation.validLength(value, 6, 8) && Validation.validLetter(value))
+                    if (Validation.validLength(value, 6, 9) && Validation.validLetterWhiteSpaceNumber(value))
                     {
                         postcode = value;
                     }
                     else
                     {
-                        throw new MyException("Postcode must be between 6 & 8 characters and contain only letters, numbers and whitespace.");
+                        throw new MyException("Postcode must be between 6 & 9 characters and contain only letters, numbers and whitespace.");
                     }
                 }
             } 

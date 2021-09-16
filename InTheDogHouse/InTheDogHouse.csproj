@@ -55,9 +55,6 @@
     <StartupObject>InTheDogHouse.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ProgrammingIII">
-      <HintPath>..\..\ProgrammingIII\ProgrammingIII\bin\Debug\net5.0\ProgrammingIII.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -72,19 +69,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainPage.cs">
+    <Compile Include="frmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainPage.Designer.cs">
-      <DependentUpon>MainPage.cs</DependentUpon>
+    <Compile Include="frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainPage.resx">
-      <DependentUpon>MainPage.cs</DependentUpon>
+    <EmbeddedResource Include="frmCustomer.resx">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -161,6 +158,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProgrammingIII\ProgrammingIII.csproj">
+      <Project>{4e3bc46b-fa9d-4b8f-ab71-e4ab99aedde8}</Project>
+      <Name>ProgrammingIII</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
