@@ -15,8 +15,6 @@ namespace InTheDogHouse
 {
     public partial class frmCustomer : Form
     {
-        protected CustomerModel dataModel;
-        private BindingSource customers = new BindingSource();
 
         SqlDataAdapter daCustomer;
         DataSet dsInTheDogHouse = new DataSet();
@@ -30,10 +28,6 @@ namespace InTheDogHouse
         public frmCustomer()
         {
             InitializeComponent();
-            customers = new BindingSource();
-            customers.Add(new CustomerModel(0,"Mr","Canavan","Colm","41 Great James Street","Derry","Londonderry","BT48 7DF","1234567890") );
-            customers.Add(new CustomerModel(1, "Mr", "Noone", "Colm", "Nowhere", "Derry", "Londonderry", "N/A", "1234567890"));
-            //customerModelBindingSource.DataSource = customers;
             
         }
 
@@ -51,13 +45,10 @@ namespace InTheDogHouse
             cmdBCustomer = new SqlCommandBuilder(daCustomer);
             daCustomer.FillSchema(dsInTheDogHouse, SchemaType.Source, "Customer");
             daCustomer.Fill(dsInTheDogHouse, "Customer");
-
-            customerModelBindingSource.DataSource = dsInTheDogHouse.Tables["Customer"];
+            dgvDisplay.DataSource = dsInTheDogHouse.Tables["Customer"];
             dgvDisplay.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-            //tabDogHouse.SelectedIndex = 1;
             tabDogHouse.SelectedIndex = 0;
-            //dgvDisplay.DataSource = dsInTheDogHouse.Tables["Customer"];
         }
 
         private void btnAddAdd_Click(object sender, EventArgs e)
@@ -103,19 +94,7 @@ namespace InTheDogHouse
             }
 
         }
-        private bool assignProperty(Control field, Action property)
-        {
-            try
-            {
-                property();
-            }
-            catch (MyException ex)
-            {
-                errP.SetError(field, ex.toString());
-                return false;
-            }
-            return true;
-        }
+
 
         private void btnDisplayAdd_Click(object sender, EventArgs e)
         {
@@ -169,6 +148,19 @@ namespace InTheDogHouse
             }
 
 
+        }
+        private bool assignProperty(Control field, Action property)
+        {
+            try
+            {
+                property();
+            }
+            catch (MyException ex)
+            {
+                errP.SetError(field, ex.toString());
+                return false;
+            }
+            return true;
         }
         private void customerToDataRow(DataRow row, Customer customer)
         {
@@ -224,7 +216,7 @@ namespace InTheDogHouse
                     drCustomer.Delete();
                     daCustomer.Update(dsInTheDogHouse, "Customer");
                 }
-;            }
+            }
         }
 
         private void tabDogHouse_SelectedIndexChanged(object sender, EventArgs e)

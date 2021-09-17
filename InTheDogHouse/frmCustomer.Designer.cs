@@ -31,7 +31,6 @@ namespace InTheDogHouse
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabDogHouse = new System.Windows.Forms.TabControl();
             this.tabDisplay = new System.Windows.Forms.TabPage();
             this.btnDisplayExit = new System.Windows.Forms.Button();
@@ -84,18 +83,9 @@ namespace InTheDogHouse
             this.lblEditSurname = new System.Windows.Forms.Label();
             this.lblEditTitle = new System.Windows.Forms.Label();
             this.lblEditCustomerNo = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.customerNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.forenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.townDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.ssDogs = new InTheDogHouse.SlideShow();
             this.tabDogHouse.SuspendLayout();
             this.tabDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).BeginInit();
@@ -104,9 +94,8 @@ namespace InTheDogHouse
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDogHouse
@@ -119,13 +108,13 @@ namespace InTheDogHouse
             this.tabDogHouse.Controls.Add(this.tabEdit);
             this.tabDogHouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDogHouse.ItemSize = new System.Drawing.Size(250, 30);
-            this.tabDogHouse.Location = new System.Drawing.Point(13, 196);
+            this.tabDogHouse.Location = new System.Drawing.Point(13, 180);
             this.tabDogHouse.Margin = new System.Windows.Forms.Padding(0);
             this.tabDogHouse.Multiline = true;
             this.tabDogHouse.Name = "tabDogHouse";
             this.tabDogHouse.Padding = new System.Drawing.Point(0, 0);
             this.tabDogHouse.SelectedIndex = 0;
-            this.tabDogHouse.Size = new System.Drawing.Size(760, 521);
+            this.tabDogHouse.Size = new System.Drawing.Size(760, 537);
             this.tabDogHouse.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabDogHouse.TabIndex = 0;
             this.tabDogHouse.SelectedIndexChanged += new System.EventHandler(this.tabDogHouse_SelectedIndexChanged);
@@ -143,7 +132,7 @@ namespace InTheDogHouse
             this.tabDisplay.Location = new System.Drawing.Point(4, 34);
             this.tabDisplay.Name = "tabDisplay";
             this.tabDisplay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDisplay.Size = new System.Drawing.Size(752, 483);
+            this.tabDisplay.Size = new System.Drawing.Size(752, 499);
             this.tabDisplay.TabIndex = 0;
             this.tabDisplay.Text = "Display";
             // 
@@ -226,7 +215,7 @@ namespace InTheDogHouse
             this.imgAddDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.imgAddDog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgAddDog.Image = global::InTheDogHouse.Properties.Resources.pepsi;
-            this.imgAddDog.Location = new System.Drawing.Point(565, 242);
+            this.imgAddDog.Location = new System.Drawing.Point(565, 258);
             this.imgAddDog.Name = "imgAddDog";
             this.imgAddDog.Size = new System.Drawing.Size(181, 238);
             this.imgAddDog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -240,34 +229,15 @@ namespace InTheDogHouse
             this.dgvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvDisplay.AutoGenerateColumns = false;
             this.dgvDisplay.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.customerNoDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn,
-            this.forenameDataGridViewTextBoxColumn,
-            this.streetDataGridViewTextBoxColumn,
-            this.townDataGridViewTextBoxColumn,
-            this.countyDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.telNoDataGridViewTextBoxColumn});
-            this.dgvDisplay.DataSource = this.customerModelBindingSource;
             this.dgvDisplay.Location = new System.Drawing.Point(6, 6);
             this.dgvDisplay.MultiSelect = false;
             this.dgvDisplay.Name = "dgvDisplay";
+            this.dgvDisplay.ReadOnly = true;
             this.dgvDisplay.RowTemplate.Height = 25;
             this.dgvDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisplay.Size = new System.Drawing.Size(553, 471);
+            this.dgvDisplay.Size = new System.Drawing.Size(553, 487);
             this.dgvDisplay.TabIndex = 0;
             // 
             // tabAdd
@@ -812,6 +782,10 @@ namespace InTheDogHouse
             this.lblEditCustomerNo.TabIndex = 21;
             this.lblEditCustomerNo.Text = "Customer No";
             // 
+            // errP
+            // 
+            this.errP.ContainerControl = this;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -821,78 +795,38 @@ namespace InTheDogHouse
             this.pictureBox4.ImageLocation = "";
             this.pictureBox4.Location = new System.Drawing.Point(12, 12);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(760, 178);
+            this.pictureBox4.Size = new System.Drawing.Size(522, 165);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 20;
             this.pictureBox4.TabStop = false;
             // 
-            // errP
+            // ssDogs
             // 
-            this.errP.ContainerControl = this;
-            // 
-            // customerNoDataGridViewTextBoxColumn
-            // 
-            this.customerNoDataGridViewTextBoxColumn.DataPropertyName = "CustomerNo";
-            this.customerNoDataGridViewTextBoxColumn.HeaderText = "CustomerNo";
-            this.customerNoDataGridViewTextBoxColumn.Name = "customerNoDataGridViewTextBoxColumn";
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            // 
-            // forenameDataGridViewTextBoxColumn
-            // 
-            this.forenameDataGridViewTextBoxColumn.DataPropertyName = "Forename";
-            this.forenameDataGridViewTextBoxColumn.HeaderText = "Forename";
-            this.forenameDataGridViewTextBoxColumn.Name = "forenameDataGridViewTextBoxColumn";
-            // 
-            // streetDataGridViewTextBoxColumn
-            // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
-            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
-            // 
-            // townDataGridViewTextBoxColumn
-            // 
-            this.townDataGridViewTextBoxColumn.DataPropertyName = "Town";
-            this.townDataGridViewTextBoxColumn.HeaderText = "Town";
-            this.townDataGridViewTextBoxColumn.Name = "townDataGridViewTextBoxColumn";
-            // 
-            // countyDataGridViewTextBoxColumn
-            // 
-            this.countyDataGridViewTextBoxColumn.DataPropertyName = "County";
-            this.countyDataGridViewTextBoxColumn.HeaderText = "County";
-            this.countyDataGridViewTextBoxColumn.Name = "countyDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PostCode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "PostCode";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // telNoDataGridViewTextBoxColumn
-            // 
-            this.telNoDataGridViewTextBoxColumn.DataPropertyName = "TelNo";
-            this.telNoDataGridViewTextBoxColumn.HeaderText = "TelNo";
-            this.telNoDataGridViewTextBoxColumn.Name = "telNoDataGridViewTextBoxColumn";
-            // 
-            // customerModelBindingSource
-            // 
-            this.customerModelBindingSource.DataSource = typeof(InTheDogHouse.Models.CustomerModel);
+            this.ssDogs.BackColor = System.Drawing.SystemColors.Control;
+            this.ssDogs.BorderColour = System.Drawing.Color.SaddleBrown;
+            this.ssDogs.BorderSize = 5;
+            this.ssDogs.ChangeRate = 5000;
+            this.ssDogs.Location = new System.Drawing.Point(540, 12);
+            this.ssDogs.Name = "ssDogs";
+            this.ssDogs.Pictures = new string[] {
+        "Images\\Slideshow\\dogs.jpg",
+        "Images\\Slideshow\\dogs2.jpg",
+        "Images\\Slideshow\\dogs3.jpg",
+        "Images\\Slideshow\\dogs4.jpg",
+        "Images\\Slideshow\\dogs5.jpg",
+        "Images\\Slideshow\\dogs6.jpg",
+        "Images\\Slideshow\\dogs7.jpg",
+        "Images\\Slideshow\\dogs8.jpg",
+        "https://www.derrysmarttour.com/Resources/slideshow/1.jpg"};
+            this.ssDogs.Size = new System.Drawing.Size(233, 165);
+            this.ssDogs.TabIndex = 49;
             // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 729);
+            this.Controls.Add(this.ssDogs);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.tabDogHouse);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -912,9 +846,8 @@ namespace InTheDogHouse
             this.tabEdit.ResumeLayout(false);
             this.tabEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -975,17 +908,8 @@ namespace InTheDogHouse
         private System.Windows.Forms.Label lblEditCustomerNo;
         private System.Windows.Forms.Button btnEditEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn postcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource customerModelBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn forenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn streetDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn townDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.ErrorProvider errP;
+        private SlideShow ssDogs;
     }
 }
 
