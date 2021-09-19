@@ -87,7 +87,7 @@ namespace InTheDogHouse
                 Invalidate();
             }
         }
-
+        private Color tempBackground;
         public PictureRadioButton()
         {
             InitializeComponent();
@@ -128,6 +128,21 @@ namespace InTheDogHouse
         private void PictureRadioButton_Paint(object sender, PaintEventArgs e)
         {
             picturePanel.Invalidate();
+        }
+
+        private void PictureRadioButton_MouseEnter(object sender, EventArgs e)
+        {
+            tempBackground = BackColor;
+            BackColor = Color.LightGray;
+            lblRadioButton.BackColor = BackColor;
+            picturePanel.BackColor = BackColor;
+        }
+
+        private void PictureRadioButton_MouseLeave(object sender, EventArgs e)
+        {
+            BackColor = tempBackground;
+            lblRadioButton.BackColor = BackColor;
+            picturePanel.BackColor = BackColor;
         }
     }
 }

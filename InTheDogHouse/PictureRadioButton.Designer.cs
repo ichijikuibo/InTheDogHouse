@@ -45,17 +45,22 @@ namespace InTheDogHouse
             this.lblRadioButton.Text = "text";
             this.lblRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblRadioButton.Click += new System.EventHandler(this.lblRadioButton_Click);
+            this.lblRadioButton.MouseEnter += new System.EventHandler(this.PictureRadioButton_MouseEnter);
+            this.lblRadioButton.MouseLeave += new System.EventHandler(this.PictureRadioButton_MouseLeave);
             // 
             // picturePanel
             // 
             this.picturePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.picturePanel.BackColor = System.Drawing.SystemColors.Control;
             this.picturePanel.Location = new System.Drawing.Point(3, 3);
             this.picturePanel.Name = "picturePanel";
             this.picturePanel.Size = new System.Drawing.Size(41, 39);
             this.picturePanel.TabIndex = 0;
             this.picturePanel.Click += new System.EventHandler(this.lblRadioButton_Click);
             this.picturePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.picturePanel_Paint);
+            this.picturePanel.MouseEnter += new System.EventHandler(this.PictureRadioButton_MouseEnter);
+            this.picturePanel.MouseLeave += new System.EventHandler(this.PictureRadioButton_MouseLeave);
             // 
             // PictureRadioButton
             // 
