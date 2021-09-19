@@ -268,7 +268,7 @@ namespace InTheDogHouse
             this.tabAdd.Location = new System.Drawing.Point(4, 34);
             this.tabAdd.Name = "tabAdd";
             this.tabAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdd.Size = new System.Drawing.Size(752, 483);
+            this.tabAdd.Size = new System.Drawing.Size(752, 499);
             this.tabAdd.TabIndex = 1;
             this.tabAdd.Text = "Add";
             // 
@@ -535,7 +535,7 @@ namespace InTheDogHouse
             this.tabEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabEdit.Location = new System.Drawing.Point(4, 34);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(752, 483);
+            this.tabEdit.Size = new System.Drawing.Size(752, 499);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Edit";
             // 
@@ -802,6 +802,7 @@ namespace InTheDogHouse
             // 
             // ssDogs
             // 
+            this.ssDogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ssDogs.BackColor = System.Drawing.SystemColors.Control;
             this.ssDogs.BorderColour = System.Drawing.Color.SaddleBrown;
             this.ssDogs.BorderSize = 5;
@@ -816,8 +817,7 @@ namespace InTheDogHouse
         "Images\\Slideshow\\dogs5.jpg",
         "Images\\Slideshow\\dogs6.jpg",
         "Images\\Slideshow\\dogs7.jpg",
-        "Images\\Slideshow\\dogs8.jpg",
-        "https://www.derrysmarttour.com/Resources/slideshow/1.jpg"};
+        "Images\\Slideshow\\dogs8.jpg"};
             this.ssDogs.Size = new System.Drawing.Size(233, 165);
             this.ssDogs.TabIndex = 49;
             // 

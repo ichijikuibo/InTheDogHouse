@@ -88,8 +88,6 @@ namespace InTheDogHouse
         {
             InitializeComponent();
 
-
-
         }
         private Stream downloadImage(string address)
         {
@@ -129,10 +127,6 @@ namespace InTheDogHouse
             {
                 return;
             }
-        }
-        private void moveToNextImage()
-        {
-
         }
 
         private void TransitionTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

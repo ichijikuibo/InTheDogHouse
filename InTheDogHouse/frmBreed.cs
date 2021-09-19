@@ -41,10 +41,6 @@ namespace InTheDogHouse
             dgvDisplay.DataSource = dsInTheDogHouse.Tables["Breed"];
             dgvDisplay.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
-        private void tkbBreedSize_Scroll(object sender, EventArgs e)
-        {
-            lblBreedSizeNo.Text = tkbBreedSize.Value.ToString();
-        }
 
         private void dgvDisplay_SelectionChanged(object sender, EventArgs e)
         {
@@ -67,7 +63,7 @@ namespace InTheDogHouse
         private void clearForm()
         {
             lblBreedID.Text = "-";
-            tkbBreedSize.Value = 1;
+            selectBreedSize(1);
             txtBreedName.Clear();
         }
         private void fillForm(string selectedID)
@@ -75,8 +71,7 @@ namespace InTheDogHouse
             lblBreedID.Text = selectedID;
             drSelected = dsInTheDogHouse.Tables["Breed"].Rows.Find(selectedID);
             txtBreedName.Text = drSelected["BreedName"].ToString();
-            tkbBreedSize.Value = int.Parse(drSelected["SizeB"].ToString());
-            lblBreedSizeNo.Text = tkbBreedSize.Value.ToString();
+            selectBreedSize(int.Parse(drSelected["SizeB"].ToString()));
 
         }
         private void btnNew_Click(object sender, EventArgs e)
@@ -90,11 +85,10 @@ namespace InTheDogHouse
                 btnSave.Visible = true;
                 btnNew.Visible = false;
                 txtBreedName.Enabled = true;
-                tkbBreedSize.Enabled = true;
+                gbBreedSize.Enabled = true;
                 btnDisplayExit.Visible = false;
                 btnDisplayDelete.Visible = false;
-                tkbBreedSize.Value = 1;
-                lblBreedSizeNo.Text = tkbBreedSize.Value.ToString();
+                selectBreedSize(1);
                 getNumber(dsInTheDogHouse.Tables["Breed"].Rows.Count);
             }
         }
@@ -112,7 +106,7 @@ namespace InTheDogHouse
 
             if (!assignProperty(lblBreedID, () => breed.BreedNo = int.Parse(lblBreedID.Text))) ok = false;
             if (!assignProperty(txtBreedName, () => breed.Breed = txtBreedName.Text)) ok = false;
-            if (!assignProperty(tkbBreedSize, () => breed.BreedSize = tkbBreedSize.Value)) ok = false;
+            if (!assignProperty(gbBreedSize, () => breed.BreedSize = getSelectedBreedSize())) ok = false;
 
             if (ok)
             {
@@ -138,11 +132,10 @@ namespace InTheDogHouse
                             btnNew.Visible = true;
                             btnDisplayExit.Visible = true;
                             txtBreedName.Enabled = false;
-                            tkbBreedSize.Enabled = false;
+                            gbBreedSize.Enabled = false;
 
                             adding = false;
-                            tkbBreedSize.Value = 1;
-                            lblBreedSizeNo.Text = tkbBreedSize.Value.ToString();
+                            selectBreedSize(1);
                             dgvDisplay_SelectionChanged(dgvDisplay, e);
                         }
                     }
@@ -158,11 +151,10 @@ namespace InTheDogHouse
                         btnNew.Visible = true;
                         btnDisplayExit.Visible = true;
                         txtBreedName.Enabled = false;
-                        tkbBreedSize.Enabled = false;
+                        gbBreedSize.Enabled = false;
 
                         editing = false;
-                        tkbBreedSize.Value = 1;
-                        lblBreedSizeNo.Text = tkbBreedSize.Value.ToString();
+                        selectBreedSize(1);
                         dgvDisplay_SelectionChanged(dgvDisplay, e);
                     }
 
@@ -206,11 +198,10 @@ namespace InTheDogHouse
                 btnCancel.Visible = false;
                 btnNew.Visible = true;
                 txtBreedName.Enabled = false;
-                tkbBreedSize.Enabled = false;
+                gbBreedSize.Enabled = false;
                 btnDisplayExit.Visible = true;
                 adding = false;
-                tkbBreedSize.Value = 1;
-                lblBreedSizeNo.Text = tkbBreedSize.Value.ToString();
+                selectBreedSize(1);
                 dgvDisplay_SelectionChanged(dgvDisplay, e);
             }
         }
@@ -225,7 +216,7 @@ namespace InTheDogHouse
             btnSave.Visible = true;
             btnNew.Visible = false;
             txtBreedName.Enabled = true;
-            tkbBreedSize.Enabled = true;
+            gbBreedSize.Enabled = true;
             btnDisplayExit.Visible = false;
             btnDisplayDelete.Visible = false;
         }
@@ -271,6 +262,24 @@ namespace InTheDogHouse
                 return false;
             }
             return true;
+        }
+        private int getSelectedBreedSize()
+        {
+            if (prbSmall.Selected) return 1;
+            if (prbMedium.Selected) return 2;
+            if (prbLarge.Selected) return 3;
+            if (prbGiant.Selected) return 4;
+            return 0;
+        }
+        private void selectBreedSize(int size)
+        {
+            switch(size)
+            {
+                case 1: prbSmall.Selected = true; break;
+                case 2: prbMedium.Selected = true; break;
+                case 3: prbLarge.Selected = true; break;
+                case 4: prbGiant.Selected = true; break;
+            }
         }
     }
 }

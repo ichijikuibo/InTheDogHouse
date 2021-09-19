@@ -34,11 +34,8 @@ namespace InTheDogHouse
             this.dgvDisplay = new System.Windows.Forms.DataGridView();
             this.txtBreedName = new System.Windows.Forms.TextBox();
             this.lblBreedID = new System.Windows.Forms.Label();
-            this.lblBreedSize = new System.Windows.Forms.Label();
             this.lblBreedName = new System.Windows.Forms.Label();
             this.lblAddCustomerNo = new System.Windows.Forms.Label();
-            this.tkbBreedSize = new System.Windows.Forms.TrackBar();
-            this.lblBreedSizeNo = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.timPictureChange = new System.Windows.Forms.Timer(this.components);
             this.picDogs = new System.Windows.Forms.PictureBox();
@@ -49,12 +46,17 @@ namespace InTheDogHouse
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.gbBreedSize = new System.Windows.Forms.GroupBox();
+            this.prbGiant = new InTheDogHouse.PictureRadioButton();
+            this.prbMedium = new InTheDogHouse.PictureRadioButton();
+            this.prbLarge = new InTheDogHouse.PictureRadioButton();
+            this.prbSmall = new InTheDogHouse.PictureRadioButton();
             this.ssDogs = new InTheDogHouse.SlideShow();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbBreedSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDogs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.gbBreedSize.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDisplay
@@ -72,7 +74,7 @@ namespace InTheDogHouse
             this.dgvDisplay.ReadOnly = true;
             this.dgvDisplay.RowTemplate.Height = 25;
             this.dgvDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisplay.Size = new System.Drawing.Size(330, 319);
+            this.dgvDisplay.Size = new System.Drawing.Size(330, 406);
             this.dgvDisplay.TabIndex = 22;
             this.dgvDisplay.SelectionChanged += new System.EventHandler(this.dgvDisplay_SelectionChanged);
             // 
@@ -81,7 +83,7 @@ namespace InTheDogHouse
             this.txtBreedName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBreedName.Enabled = false;
             this.txtBreedName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBreedName.Location = new System.Drawing.Point(500, 205);
+            this.txtBreedName.Location = new System.Drawing.Point(500, 185);
             this.txtBreedName.Name = "txtBreedName";
             this.txtBreedName.Size = new System.Drawing.Size(219, 31);
             this.txtBreedName.TabIndex = 28;
@@ -97,23 +99,12 @@ namespace InTheDogHouse
             this.lblBreedID.TabIndex = 26;
             this.lblBreedID.Text = "9999999";
             // 
-            // lblBreedSize
-            // 
-            this.lblBreedSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBreedSize.AutoSize = true;
-            this.lblBreedSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreedSize.Location = new System.Drawing.Point(348, 262);
-            this.lblBreedSize.Name = "lblBreedSize";
-            this.lblBreedSize.Size = new System.Drawing.Size(117, 25);
-            this.lblBreedSize.TabIndex = 25;
-            this.lblBreedSize.Text = "Breed Size";
-            // 
             // lblBreedName
             // 
             this.lblBreedName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBreedName.AutoSize = true;
             this.lblBreedName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreedName.Location = new System.Drawing.Point(348, 205);
+            this.lblBreedName.Location = new System.Drawing.Point(348, 185);
             this.lblBreedName.Name = "lblBreedName";
             this.lblBreedName.Size = new System.Drawing.Size(131, 25);
             this.lblBreedName.TabIndex = 24;
@@ -129,31 +120,6 @@ namespace InTheDogHouse
             this.lblAddCustomerNo.Size = new System.Drawing.Size(102, 25);
             this.lblAddCustomerNo.TabIndex = 23;
             this.lblAddCustomerNo.Text = "Breed No";
-            // 
-            // tkbBreedSize
-            // 
-            this.tkbBreedSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tkbBreedSize.Enabled = false;
-            this.tkbBreedSize.LargeChange = 1;
-            this.tkbBreedSize.Location = new System.Drawing.Point(500, 262);
-            this.tkbBreedSize.Maximum = 4;
-            this.tkbBreedSize.Minimum = 1;
-            this.tkbBreedSize.Name = "tkbBreedSize";
-            this.tkbBreedSize.Size = new System.Drawing.Size(167, 45);
-            this.tkbBreedSize.TabIndex = 29;
-            this.tkbBreedSize.Value = 1;
-            this.tkbBreedSize.Scroll += new System.EventHandler(this.tkbBreedSize_Scroll);
-            // 
-            // lblBreedSizeNo
-            // 
-            this.lblBreedSizeNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBreedSizeNo.AutoSize = true;
-            this.lblBreedSizeNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreedSizeNo.Location = new System.Drawing.Point(695, 262);
-            this.lblBreedSizeNo.Name = "lblBreedSizeNo";
-            this.lblBreedSizeNo.Size = new System.Drawing.Size(24, 25);
-            this.lblBreedSizeNo.TabIndex = 30;
-            this.lblBreedSizeNo.Text = "1";
             // 
             // errP
             // 
@@ -182,14 +148,14 @@ namespace InTheDogHouse
             this.btnDisplayExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayExit.Image = global::InTheDogHouse.Properties.Resources._2DogsIcon;
-            this.btnDisplayExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayExit.Location = new System.Drawing.Point(549, 411);
+            this.btnDisplayExit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDisplayExit.Location = new System.Drawing.Point(543, 498);
             this.btnDisplayExit.Name = "btnDisplayExit";
-            this.btnDisplayExit.Size = new System.Drawing.Size(181, 55);
+            this.btnDisplayExit.Size = new System.Drawing.Size(176, 55);
             this.btnDisplayExit.TabIndex = 46;
             this.btnDisplayExit.Text = "Exit";
-            this.btnDisplayExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDisplayExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDisplayExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDisplayExit.UseVisualStyleBackColor = true;
             this.btnDisplayExit.Click += new System.EventHandler(this.btnDisplayExit_Click);
             // 
@@ -200,14 +166,14 @@ namespace InTheDogHouse
             this.btnDisplayDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayDelete.Image")));
-            this.btnDisplayDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayDelete.Location = new System.Drawing.Point(353, 411);
+            this.btnDisplayDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDisplayDelete.Location = new System.Drawing.Point(348, 498);
             this.btnDisplayDelete.Name = "btnDisplayDelete";
-            this.btnDisplayDelete.Size = new System.Drawing.Size(181, 55);
+            this.btnDisplayDelete.Size = new System.Drawing.Size(164, 55);
             this.btnDisplayDelete.TabIndex = 45;
             this.btnDisplayDelete.Text = "Delete";
-            this.btnDisplayDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDisplayDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDisplayDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDisplayDelete.UseVisualStyleBackColor = true;
             this.btnDisplayDelete.Click += new System.EventHandler(this.btnDisplayDelete_Click);
             // 
@@ -218,15 +184,15 @@ namespace InTheDogHouse
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::InTheDogHouse.Properties.Resources.pepsiIcon;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(541, 313);
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.Location = new System.Drawing.Point(540, 426);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(170, 55);
+            this.btnSave.Size = new System.Drawing.Size(179, 55);
             this.btnSave.TabIndex = 44;
             this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -238,14 +204,14 @@ namespace InTheDogHouse
             this.btnEditEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditEdit.Image = global::InTheDogHouse.Properties.Resources.keanoIcon;
-            this.btnEditEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditEdit.Location = new System.Drawing.Point(353, 313);
+            this.btnEditEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditEdit.Location = new System.Drawing.Point(353, 426);
             this.btnEditEdit.Name = "btnEditEdit";
-            this.btnEditEdit.Size = new System.Drawing.Size(181, 55);
+            this.btnEditEdit.Size = new System.Drawing.Size(159, 55);
             this.btnEditEdit.TabIndex = 43;
             this.btnEditEdit.Text = "Edit";
-            this.btnEditEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnEditEdit.UseVisualStyleBackColor = true;
             this.btnEditEdit.Visible = false;
             this.btnEditEdit.Click += new System.EventHandler(this.btnEditEdit_Click);
@@ -257,14 +223,14 @@ namespace InTheDogHouse
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Image = global::InTheDogHouse.Properties.Resources.pepsiIcon2;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(348, 313);
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.Location = new System.Drawing.Point(348, 426);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(181, 55);
+            this.btnCancel.Size = new System.Drawing.Size(164, 55);
             this.btnCancel.TabIndex = 32;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -276,15 +242,15 @@ namespace InTheDogHouse
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNew.Location = new System.Drawing.Point(549, 313);
+            this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNew.Location = new System.Drawing.Point(526, 426);
             this.btnNew.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(181, 55);
+            this.btnNew.Size = new System.Drawing.Size(193, 55);
             this.btnNew.TabIndex = 31;
             this.btnNew.Text = "New Breed";
-            this.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -301,6 +267,73 @@ namespace InTheDogHouse
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 21;
             this.pictureBox4.TabStop = false;
+            // 
+            // gbBreedSize
+            // 
+            this.gbBreedSize.Controls.Add(this.prbGiant);
+            this.gbBreedSize.Controls.Add(this.prbMedium);
+            this.gbBreedSize.Controls.Add(this.prbLarge);
+            this.gbBreedSize.Controls.Add(this.prbSmall);
+            this.gbBreedSize.Enabled = false;
+            this.gbBreedSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbBreedSize.Location = new System.Drawing.Point(353, 222);
+            this.gbBreedSize.Name = "gbBreedSize";
+            this.gbBreedSize.Size = new System.Drawing.Size(366, 179);
+            this.gbBreedSize.TabIndex = 50;
+            this.gbBreedSize.TabStop = false;
+            this.gbBreedSize.Text = "Breed Size";
+            // 
+            // prbGiant
+            // 
+            this.prbGiant.ButtonText = "Giant";
+            this.prbGiant.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prbGiant.Location = new System.Drawing.Point(173, 96);
+            this.prbGiant.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.prbGiant.Name = "prbGiant";
+            this.prbGiant.Picture = global::InTheDogHouse.Properties.Resources.huge;
+            this.prbGiant.Selected = false;
+            this.prbGiant.SelectedColour = System.Drawing.Color.Red;
+            this.prbGiant.Size = new System.Drawing.Size(180, 74);
+            this.prbGiant.TabIndex = 52;
+            // 
+            // prbMedium
+            // 
+            this.prbMedium.ButtonText = "Medium";
+            this.prbMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prbMedium.Location = new System.Drawing.Point(173, 23);
+            this.prbMedium.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.prbMedium.Name = "prbMedium";
+            this.prbMedium.Picture = global::InTheDogHouse.Properties.Resources.medium;
+            this.prbMedium.Selected = false;
+            this.prbMedium.SelectedColour = System.Drawing.Color.Red;
+            this.prbMedium.Size = new System.Drawing.Size(180, 74);
+            this.prbMedium.TabIndex = 51;
+            // 
+            // prbLarge
+            // 
+            this.prbLarge.ButtonText = "Large";
+            this.prbLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prbLarge.Location = new System.Drawing.Point(7, 97);
+            this.prbLarge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.prbLarge.Name = "prbLarge";
+            this.prbLarge.Picture = global::InTheDogHouse.Properties.Resources.large;
+            this.prbLarge.Selected = false;
+            this.prbLarge.SelectedColour = System.Drawing.Color.Red;
+            this.prbLarge.Size = new System.Drawing.Size(164, 74);
+            this.prbLarge.TabIndex = 50;
+            // 
+            // prbSmall
+            // 
+            this.prbSmall.ButtonText = "Small";
+            this.prbSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prbSmall.Location = new System.Drawing.Point(7, 24);
+            this.prbSmall.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.prbSmall.Name = "prbSmall";
+            this.prbSmall.Picture = global::InTheDogHouse.Properties.Resources.toy;
+            this.prbSmall.Selected = true;
+            this.prbSmall.SelectedColour = System.Drawing.Color.Red;
+            this.prbSmall.Size = new System.Drawing.Size(164, 74);
+            this.prbSmall.TabIndex = 49;
             // 
             // ssDogs
             // 
@@ -326,7 +359,8 @@ namespace InTheDogHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 478);
+            this.ClientSize = new System.Drawing.Size(742, 565);
+            this.Controls.Add(this.gbBreedSize);
             this.Controls.Add(this.ssDogs);
             this.Controls.Add(this.picDogs);
             this.Controls.Add(this.btnDisplayExit);
@@ -335,11 +369,8 @@ namespace InTheDogHouse
             this.Controls.Add(this.btnEditEdit);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.lblBreedSizeNo);
-            this.Controls.Add(this.tkbBreedSize);
             this.Controls.Add(this.txtBreedName);
             this.Controls.Add(this.lblBreedID);
-            this.Controls.Add(this.lblBreedSize);
             this.Controls.Add(this.lblBreedName);
             this.Controls.Add(this.lblAddCustomerNo);
             this.Controls.Add(this.dgvDisplay);
@@ -349,10 +380,10 @@ namespace InTheDogHouse
             this.Text = "Dog Breeds";
             this.Load += new System.EventHandler(this.frmBreed_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbBreedSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDogs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.gbBreedSize.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,11 +395,8 @@ namespace InTheDogHouse
         private System.Windows.Forms.DataGridView dgvDisplay;
         private System.Windows.Forms.TextBox txtBreedName;
         private System.Windows.Forms.Label lblBreedID;
-        private System.Windows.Forms.Label lblBreedSize;
         private System.Windows.Forms.Label lblBreedName;
         private System.Windows.Forms.Label lblAddCustomerNo;
-        private System.Windows.Forms.TrackBar tkbBreedSize;
-        private System.Windows.Forms.Label lblBreedSizeNo;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEditEdit;
@@ -379,5 +407,10 @@ namespace InTheDogHouse
         private System.Windows.Forms.PictureBox picDogs;
         private System.Windows.Forms.Timer timPictureChange;
         private SlideShow ssDogs;
+        private PictureRadioButton prbSmall;
+        private System.Windows.Forms.GroupBox gbBreedSize;
+        private PictureRadioButton prbGiant;
+        private PictureRadioButton prbMedium;
+        private PictureRadioButton prbLarge;
     }
 }

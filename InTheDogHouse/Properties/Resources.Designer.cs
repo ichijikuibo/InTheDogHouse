@@ -93,6 +93,16 @@ namespace InTheDogHouse.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap huge {
+            get {
+                object obj = ResourceManager.GetObject("huge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap keano {
             get {
                 object obj = ResourceManager.GetObject("keano", resourceCulture);
@@ -106,6 +116,26 @@ namespace InTheDogHouse.Properties {
         internal static System.Drawing.Bitmap keanoIcon {
             get {
                 object obj = ResourceManager.GetObject("keanoIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap large {
+            get {
+                object obj = ResourceManager.GetObject("large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap medium {
+            get {
+                object obj = ResourceManager.GetObject("medium", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +176,16 @@ namespace InTheDogHouse.Properties {
         internal static System.Drawing.Bitmap title1Line {
             get {
                 object obj = ResourceManager.GetObject("title1Line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toy {
+            get {
+                object obj = ResourceManager.GetObject("toy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
