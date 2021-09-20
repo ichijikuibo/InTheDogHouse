@@ -41,7 +41,7 @@ namespace InTheDogHouse
         {
             //this.customerTableAdapter.Fill(this.dsInTheDogHouse.Customer);
 
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = InTheDogHouse; Integrated Security = true";
+            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlCustomer = @"select * from Customer";
             daCustomer = new SqlDataAdapter(sqlCustomer, connStr);
             cmdBCustomer = new SqlCommandBuilder(daCustomer);
@@ -92,6 +92,7 @@ namespace InTheDogHouse
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.TargetSite + " " + ex.Message, "Error",MessageBoxButtons.AbortRetryIgnore,MessageBoxIcon.Error);
+                    drCustomer.Delete();
                 }
             }
 
