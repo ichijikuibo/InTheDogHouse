@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSize.Designer.cs">
+      <DependentUpon>frmSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBreed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,7 +101,9 @@
     <Compile Include="Models\BreedModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\DogModel.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\SizeModel.cs" />
     <Compile Include="PictureRadioButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +118,9 @@
     <Compile Include="SlideShow.Designer.cs">
       <DependentUpon>SlideShow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmSize.resx">
+      <DependentUpon>frmSize.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBreed.resx">
       <DependentUpon>frmBreed.cs</DependentUpon>
     </EmbeddedResource>
