@@ -97,12 +97,8 @@ namespace InTheDogHouse
             }
             else if (!assignProperty(cmbAddCustomer, () => dog.CustomerNo = (int)cmbAddCustomer.SelectedValue)) ok = false;
 
-            if (cmbAddGender.SelectedIndex < 0)
-            {
-                errP.SetError(cmbAddGender, "Please select a Gendder");
-                ok = false;
-            }
-            else if (!assignProperty(cmbAddGender, () => dog.Gender = cmbAddGender.Text[0])) ok = false;
+     
+            if (!assignProperty(pGender, () => dog.Gender = getGender())) ok = false;
 
             if (!assignProperty(txtAddColour, () => dog.Colour = txtAddColour.Text)) ok = false;
             if (!assignProperty(txtAddName, () => dog.Name = txtAddName.Text)) ok = false;
@@ -134,6 +130,16 @@ namespace InTheDogHouse
                     drDog.Delete();
                 }
             }
+        }
+        private char getGender()
+        {
+            if (prbMale.Selected) return 'M';
+            else return 'F';
+        }
+        private void setGender(char gender)
+        {
+            if (gender == 'm' || gender == 'M') prbEditMale.Selected = true;
+            else prbEditFemale.Selected = true;
         }
 
         private void tabDogHouse_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,7 +178,8 @@ namespace InTheDogHouse
                         txtEditName.Text = drDog["Name"].ToString();
                         cmbEditBreedNo.SelectedValue = drDog["BreedNo"].ToString();
                         dtpEditDOB.Value = Convert.ToDateTime(drDog["DOB"]);
-                        cmbEditGender.SelectedIndex = drDog["Gender"].ToString().ToLower()=="m"?0:1;
+                        setGender(drDog["Gender"].ToString()[0]);
+                        //cmbEditGender.SelectedIndex = drDog["Gender"].ToString().ToLower()=="m"?0:1;
                         txtEditColour.Text = drDog["Colour"].ToString();
                         cmbEditCustomer.SelectedValue = drDog["CustomerNo"].ToString();
                     }
@@ -232,12 +239,8 @@ namespace InTheDogHouse
                 }
                 else if (!assignProperty(cmbEditCustomer, () => dog.CustomerNo = (int)cmbEditCustomer.SelectedValue)) ok = false;
 
-                if (cmbEditGender.SelectedIndex < 0)
-                {
-                    errP.SetError(cmbEditGender, "Please select a Gender");
-                    ok = false;
-                }
-                else if (!assignProperty(cmbEditGender, () => dog.Gender = cmbEditGender.Text[0])) ok = false;
+
+                if (!assignProperty(pEditGender, () => dog.Gender = getGender())) ok = false;
 
                 if (!assignProperty(txtEditColour, () => dog.Colour = txtEditColour.Text)) ok = false;
                 if (!assignProperty(txtEditName, () => dog.Name = txtEditName.Text)) ok = false;
@@ -303,16 +306,12 @@ namespace InTheDogHouse
             }
         }
 
-        private void frmDog_ResizeEnd(object sender, EventArgs e)
-        {
-            tabDogHouse.ItemSize = new Size((tabDogHouse.Width - 5) / 3, tabDogHouse.ItemSize.Height);
-        }
 
         private void changeEditEnabled(bool enabled)
         {
             cmbEditBreedNo.Enabled = enabled;
             cmbEditCustomer.Enabled = enabled;
-            cmbEditGender.Enabled = enabled;
+            pEditGender.Enabled = enabled;
             txtEditColour.Enabled = enabled;
             txtEditName.Enabled = enabled;
             dtpEditDOB.Enabled = enabled;
@@ -323,11 +322,20 @@ namespace InTheDogHouse
         {
             cmbAddBreedNo.SelectedIndex = -1;
             cmbAddCustomer.SelectedIndex = -1;
-            cmbAddGender.SelectedIndex = 0;
+            prbMale.Selected = true;
             txtAddColour.Clear();
             txtAddName.Clear();
             dtpAddDOB.Value = new DateTime(2000, 1, 1);
         }
+
+        private void frmDog_Resize(object sender, EventArgs e)
+        {
+            if (tabDogHouse.Width > 8)
+            {
+                tabDogHouse.ItemSize = new Size((tabDogHouse.Width - 5) / 3, tabDogHouse.ItemSize.Height);
+            }
+        }
+
         private void getNumber(int noRows)
         {
             drDog = dsInTheDogHouse.Tables["Dog"].Rows[noRows - 1];

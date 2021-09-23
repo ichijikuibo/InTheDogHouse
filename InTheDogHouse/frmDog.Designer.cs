@@ -40,7 +40,9 @@ namespace InTheDogHouse
             this.imgAddDog = new System.Windows.Forms.PictureBox();
             this.dgvDisplay = new System.Windows.Forms.DataGridView();
             this.tabAdd = new System.Windows.Forms.TabPage();
-            this.cmbAddGender = new System.Windows.Forms.ComboBox();
+            this.pGender = new System.Windows.Forms.Panel();
+            this.prbFemale = new InTheDogHouse.PictureRadioButton();
+            this.prbMale = new InTheDogHouse.PictureRadioButton();
             this.dtpAddDOB = new System.Windows.Forms.DateTimePicker();
             this.txtAddColour = new System.Windows.Forms.TextBox();
             this.cmbAddCustomer = new System.Windows.Forms.ComboBox();
@@ -58,7 +60,9 @@ namespace InTheDogHouse
             this.btnAddAdd = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabEdit = new System.Windows.Forms.TabPage();
-            this.cmbEditGender = new System.Windows.Forms.ComboBox();
+            this.pEditGender = new System.Windows.Forms.Panel();
+            this.prbEditFemale = new InTheDogHouse.PictureRadioButton();
+            this.prbEditMale = new InTheDogHouse.PictureRadioButton();
             this.dtpEditDOB = new System.Windows.Forms.DateTimePicker();
             this.txtEditColour = new System.Windows.Forms.TextBox();
             this.cmbEditCustomer = new System.Windows.Forms.ComboBox();
@@ -68,26 +72,28 @@ namespace InTheDogHouse
             this.lblEditColour = new System.Windows.Forms.Label();
             this.lblEditGender = new System.Windows.Forms.Label();
             this.lblEditDOB = new System.Windows.Forms.Label();
-            this.btnEditEdit = new System.Windows.Forms.Button();
-            this.btnEditCancel = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txtEditName = new System.Windows.Forms.TextBox();
             this.lblEditDogNumber = new System.Windows.Forms.Label();
             this.lblEditName = new System.Windows.Forms.Label();
             this.lblEditDogNo = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnEditEdit = new System.Windows.Forms.Button();
+            this.btnEditCancel = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             this.ssDogs = new InTheDogHouse.SlideShow();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabDogHouse.SuspendLayout();
             this.tabDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
             this.tabAdd.SuspendLayout();
+            this.pGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabEdit.SuspendLayout();
+            this.pEditGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDogHouse
@@ -235,7 +241,7 @@ namespace InTheDogHouse
             // tabAdd
             // 
             this.tabAdd.BackColor = System.Drawing.Color.Transparent;
-            this.tabAdd.Controls.Add(this.cmbAddGender);
+            this.tabAdd.Controls.Add(this.pGender);
             this.tabAdd.Controls.Add(this.dtpAddDOB);
             this.tabAdd.Controls.Add(this.txtAddColour);
             this.tabAdd.Controls.Add(this.cmbAddCustomer);
@@ -260,17 +266,36 @@ namespace InTheDogHouse
             this.tabAdd.TabIndex = 1;
             this.tabAdd.Text = "Add";
             // 
-            // cmbAddGender
+            // pGender
             // 
-            this.cmbAddGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAddGender.FormattingEnabled = true;
-            this.cmbAddGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cmbAddGender.Location = new System.Drawing.Point(199, 280);
-            this.cmbAddGender.Name = "cmbAddGender";
-            this.cmbAddGender.Size = new System.Drawing.Size(308, 28);
-            this.cmbAddGender.TabIndex = 67;
+            this.pGender.Controls.Add(this.prbFemale);
+            this.pGender.Controls.Add(this.prbMale);
+            this.pGender.Location = new System.Drawing.Point(199, 252);
+            this.pGender.Name = "pGender";
+            this.pGender.Size = new System.Drawing.Size(308, 89);
+            this.pGender.TabIndex = 68;
+            // 
+            // prbFemale
+            // 
+            this.prbFemale.ButtonText = "Female";
+            this.prbFemale.Location = new System.Drawing.Point(149, 3);
+            this.prbFemale.Name = "prbFemale";
+            this.prbFemale.Picture = global::InTheDogHouse.Properties.Resources.female;
+            this.prbFemale.Selected = false;
+            this.prbFemale.SelectedColour = System.Drawing.Color.Green;
+            this.prbFemale.Size = new System.Drawing.Size(156, 83);
+            this.prbFemale.TabIndex = 68;
+            // 
+            // prbMale
+            // 
+            this.prbMale.ButtonText = "Male";
+            this.prbMale.Location = new System.Drawing.Point(3, 3);
+            this.prbMale.Name = "prbMale";
+            this.prbMale.Picture = global::InTheDogHouse.Properties.Resources.male;
+            this.prbMale.Selected = true;
+            this.prbMale.SelectedColour = System.Drawing.Color.Green;
+            this.prbMale.Size = new System.Drawing.Size(140, 83);
+            this.prbMale.TabIndex = 67;
             // 
             // dtpAddDOB
             // 
@@ -285,7 +310,7 @@ namespace InTheDogHouse
             this.txtAddColour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAddColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddColour.Location = new System.Drawing.Point(199, 337);
+            this.txtAddColour.Location = new System.Drawing.Point(199, 347);
             this.txtAddColour.Name = "txtAddColour";
             this.txtAddColour.Size = new System.Drawing.Size(308, 31);
             this.txtAddColour.TabIndex = 65;
@@ -332,7 +357,7 @@ namespace InTheDogHouse
             // 
             this.lblAddColour.AutoSize = true;
             this.lblAddColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddColour.Location = new System.Drawing.Point(23, 343);
+            this.lblAddColour.Location = new System.Drawing.Point(23, 353);
             this.lblAddColour.Name = "lblAddColour";
             this.lblAddColour.Size = new System.Drawing.Size(75, 25);
             this.lblAddColour.TabIndex = 60;
@@ -451,7 +476,7 @@ namespace InTheDogHouse
             // tabEdit
             // 
             this.tabEdit.BackColor = System.Drawing.Color.Transparent;
-            this.tabEdit.Controls.Add(this.cmbEditGender);
+            this.tabEdit.Controls.Add(this.pEditGender);
             this.tabEdit.Controls.Add(this.dtpEditDOB);
             this.tabEdit.Controls.Add(this.txtEditColour);
             this.tabEdit.Controls.Add(this.cmbEditCustomer);
@@ -461,13 +486,13 @@ namespace InTheDogHouse
             this.tabEdit.Controls.Add(this.lblEditColour);
             this.tabEdit.Controls.Add(this.lblEditGender);
             this.tabEdit.Controls.Add(this.lblEditDOB);
-            this.tabEdit.Controls.Add(this.btnEditEdit);
-            this.tabEdit.Controls.Add(this.btnEditCancel);
-            this.tabEdit.Controls.Add(this.pictureBox3);
             this.tabEdit.Controls.Add(this.txtEditName);
             this.tabEdit.Controls.Add(this.lblEditDogNumber);
             this.tabEdit.Controls.Add(this.lblEditName);
             this.tabEdit.Controls.Add(this.lblEditDogNo);
+            this.tabEdit.Controls.Add(this.btnEditEdit);
+            this.tabEdit.Controls.Add(this.btnEditCancel);
+            this.tabEdit.Controls.Add(this.pictureBox3);
             this.tabEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabEdit.Location = new System.Drawing.Point(4, 34);
             this.tabEdit.Name = "tabEdit";
@@ -475,18 +500,37 @@ namespace InTheDogHouse
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Edit";
             // 
-            // cmbEditGender
+            // pEditGender
             // 
-            this.cmbEditGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEditGender.Enabled = false;
-            this.cmbEditGender.FormattingEnabled = true;
-            this.cmbEditGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cmbEditGender.Location = new System.Drawing.Point(199, 285);
-            this.cmbEditGender.Name = "cmbEditGender";
-            this.cmbEditGender.Size = new System.Drawing.Size(308, 28);
-            this.cmbEditGender.TabIndex = 53;
+            this.pEditGender.Controls.Add(this.prbEditFemale);
+            this.pEditGender.Controls.Add(this.prbEditMale);
+            this.pEditGender.Enabled = false;
+            this.pEditGender.Location = new System.Drawing.Point(199, 260);
+            this.pEditGender.Name = "pEditGender";
+            this.pEditGender.Size = new System.Drawing.Size(308, 86);
+            this.pEditGender.TabIndex = 69;
+            // 
+            // prbEditFemale
+            // 
+            this.prbEditFemale.ButtonText = "Female";
+            this.prbEditFemale.Location = new System.Drawing.Point(149, 3);
+            this.prbEditFemale.Name = "prbEditFemale";
+            this.prbEditFemale.Picture = global::InTheDogHouse.Properties.Resources.female;
+            this.prbEditFemale.Selected = false;
+            this.prbEditFemale.SelectedColour = System.Drawing.Color.Green;
+            this.prbEditFemale.Size = new System.Drawing.Size(156, 80);
+            this.prbEditFemale.TabIndex = 68;
+            // 
+            // prbEditMale
+            // 
+            this.prbEditMale.ButtonText = "Male";
+            this.prbEditMale.Location = new System.Drawing.Point(3, 3);
+            this.prbEditMale.Name = "prbEditMale";
+            this.prbEditMale.Picture = global::InTheDogHouse.Properties.Resources.male;
+            this.prbEditMale.Selected = true;
+            this.prbEditMale.SelectedColour = System.Drawing.Color.Green;
+            this.prbEditMale.Size = new System.Drawing.Size(140, 80);
+            this.prbEditMale.TabIndex = 67;
             // 
             // dtpEditDOB
             // 
@@ -502,7 +546,7 @@ namespace InTheDogHouse
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEditColour.Enabled = false;
             this.txtEditColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditColour.Location = new System.Drawing.Point(199, 342);
+            this.txtEditColour.Location = new System.Drawing.Point(199, 352);
             this.txtEditColour.Name = "txtEditColour";
             this.txtEditColour.Size = new System.Drawing.Size(308, 31);
             this.txtEditColour.TabIndex = 51;
@@ -551,7 +595,7 @@ namespace InTheDogHouse
             // 
             this.lblEditColour.AutoSize = true;
             this.lblEditColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditColour.Location = new System.Drawing.Point(23, 348);
+            this.lblEditColour.Location = new System.Drawing.Point(23, 358);
             this.lblEditColour.Name = "lblEditColour";
             this.lblEditColour.Size = new System.Drawing.Size(75, 25);
             this.lblEditColour.TabIndex = 45;
@@ -576,6 +620,47 @@ namespace InTheDogHouse
             this.lblEditDOB.Size = new System.Drawing.Size(57, 25);
             this.lblEditDOB.TabIndex = 43;
             this.lblEditDOB.Text = "DOB";
+            // 
+            // txtEditName
+            // 
+            this.txtEditName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEditName.Enabled = false;
+            this.txtEditName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditName.Location = new System.Drawing.Point(199, 92);
+            this.txtEditName.Name = "txtEditName";
+            this.txtEditName.Size = new System.Drawing.Size(308, 31);
+            this.txtEditName.TabIndex = 32;
+            // 
+            // lblEditDogNumber
+            // 
+            this.lblEditDogNumber.AutoSize = true;
+            this.lblEditDogNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditDogNumber.Location = new System.Drawing.Point(199, 28);
+            this.lblEditDogNumber.Name = "lblEditDogNumber";
+            this.lblEditDogNumber.Size = new System.Drawing.Size(19, 25);
+            this.lblEditDogNumber.TabIndex = 30;
+            this.lblEditDogNumber.Text = "-";
+            // 
+            // lblEditName
+            // 
+            this.lblEditName.AutoSize = true;
+            this.lblEditName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditName.Location = new System.Drawing.Point(23, 92);
+            this.lblEditName.Name = "lblEditName";
+            this.lblEditName.Size = new System.Drawing.Size(68, 25);
+            this.lblEditName.TabIndex = 23;
+            this.lblEditName.Text = "Name";
+            // 
+            // lblEditDogNo
+            // 
+            this.lblEditDogNo.AutoSize = true;
+            this.lblEditDogNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditDogNo.Location = new System.Drawing.Point(23, 28);
+            this.lblEditDogNo.Name = "lblEditDogNo";
+            this.lblEditDogNo.Size = new System.Drawing.Size(84, 25);
+            this.lblEditDogNo.TabIndex = 21;
+            this.lblEditDogNo.Text = "Dog No";
             // 
             // btnEditEdit
             // 
@@ -626,61 +711,6 @@ namespace InTheDogHouse
             this.pictureBox3.TabIndex = 39;
             this.pictureBox3.TabStop = false;
             // 
-            // txtEditName
-            // 
-            this.txtEditName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEditName.Enabled = false;
-            this.txtEditName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditName.Location = new System.Drawing.Point(199, 92);
-            this.txtEditName.Name = "txtEditName";
-            this.txtEditName.Size = new System.Drawing.Size(308, 31);
-            this.txtEditName.TabIndex = 32;
-            // 
-            // lblEditDogNumber
-            // 
-            this.lblEditDogNumber.AutoSize = true;
-            this.lblEditDogNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditDogNumber.Location = new System.Drawing.Point(199, 28);
-            this.lblEditDogNumber.Name = "lblEditDogNumber";
-            this.lblEditDogNumber.Size = new System.Drawing.Size(19, 25);
-            this.lblEditDogNumber.TabIndex = 30;
-            this.lblEditDogNumber.Text = "-";
-            // 
-            // lblEditName
-            // 
-            this.lblEditName.AutoSize = true;
-            this.lblEditName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditName.Location = new System.Drawing.Point(23, 92);
-            this.lblEditName.Name = "lblEditName";
-            this.lblEditName.Size = new System.Drawing.Size(68, 25);
-            this.lblEditName.TabIndex = 23;
-            this.lblEditName.Text = "Name";
-            // 
-            // lblEditDogNo
-            // 
-            this.lblEditDogNo.AutoSize = true;
-            this.lblEditDogNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditDogNo.Location = new System.Drawing.Point(23, 28);
-            this.lblEditDogNo.Name = "lblEditDogNo";
-            this.lblEditDogNo.Size = new System.Drawing.Size(84, 25);
-            this.lblEditDogNo.TabIndex = 21;
-            this.lblEditDogNo.Text = "Dog No";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.ImageLocation = "";
-            this.pictureBox4.Location = new System.Drawing.Point(13, 12);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(507, 160);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 51;
-            this.pictureBox4.TabStop = false;
-            // 
             // errP
             // 
             this.errP.ContainerControl = this;
@@ -706,6 +736,20 @@ namespace InTheDogHouse
             this.ssDogs.Size = new System.Drawing.Size(233, 165);
             this.ssDogs.TabIndex = 52;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.ImageLocation = "";
+            this.pictureBox4.Location = new System.Drawing.Point(13, 12);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(507, 160);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 51;
+            this.pictureBox4.TabStop = false;
+            // 
             // frmDog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -714,24 +758,27 @@ namespace InTheDogHouse
             this.Controls.Add(this.ssDogs);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.tabDogHouse);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDog";
             this.Text = "Dog";
             this.Load += new System.EventHandler(this.Dog_Load);
             this.Shown += new System.EventHandler(this.MainPage_Shown);
-            this.Resize += new System.EventHandler(this.frmDog_ResizeEnd);
+            this.Resize += new System.EventHandler(this.frmDog_Resize);
             this.tabDogHouse.ResumeLayout(false);
             this.tabDisplay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).EndInit();
             this.tabAdd.ResumeLayout(false);
             this.tabAdd.PerformLayout();
+            this.pGender.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabEdit.ResumeLayout(false);
             this.tabEdit.PerformLayout();
+            this.pEditGender.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -765,9 +812,7 @@ namespace InTheDogHouse
         private System.Windows.Forms.Label lblEditColour;
         private System.Windows.Forms.Label lblEditGender;
         private System.Windows.Forms.Label lblEditDOB;
-        private System.Windows.Forms.ComboBox cmbEditGender;
         private System.Windows.Forms.TabPage tabAdd;
-        private System.Windows.Forms.ComboBox cmbAddGender;
         private System.Windows.Forms.DateTimePicker dtpAddDOB;
         private System.Windows.Forms.TextBox txtAddColour;
         private System.Windows.Forms.ComboBox cmbAddCustomer;
@@ -785,5 +830,11 @@ namespace InTheDogHouse
         private System.Windows.Forms.Button btnAddAdd;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ErrorProvider errP;
+        private System.Windows.Forms.Panel pGender;
+        private PictureRadioButton prbFemale;
+        private PictureRadioButton prbMale;
+        private System.Windows.Forms.Panel pEditGender;
+        private PictureRadioButton prbEditFemale;
+        private PictureRadioButton prbEditMale;
     }
 }

@@ -68,6 +68,7 @@ namespace InTheDogHouse
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.lblRadioButton);
             this.Controls.Add(this.picturePanel);
+            this.DoubleBuffered = true;
             this.Name = "PictureRadioButton";
             this.Size = new System.Drawing.Size(140, 46);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureRadioButton_Paint);

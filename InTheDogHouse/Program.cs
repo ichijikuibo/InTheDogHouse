@@ -18,8 +18,8 @@ namespace InTheDogHouse
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new frmCustomer());
-            Application.Run(new frmSize());
-            //Application.Run(new frmDog());
+            //Application.Run(new frmSize());
+            Application.Run(new frmDog());
             //Application.Run(new frmBreed());
             
         }
