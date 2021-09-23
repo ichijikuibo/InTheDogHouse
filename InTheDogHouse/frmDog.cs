@@ -30,7 +30,7 @@ namespace InTheDogHouse
 
         private void Dog_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = localhost\SQLEXPRESS; Initial Catalog = InTheDogHouse; Integrated Security = true";
+            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlCustomer = @"select * from Customer";
             daCustomer = new SqlDataAdapter(sqlCustomer, connStr);
 
@@ -170,11 +170,11 @@ namespace InTheDogHouse
                         drDog = dsInTheDogHouse.Tables["Dog"].Rows.Find(lblEditDogNumber.Text);
 
                         txtEditName.Text = drDog["Name"].ToString();
-                        cmbEditBreedNo.SelectedItem = drDog["BreedNo"].ToString();
+                        cmbEditBreedNo.SelectedValue = drDog["BreedNo"].ToString();
                         dtpEditDOB.Value = Convert.ToDateTime(drDog["DOB"]);
                         cmbEditGender.SelectedIndex = drDog["Gender"].ToString().ToLower()=="m"?0:1;
                         txtEditColour.Text = drDog["Colour"].ToString();
-                        cmbEditCustomer.Text = drDog["CustomerNo"].ToString();
+                        cmbEditCustomer.SelectedValue = drDog["CustomerNo"].ToString();
                     }
                     break;
             }
@@ -366,8 +366,8 @@ namespace InTheDogHouse
             tabDogHouse.TabPages[0].CausesValidation = true;
             tabDogHouse.TabPages[0].Validating += new CancelEventHandler(AddTabValidate);
 
-            tabDogHouse.TabPages[1].CausesValidation = true;
-            tabDogHouse.TabPages[1].Validating += new CancelEventHandler(EditTabValidate);
+            tabDogHouse.TabPages[2].CausesValidation = true;
+            tabDogHouse.TabPages[2].Validating += new CancelEventHandler(EditTabValidate);
         }
 
         private void btnDisplayExit_Click(object sender, EventArgs e)

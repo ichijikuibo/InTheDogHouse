@@ -30,7 +30,7 @@ namespace InTheDogHouse
         }
         private void frmBreed_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = InTheDogHouse; Integrated Security = true";
+            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlBreed = @"select * from Breed";
             daBreed = new SqlDataAdapter(sqlBreed, connStr);
             sqlBBreed = new SqlCommandBuilder(daBreed);

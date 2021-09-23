@@ -714,11 +714,12 @@ namespace InTheDogHouse
             this.Controls.Add(this.ssDogs);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.tabDogHouse);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDog";
             this.Text = "Dog";
             this.Load += new System.EventHandler(this.Dog_Load);
             this.Shown += new System.EventHandler(this.MainPage_Shown);
-            this.ResizeEnd += new System.EventHandler(this.frmDog_ResizeEnd);
+            this.Resize += new System.EventHandler(this.frmDog_ResizeEnd);
             this.tabDogHouse.ResumeLayout(false);
             this.tabDisplay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).EndInit();

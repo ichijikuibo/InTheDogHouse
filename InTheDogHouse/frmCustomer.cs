@@ -41,7 +41,7 @@ namespace InTheDogHouse
         {
             //this.customerTableAdapter.Fill(this.dsInTheDogHouse.Customer);
 
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = InTheDogHouse; Integrated Security = true";
+            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlCustomer = @"select * from Customer";
             daCustomer = new SqlDataAdapter(sqlCustomer, connStr);
             sqlBCustomer = new SqlCommandBuilder(daCustomer);
