@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmKennel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKennel.Designer.cs">
+      <DependentUpon>frmKennel.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InTheDogHouseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Models\KennelModel.cs" />
     <Compile Include="Models\BreedModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
@@ -118,6 +125,9 @@
     <Compile Include="SlideShow.Designer.cs">
       <DependentUpon>SlideShow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmKennel.resx">
+      <DependentUpon>frmKennel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSize.resx">
       <DependentUpon>frmSize.cs</DependentUpon>
     </EmbeddedResource>
