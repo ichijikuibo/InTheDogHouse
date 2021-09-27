@@ -95,7 +95,6 @@
     <Compile Include="Models\BreedModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="PictureRadioButton.cs">
       <SubType>UserControl</SubType>
