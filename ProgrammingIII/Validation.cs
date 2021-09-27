@@ -53,7 +53,7 @@ namespace ProgrammingIII
         /// <Author>Teresa Deeny</Author>
         /// <ModifiedBy></ModifiedBy>
         /// <returns>true if the string is all letters, false if it isn't</returns>
-        public static bool validLetter(string txt)
+        public static bool validLetter(string txt,string additional="")
         {
             bool ok = true;
             if (txt.Trim().Length == 0)
@@ -64,7 +64,7 @@ namespace ProgrammingIII
             {
                 foreach (char c in txt)
                 {
-                    if (!char.IsLetter(c)) ok = false;
+                    if (!char.IsLetter(c) && !additional.Contains(c.ToString())) ok = false;
                 }
             }
             return ok;
@@ -77,7 +77,7 @@ namespace ProgrammingIII
         /// <Author>Teresa Deeny</Author>
         /// <ModifiedBy></ModifiedBy>
         /// <returns>true if the string is letters or whitespace false if it isn't</returns>
-        public static bool validLetterWhiteSpace(string txt)
+        public static bool validLetterWhiteSpace(string txt, string additional = "")
         {
             bool ok = true;
             if (txt.Trim().Length == 0)
@@ -88,7 +88,7 @@ namespace ProgrammingIII
             {
                 foreach (char c in txt)
                 {
-                    if (!char.IsLetter(c)&&!char.IsWhiteSpace(c)) ok = false;
+                    if (!char.IsLetter(c)&&!char.IsWhiteSpace(c) && !additional.Contains(c.ToString())) ok = false;
                 }
             }
             return ok;
@@ -101,7 +101,7 @@ namespace ProgrammingIII
         /// <Author>Teresa Deeny</Author>
         /// <ModifiedBy></ModifiedBy>
         /// <returns>true if the string is letters, whitespace or numbers, false if it isn't</returns>
-        public static bool validLetterWhiteSpaceNumber(string txt)
+        public static bool validLetterWhiteSpaceNumber(string txt, string additional = "")
         {
             bool ok = true;
             if (txt.Trim().Length == 0)
@@ -112,7 +112,7 @@ namespace ProgrammingIII
             {
                 foreach (char c in txt)
                 {
-                    if (!char.IsLetter(c) && !char.IsWhiteSpace(c) && !char.IsNumber(c)) ok = false;
+                    if (!char.IsLetter(c) && !char.IsWhiteSpace(c) && !char.IsNumber(c)&& !additional.Contains(c.ToString())) ok = false;
                 }
             }
             return ok;
@@ -165,6 +165,38 @@ namespace ProgrammingIII
             }
             return ok;
         }
+        /// <summary>
+        /// Check if a date if within min and max number of years of the specified date
+        /// </summary>
+        /// <param name="date">The date of birth</param>
+        /// <param name="currentDate">The date to measure from</param>
+        /// <param name="min">The minimum number of days away from the specified date should be</param>
+        /// <param name="max">The maximum number of days away from the specified date should be</param>
+        /// <Author>Colm Canavan</Author>
+        /// <ModifiedBy></ModifiedBy>
+        /// <returns>true if the date is within min and max, false if not</returns>
+        public static bool validDOBDays(DateTime date, DateTime currentDate, int min = 0, int max = int.MaxValue)
+        {
+            bool ok = true;
+            TimeSpan span = currentDate - date;
+            if (span.TotalDays < min || span.TotalDays > max) ok = false;
+            
+            return ok;
+        }
+        /// <summary>
+        /// Check if a date if within min and max number of years of the current date
+        /// </summary>
+        /// <param name="date">The date of birth</param>
+        /// <param name="min">The minimum number of days away from the specified date should be</param>
+        /// <param name="max">The maximum number of days away from the specified date should be</param>
+        /// <Author>Colm Canavan</Author>
+        /// <ModifiedBy></ModifiedBy>
+        /// <returns>true if the date is within min and max, false if not</returns>
+        public static bool validDOBDays(DateTime date, int min = 0, int max = int.MaxValue)
+        {
+
+            return validDOBDays(date, System.DateTime.Now, min, max);
+        }
 
         /// <summary>
         /// Check if a date if within min and max number of years of the specified date
@@ -178,18 +210,13 @@ namespace ProgrammingIII
         /// <returns>true if the date is within min and max, false if not</returns>
         public static bool validDOBDays(string txt, DateTime currentDate, int min = 0, int max = int.MaxValue)
         {
-            bool ok = true;
-            TimeSpan span = currentDate - Convert.ToDateTime(txt);
             if (txt.Trim().Length == 0)
             {
-                ok = false;
+                return false;
             }
-            else
-            {
-                if (span.TotalDays < min || span.TotalDays > max) ok = false;
-            }
-            return ok;
+            else return validDOBDays(Convert.ToDateTime(txt), currentDate,min,max);
         }
+
 
         /// <summary>
         /// Check if a date if within min and max number of days of the current date

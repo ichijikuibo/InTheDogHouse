@@ -69,6 +69,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmKennel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKennel.Designer.cs">
+      <DependentUpon>frmKennel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSize.Designer.cs">
+      <DependentUpon>frmSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBreed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,10 +104,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InTheDogHouseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Models\KennelModel.cs" />
     <Compile Include="Models\BreedModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\DogModel.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\SizeModel.cs" />
     <Compile Include="PictureRadioButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +125,12 @@
     <Compile Include="SlideShow.Designer.cs">
       <DependentUpon>SlideShow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmKennel.resx">
+      <DependentUpon>frmKennel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSize.resx">
+      <DependentUpon>frmSize.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBreed.resx">
       <DependentUpon>frmBreed.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,11 +221,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="formiccon.ico" />
+    <None Include="Images\female.png" />
     <Content Include="Images\formiccon.ico" />
     <None Include="Images\toy.png" />
     <None Include="Images\huge.png" />
     <None Include="Images\large.png" />
     <None Include="Images\medium.png" />
+    <None Include="Images\male.png" />
     <Content Include="Images\Slideshow\dogs2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

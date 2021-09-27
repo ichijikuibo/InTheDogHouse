@@ -14,8 +14,11 @@ namespace InTheDogHouse
 
     public partial class PictureRadioButton : UserControl
     {
+
+        private bool changed = false;
+
         [
-            Category("RadioButton"),
+            Category("Radio Button"),
             Description("The text for the radio button")
         ]
         public string ButtonText
@@ -26,13 +29,14 @@ namespace InTheDogHouse
             }
             set
             {
+                changed = true;
                 lblRadioButton.Text = value;
-                Invalidate();
+                picturePanel.Invalidate();
             }
         }
         private Image picture;
         [
-           Category("RadioButton"),
+           Category("Radio Button"),
            Description("The picture for the radio button")
         ]
         public Image Picture
@@ -43,14 +47,15 @@ namespace InTheDogHouse
             }
             set
             {
+                changed = true;
                 picture = value;
-                Invalidate();
+                picturePanel.Invalidate();
             }
         }
 
         private bool selected;
         [
-   Category("RadioButton"),
+   Category("Radio Button"),
    Description("Is this radio button selected")
 ]
         public bool Selected
@@ -59,6 +64,7 @@ namespace InTheDogHouse
             set
             {
                 selected = value;
+                changed = true;
                 if (selected&& Parent!=null)
                 {
                     foreach (Control c in Parent.Controls)
@@ -69,12 +75,12 @@ namespace InTheDogHouse
                         }
                     }
                 }
-                Invalidate();
+                picturePanel.Invalidate();
             }
         }
         private Color selectedColour = Color.Black;
         [
-            Category("Slideshow"),
+            Category("Radio Button"),
             Description("The colour of the picture border")
         ]
 
@@ -83,8 +89,9 @@ namespace InTheDogHouse
             get { return selectedColour; }
             set
             {
+                changed = true;
                 selectedColour = value;
-                Invalidate();
+                picturePanel.Invalidate();
             }
         }
         private Color tempBackground;
@@ -102,22 +109,26 @@ namespace InTheDogHouse
 
         private void picturePanel_Paint(object sender, PaintEventArgs e)
         {
-            if (picture != null)
-            {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            //if (changed)
+            //{
+                if (picture != null)
+                {
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    if (selected)
+                    {
+                        e.Graphics.DrawImage(picture, new Rectangle(4, 4, picturePanel.Width - 8, picturePanel.Height - 8));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawImage(picture, new Rectangle(1, 1, picturePanel.Width - 2, picturePanel.Height - 2));
+                    }
+                }
                 if (selected)
                 {
-                    e.Graphics.DrawImage(picture, new Rectangle(4, 4, picturePanel.Width - 8, picturePanel.Height - 8));
+                    e.Graphics.DrawEllipse(new Pen(SelectedColour, 4), new Rectangle(4, 4, picturePanel.Width - 8, picturePanel.Height - 8));
                 }
-                else
-                {
-                    e.Graphics.DrawImage(picture, new Rectangle(1, 1, picturePanel.Width-2, picturePanel.Height-2));
-                }
-            }
-            if (selected)
-            {
-                e.Graphics.DrawEllipse(new Pen(SelectedColour, 4), new Rectangle(4, 4, picturePanel.Width - 8, picturePanel.Height - 8));
-            }
+                changed = false;
+           // }
         }
 
         private void lblRadioButton_Click(object sender, EventArgs e)
@@ -127,11 +138,12 @@ namespace InTheDogHouse
 
         private void PictureRadioButton_Paint(object sender, PaintEventArgs e)
         {
-            picturePanel.Invalidate();
+           // picturePanel.Invalidate();
         }
 
         private void PictureRadioButton_MouseEnter(object sender, EventArgs e)
         {
+            changed = true;
             tempBackground = BackColor;
             BackColor = Color.LightGray;
             lblRadioButton.BackColor = BackColor;
@@ -140,6 +152,7 @@ namespace InTheDogHouse
 
         private void PictureRadioButton_MouseLeave(object sender, EventArgs e)
         {
+            changed = true;
             BackColor = tempBackground;
             lblRadioButton.BackColor = BackColor;
             picturePanel.BackColor = BackColor;

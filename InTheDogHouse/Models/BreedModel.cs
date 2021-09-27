@@ -44,14 +44,7 @@ namespace InTheDogHouse.Models
         public int BreedSize { get => breedSize; 
             set
             {
-                if (breedSize != value)
-                {
-
-                    if (breedSize>=1&& breedSize<=4)
-                        breedSize = value;
-                    else
-                        throw new MyException("Breed size must be 1,2,3 or 4");
-                }
+                breedSize = value;
             }
         }
         public int BreedNo { get => breedNo; set => breedNo = value; }

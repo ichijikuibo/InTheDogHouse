@@ -13,47 +13,35 @@ using System.Windows.Forms;
 
 namespace InTheDogHouse
 {
-    public partial class frmBreed : Form
-    {
-
+    public partial class frmSize : Form
+    { 
         bool editing = false;
         bool adding = false;
         DataRow drSelected;
+        SqlCommandBuilder sqlBSize;
         DataSet dsInTheDogHouse = new DataSet();
-        SqlCommandBuilder sqlBBreed;
-        SqlDataAdapter daBreed,daSize,daDog;
-        DataRow drBreed;
-        string connStr, sqlBreed,sqlSize,sqlDog;
-        public frmBreed()
+        SqlDataAdapter daSize, daBreed;
+        DataRow drSize;
+        string connStr, sqlSize,sqlBreed;
+        public frmSize()
         {
             InitializeComponent();
         }
         private void frmBreed_Load(object sender, EventArgs e)
         {
             connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
-            sqlBreed = @"select * from Breed";
-            daBreed = new SqlDataAdapter(sqlBreed, connStr);
-            sqlBBreed = new SqlCommandBuilder(daBreed);
-            daBreed.FillSchema(dsInTheDogHouse, SchemaType.Source, "Breed");
-            daBreed.Fill(dsInTheDogHouse, "Breed");
-
             sqlSize = @"select * from Size";
             daSize = new SqlDataAdapter(sqlSize, connStr);
+            sqlBSize = new SqlCommandBuilder(daSize);
             daSize.FillSchema(dsInTheDogHouse, SchemaType.Source, "Size");
             daSize.Fill(dsInTheDogHouse, "Size");
 
-            sqlDog= @"select * from Dog";
-            daDog = new SqlDataAdapter(sqlDog, connStr);
-            daDog.FillSchema(dsInTheDogHouse, SchemaType.Source, "Dog");
-            daDog.Fill(dsInTheDogHouse, "Dog");
+            sqlBreed = @"select * from Breed";
+            daBreed = new SqlDataAdapter(sqlBreed, connStr);
+            daBreed.FillSchema(dsInTheDogHouse, SchemaType.Source, "Breed");
+            daBreed.Fill(dsInTheDogHouse, "Breed");
 
-            dsInTheDogHouse.Tables["Size"].Columns.Add("ComboDisplay", typeof(string), "SizeNo + ' - £' + ChargePerDay");
-
-            cmbBreedSize.DataSource = dsInTheDogHouse.Tables["Size"];
-            cmbBreedSize.ValueMember = "SizeNo";
-            cmbBreedSize.DisplayMember = "ComboDisplay";
-
-            dgvDisplay.DataSource = dsInTheDogHouse.Tables["Breed"];
+            dgvDisplay.DataSource = dsInTheDogHouse.Tables["Size"];
             dgvDisplay.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
@@ -77,15 +65,14 @@ namespace InTheDogHouse
         }
         private void clearForm()
         {
-            lblBreedID.Text = "-";
-            txtBreedName.Clear();
+            lblSizeID.Text = "-";
+            numCharge.Value = 1;
         }
         private void fillForm(string selectedID)
         {
-            lblBreedID.Text = selectedID;
-            drSelected = dsInTheDogHouse.Tables["Breed"].Rows.Find(selectedID);
-            txtBreedName.Text = drSelected["BreedName"].ToString();
-            cmbBreedSize.SelectedValue = drSelected["SizeB"];
+            lblSizeID.Text = selectedID;
+            drSelected = dsInTheDogHouse.Tables["Size"].Rows.Find(selectedID);
+            numCharge.Value = decimal.Parse(drSelected["ChargePerDay"].ToString());
 
         }
         private void btnNew_Click(object sender, EventArgs e)
@@ -98,33 +85,26 @@ namespace InTheDogHouse
                 btnCancel.Visible = true;
                 btnSave.Visible = true;
                 btnNew.Visible = false;
-                txtBreedName.Enabled = true;
-                cmbBreedSize.Enabled = true;
+                numCharge.Enabled = true;
                 btnDisplayExit.Visible = false;
                 btnDisplayDelete.Visible = false;
-                getNumber(dsInTheDogHouse.Tables["Breed"].Rows.Count);
+                getNumber(dsInTheDogHouse.Tables["Size"].Rows.Count);
             }
         }
         private void getNumber(int noRows)
         {
-            drBreed = dsInTheDogHouse.Tables["Breed"].Rows[noRows - 1];
-            lblBreedID.Text = (int.Parse(drBreed["BreedNo"].ToString()) + 1).ToString();
+            drSize = dsInTheDogHouse.Tables["Size"].Rows[noRows - 1];
+            lblSizeID.Text = (int.Parse(drSize["SizeNo"].ToString()) + 1).ToString();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!adding && !editing) return;
-            BreedModel breed = new BreedModel();
+            SizeModel size = new SizeModel();
             bool ok = true;
             errP.Clear();
 
-            if (!assignProperty(lblBreedID, () => breed.BreedNo = int.Parse(lblBreedID.Text))) ok = false;
-            if (!assignProperty(txtBreedName, () => breed.Breed = txtBreedName.Text)) ok = false;
-            if (cmbBreedSize.SelectedIndex < 0)
-            {
-                errP.SetError(cmbBreedSize, "Please select a breed");
-                ok = false;
-            }
-            else if (!assignProperty(cmbBreedSize, () => breed.BreedSize = (int)cmbBreedSize.SelectedValue)) ok = false;
+            if (!assignProperty(lblSizeID, () => size.SizeNo = int.Parse(lblSizeID.Text))) ok = false;
+            if (!assignProperty(numCharge, () => size.Charge = (double)numCharge.Value)) ok = false;
 
             if (ok)
             {
@@ -133,14 +113,14 @@ namespace InTheDogHouse
                     if ((adding))
                     {
 
-                        drBreed = dsInTheDogHouse.Tables["Breed"].NewRow();
-                        breedToDataRow(drBreed, breed);
-                        dsInTheDogHouse.Tables["Breed"].Rows.Add(drBreed);
-                        daBreed.Update(dsInTheDogHouse, "Breed");
+                        drSize = dsInTheDogHouse.Tables["Size"].NewRow();
+                        sizeToDataRow(drSize, size);
+                        dsInTheDogHouse.Tables["Size"].Rows.Add(drSize);
+                        daSize.Update(dsInTheDogHouse, "Size");
                         clearForm();
-                        if (MessageBox.Show("Breed Added - Do you wish to add another breed?", "Add Breed", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("Size Added - Do you wish to add another Size?", "Add Size", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            getNumber(dsInTheDogHouse.Tables["Breed"].Rows.Count);
+                            getNumber(dsInTheDogHouse.Tables["Size"].Rows.Count);
                         }
                         else
                         {
@@ -149,8 +129,7 @@ namespace InTheDogHouse
                             btnCancel.Visible = false;
                             btnNew.Visible = true;
                             btnDisplayExit.Visible = true;
-                            txtBreedName.Enabled = false;
-                            cmbBreedSize.Enabled = false;
+                            numCharge.Enabled = false;
 
                             adding = false;
                             dgvDisplay_SelectionChanged(dgvDisplay, e);
@@ -159,18 +138,18 @@ namespace InTheDogHouse
                     else
                     {
                         drSelected.BeginEdit();
-                        breedToDataRow(drSelected, breed);
-
+                        sizeToDataRow(drSelected, size);
                         drSelected.EndEdit();
-                        daBreed.Update(dsInTheDogHouse, "Breed");
-                        MessageBox.Show("Breed Details Updated", "Breed");
+                        daSize.Update(dsInTheDogHouse, "Size");
+
+                        MessageBox.Show("Size Details Updated", "Size");
                         btnSave.Visible = false;
                         btnEditEdit.Visible = false;
                         btnCancel.Visible = false;
                         btnNew.Visible = true;
                         btnDisplayExit.Visible = true;
-                        txtBreedName.Enabled = false;
-                        cmbBreedSize.Enabled = false;
+                        numCharge.Enabled = false;
+  
 
                         editing = false;
                         dgvDisplay_SelectionChanged(dgvDisplay, e);
@@ -183,18 +162,17 @@ namespace InTheDogHouse
                 }
             }
         }
-        private void breedToDataRow(DataRow row, BreedModel breed)
+        private void sizeToDataRow(DataRow row, SizeModel size)
         {
-            row["BreedNo"] = breed.BreedNo;
-            row["BreedName"] = breed.Breed;
-            row["SizeB"] = breed.BreedSize;
+            row["SizeNo"] = size.SizeNo;
+            row["ChargePerDay"] = size.Charge;
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             bool cancel = false;
             if(adding)
             {
-                if(MessageBox.Show("Are you sure you want to cancel adding the breed "+txtBreedName.Text + "?","Cancel Adding Breed",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                if(MessageBox.Show("Are you sure you want to cancel adding the size "+lblSizeID.Text + "?","Cancel Adding Size",MessageBoxButtons.YesNo)==DialogResult.Yes)
                 {
                     cancel = true;
                     adding = false;
@@ -202,7 +180,7 @@ namespace InTheDogHouse
             }
             if (editing)
             {
-                if (MessageBox.Show("Are you sure you want to cancel editing the breed " + txtBreedName.Text + "?", "Cancel Editing Breed", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to cancel editing the size " + lblSizeID.Text + "?", "Cancel Editing Size", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     editing = false;
                     cancel = true;
@@ -215,8 +193,7 @@ namespace InTheDogHouse
                 btnEditEdit.Visible = false;
                 btnCancel.Visible = false;
                 btnNew.Visible = true;
-                txtBreedName.Enabled = false;
-                cmbBreedSize.Enabled = false;
+                numCharge.Enabled = false;
                 btnDisplayExit.Visible = true;
                 adding = false;
                 dgvDisplay_SelectionChanged(dgvDisplay, e);
@@ -232,11 +209,11 @@ namespace InTheDogHouse
             btnCancel.Visible = true;
             btnSave.Visible = true;
             btnNew.Visible = false;
-            txtBreedName.Enabled = true;
-            cmbBreedSize.Enabled = true;
+            numCharge.Enabled = true;
             btnDisplayExit.Visible = false;
             btnDisplayDelete.Visible = false;
         }
+
 
         private void btnDisplayExit_Click(object sender, EventArgs e)
         {
@@ -247,29 +224,26 @@ namespace InTheDogHouse
         {
             if (dgvDisplay.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select a breed from the list.", "Select Breed");
+                MessageBox.Show("Please select a size from the list.", "Select Size");
             }
             else
             {
-
-
-                drBreed = dsInTheDogHouse.Tables["Breed"].Rows.Find(dgvDisplay.SelectedRows[0].Cells[0].Value);
-
+                drSize = dsInTheDogHouse.Tables["Size"].Rows.Find(dgvDisplay.SelectedRows[0].Cells[0].Value);
                 bool inUse = false;
-                foreach (DataRow dr in dsInTheDogHouse.Tables["Dog"].Rows)
+                foreach(DataRow dr in dsInTheDogHouse.Tables["Breed"].Rows)
                 {
-                    if (dr["BreedNo"].Equals(drBreed["BreedNo"])) inUse = true;
+                    if (dr["SizeB"].Equals(drSize["SizeNo"])) inUse = true;
                 }
                 if (inUse)
                 {
-                    MessageBox.Show("Unable to delete breed it is in use by a dog", "Breed in Use ", MessageBoxButtons.OK);
+                    MessageBox.Show("Unable to delete size it is in use by a breed", "Size in Use ", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (MessageBox.Show("Are you sure you want to delete " + drBreed["BreedName"].ToString() + " details", "Delete Breed", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete size no " + drSize["SizeNo"].ToString() + " details", "Delete Size", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        drBreed.Delete();
-                        daBreed.Update(dsInTheDogHouse, "Breed");
+                        drSize.Delete();
+                        daSize.Update(dsInTheDogHouse, "Breed");
                     }
                 }
             }
@@ -288,5 +262,6 @@ namespace InTheDogHouse
             }
             return true;
         }
+
     }
 }

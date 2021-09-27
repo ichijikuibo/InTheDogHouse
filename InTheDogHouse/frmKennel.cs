@@ -13,39 +13,35 @@ using System.Windows.Forms;
 
 namespace InTheDogHouse
 {
-    public partial class frmBreed : Form
+    public partial class frmKennel : Form
     {
 
         bool editing = false;
         bool adding = false;
         DataRow drSelected;
         DataSet dsInTheDogHouse = new DataSet();
-        SqlCommandBuilder sqlBBreed;
-        SqlDataAdapter daBreed,daSize,daDog;
-        DataRow drBreed;
-        string connStr, sqlBreed,sqlSize,sqlDog;
-        public frmBreed()
+        SqlCommandBuilder sqlBKennel;
+        SqlDataAdapter daKennel,daSize;
+        DataRow drKennel;
+        string connStr, sqlKennel, sqlSize;
+        public frmKennel()
         {
             InitializeComponent();
         }
         private void frmBreed_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
-            sqlBreed = @"select * from Breed";
-            daBreed = new SqlDataAdapter(sqlBreed, connStr);
-            sqlBBreed = new SqlCommandBuilder(daBreed);
-            daBreed.FillSchema(dsInTheDogHouse, SchemaType.Source, "Breed");
-            daBreed.Fill(dsInTheDogHouse, "Breed");
+            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = InTheDogHouse; Integrated Security = true";
+            sqlKennel = @"select * from Kennel";
+            daKennel = new SqlDataAdapter(sqlKennel, connStr);
+            sqlBKennel = new SqlCommandBuilder(daKennel);
+            daKennel.FillSchema(dsInTheDogHouse, SchemaType.Source, "Kennel");
+            daKennel.Fill(dsInTheDogHouse, "Kennel");
 
             sqlSize = @"select * from Size";
             daSize = new SqlDataAdapter(sqlSize, connStr);
             daSize.FillSchema(dsInTheDogHouse, SchemaType.Source, "Size");
             daSize.Fill(dsInTheDogHouse, "Size");
 
-            sqlDog= @"select * from Dog";
-            daDog = new SqlDataAdapter(sqlDog, connStr);
-            daDog.FillSchema(dsInTheDogHouse, SchemaType.Source, "Dog");
-            daDog.Fill(dsInTheDogHouse, "Dog");
 
             dsInTheDogHouse.Tables["Size"].Columns.Add("ComboDisplay", typeof(string), "SizeNo + ' - £' + ChargePerDay");
 
@@ -53,7 +49,7 @@ namespace InTheDogHouse
             cmbBreedSize.ValueMember = "SizeNo";
             cmbBreedSize.DisplayMember = "ComboDisplay";
 
-            dgvDisplay.DataSource = dsInTheDogHouse.Tables["Breed"];
+            dgvDisplay.DataSource = dsInTheDogHouse.Tables["Kennel"];
             dgvDisplay.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
@@ -77,15 +73,13 @@ namespace InTheDogHouse
         }
         private void clearForm()
         {
-            lblBreedID.Text = "-";
-            txtBreedName.Clear();
+            lblKennelID.Text = "-";
         }
         private void fillForm(string selectedID)
         {
-            lblBreedID.Text = selectedID;
-            drSelected = dsInTheDogHouse.Tables["Breed"].Rows.Find(selectedID);
-            txtBreedName.Text = drSelected["BreedName"].ToString();
-            cmbBreedSize.SelectedValue = drSelected["SizeB"];
+            lblKennelID.Text = selectedID;
+            drSelected = dsInTheDogHouse.Tables["Kennel"].Rows.Find(selectedID);
+            cmbBreedSize.SelectedValue = drSelected["SizeK"];
 
         }
         private void btnNew_Click(object sender, EventArgs e)
@@ -98,33 +92,31 @@ namespace InTheDogHouse
                 btnCancel.Visible = true;
                 btnSave.Visible = true;
                 btnNew.Visible = false;
-                txtBreedName.Enabled = true;
                 cmbBreedSize.Enabled = true;
                 btnDisplayExit.Visible = false;
                 btnDisplayDelete.Visible = false;
-                getNumber(dsInTheDogHouse.Tables["Breed"].Rows.Count);
+                getNumber(dsInTheDogHouse.Tables["Kennel"].Rows.Count);
             }
         }
         private void getNumber(int noRows)
         {
-            drBreed = dsInTheDogHouse.Tables["Breed"].Rows[noRows - 1];
-            lblBreedID.Text = (int.Parse(drBreed["BreedNo"].ToString()) + 1).ToString();
+            drKennel = dsInTheDogHouse.Tables["Kennel"].Rows[noRows - 1];
+            lblKennelID.Text = (int.Parse(drKennel["KennelNo"].ToString()) + 1).ToString();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!adding && !editing) return;
-            BreedModel breed = new BreedModel();
+            KennelModel kennel = new KennelModel();
             bool ok = true;
             errP.Clear();
 
-            if (!assignProperty(lblBreedID, () => breed.BreedNo = int.Parse(lblBreedID.Text))) ok = false;
-            if (!assignProperty(txtBreedName, () => breed.Breed = txtBreedName.Text)) ok = false;
+            if (!assignProperty(lblKennelID, () => kennel.KennelNo = int.Parse(lblKennelID.Text))) ok = false;
             if (cmbBreedSize.SelectedIndex < 0)
             {
-                errP.SetError(cmbBreedSize, "Please select a breed");
+                errP.SetError(cmbBreedSize, "Please select a size");
                 ok = false;
             }
-            else if (!assignProperty(cmbBreedSize, () => breed.BreedSize = (int)cmbBreedSize.SelectedValue)) ok = false;
+            else if (!assignProperty(cmbBreedSize, () => kennel.KennelSize = (int)cmbBreedSize.SelectedValue)) ok = false;
 
             if (ok)
             {
@@ -133,14 +125,14 @@ namespace InTheDogHouse
                     if ((adding))
                     {
 
-                        drBreed = dsInTheDogHouse.Tables["Breed"].NewRow();
-                        breedToDataRow(drBreed, breed);
-                        dsInTheDogHouse.Tables["Breed"].Rows.Add(drBreed);
-                        daBreed.Update(dsInTheDogHouse, "Breed");
+                        drKennel = dsInTheDogHouse.Tables["Kennel"].NewRow();
+                        breedToDataRow(drKennel, kennel);
+                        dsInTheDogHouse.Tables["Kennel"].Rows.Add(drKennel);
+                        daKennel.Update(dsInTheDogHouse, "Kennel");
                         clearForm();
-                        if (MessageBox.Show("Breed Added - Do you wish to add another breed?", "Add Breed", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("Kennel Added - Do you wish to add another kennel?", "Add Kennel", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            getNumber(dsInTheDogHouse.Tables["Breed"].Rows.Count);
+                            getNumber(dsInTheDogHouse.Tables["Kennel"].Rows.Count);
                         }
                         else
                         {
@@ -149,7 +141,6 @@ namespace InTheDogHouse
                             btnCancel.Visible = false;
                             btnNew.Visible = true;
                             btnDisplayExit.Visible = true;
-                            txtBreedName.Enabled = false;
                             cmbBreedSize.Enabled = false;
 
                             adding = false;
@@ -159,17 +150,16 @@ namespace InTheDogHouse
                     else
                     {
                         drSelected.BeginEdit();
-                        breedToDataRow(drSelected, breed);
+                        breedToDataRow(drSelected, kennel);
 
                         drSelected.EndEdit();
-                        daBreed.Update(dsInTheDogHouse, "Breed");
-                        MessageBox.Show("Breed Details Updated", "Breed");
+                        daKennel.Update(dsInTheDogHouse, "Kennel");
+                        MessageBox.Show("Kennel Details Updated", "Kennel");
                         btnSave.Visible = false;
                         btnEditEdit.Visible = false;
                         btnCancel.Visible = false;
                         btnNew.Visible = true;
                         btnDisplayExit.Visible = true;
-                        txtBreedName.Enabled = false;
                         cmbBreedSize.Enabled = false;
 
                         editing = false;
@@ -183,18 +173,17 @@ namespace InTheDogHouse
                 }
             }
         }
-        private void breedToDataRow(DataRow row, BreedModel breed)
+        private void breedToDataRow(DataRow row, KennelModel Kennel)
         {
-            row["BreedNo"] = breed.BreedNo;
-            row["BreedName"] = breed.Breed;
-            row["SizeB"] = breed.BreedSize;
+            row["KennelNo"] = Kennel.KennelNo;
+            row["SizeK"] = Kennel.KennelSize;
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             bool cancel = false;
             if(adding)
             {
-                if(MessageBox.Show("Are you sure you want to cancel adding the breed "+txtBreedName.Text + "?","Cancel Adding Breed",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                if(MessageBox.Show("Are you sure you want to cancel adding the Kennel " + lblKennelID.Text + "?", "Cancel Adding Kennel", MessageBoxButtons.YesNo)==DialogResult.Yes)
                 {
                     cancel = true;
                     adding = false;
@@ -202,7 +191,7 @@ namespace InTheDogHouse
             }
             if (editing)
             {
-                if (MessageBox.Show("Are you sure you want to cancel editing the breed " + txtBreedName.Text + "?", "Cancel Editing Breed", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to cancel editing the Kennel " + lblKennelID.Text + "?", "Cancel Editing Kennel", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     editing = false;
                     cancel = true;
@@ -215,7 +204,6 @@ namespace InTheDogHouse
                 btnEditEdit.Visible = false;
                 btnCancel.Visible = false;
                 btnNew.Visible = true;
-                txtBreedName.Enabled = false;
                 cmbBreedSize.Enabled = false;
                 btnDisplayExit.Visible = true;
                 adding = false;
@@ -232,7 +220,6 @@ namespace InTheDogHouse
             btnCancel.Visible = true;
             btnSave.Visible = true;
             btnNew.Visible = false;
-            txtBreedName.Enabled = true;
             cmbBreedSize.Enabled = true;
             btnDisplayExit.Visible = false;
             btnDisplayDelete.Visible = false;
@@ -253,25 +240,25 @@ namespace InTheDogHouse
             {
 
 
-                drBreed = dsInTheDogHouse.Tables["Breed"].Rows.Find(dgvDisplay.SelectedRows[0].Cells[0].Value);
+                drKennel = dsInTheDogHouse.Tables["Kennel"].Rows.Find(dgvDisplay.SelectedRows[0].Cells[0].Value);
 
-                bool inUse = false;
-                foreach (DataRow dr in dsInTheDogHouse.Tables["Dog"].Rows)
-                {
-                    if (dr["BreedNo"].Equals(drBreed["BreedNo"])) inUse = true;
-                }
-                if (inUse)
-                {
-                    MessageBox.Show("Unable to delete breed it is in use by a dog", "Breed in Use ", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    if (MessageBox.Show("Are you sure you want to delete " + drBreed["BreedName"].ToString() + " details", "Delete Breed", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                //bool inUse = false;
+                //foreach (DataRow dr in dsInTheDogHouse.Tables["Dog"].Rows)
+                //{
+                //    if (dr["KennelNo"].Equals(drKennel["KennelNo"])) inUse = true;
+                //}
+                //if (inUse)
+                //{
+                //    MessageBox.Show("Unable to delete breed it is in use by a dog", "Breed in Use ", MessageBoxButtons.OK);
+                //}
+                //else
+                //{
+                    if (MessageBox.Show("Are you sure you want to delete " + drKennel["KennelName"].ToString() + " details", "Delete Kennel", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        drBreed.Delete();
-                        daBreed.Update(dsInTheDogHouse, "Breed");
+                    drKennel.Delete();
+                    daKennel.Update(dsInTheDogHouse, "Kennel");
                     }
-                }
+               // }
             }
         }
 

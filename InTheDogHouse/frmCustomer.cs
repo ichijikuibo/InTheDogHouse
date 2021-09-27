@@ -16,11 +16,11 @@ namespace InTheDogHouse
     public partial class frmCustomer : Form
     {
 
-        SqlDataAdapter daCustomer;
+        SqlDataAdapter daCustomer,daDog;
         DataSet dsInTheDogHouse = new DataSet();
-        SqlCommandBuilder cmdBCustomer;
         DataRow drCustomer;
-        string connStr, sqlCustomer;
+        SqlCommandBuilder sqlBCustomer;
+        string connStr, sqlCustomer,sqlDog;
         int selectedTab = 0;
         bool custSelected = false;
         int custNoSelected = 0;
@@ -44,9 +44,16 @@ namespace InTheDogHouse
             connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlCustomer = @"select * from Customer";
             daCustomer = new SqlDataAdapter(sqlCustomer, connStr);
-            cmdBCustomer = new SqlCommandBuilder(daCustomer);
+            sqlBCustomer = new SqlCommandBuilder(daCustomer);
             daCustomer.FillSchema(dsInTheDogHouse, SchemaType.Source, "Customer");
             daCustomer.Fill(dsInTheDogHouse, "Customer");
+
+            sqlDog = @"select * from Dog";
+            daDog = new SqlDataAdapter(sqlDog, connStr);
+            daDog.FillSchema(dsInTheDogHouse, SchemaType.Source, "Dog");
+            daDog.Fill(dsInTheDogHouse, "Dog");
+
+
             dgvDisplay.DataSource = dsInTheDogHouse.Tables["Customer"];
             dgvDisplay.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
@@ -138,15 +145,23 @@ namespace InTheDogHouse
 
                 if (ok)
                 {
-                    drCustomer.BeginEdit();
-                    customerToDataRow(drCustomer, customer);
-                    drCustomer.EndEdit();
-                    daCustomer.Update(dsInTheDogHouse, "Customer");
+                    try
+                    {
+                        drCustomer.BeginEdit();
+                        customerToDataRow(drCustomer, customer);
+                        drCustomer.EndEdit();
+                        daCustomer.Update(dsInTheDogHouse, "Customer");
 
-                    MessageBox.Show("Customer Details Updated", "Customer");
+                        MessageBox.Show("Customer Details Updated", "Customer");
 
-                    changeEditEnabled(false);
-                    tabDogHouse.SelectedIndex = 0;
+                        changeEditEnabled(false);
+                        tabDogHouse.SelectedIndex = 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.TargetSite + " " + ex.Message, "Error", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                        drCustomer.Delete();
+                    }
                 }
             }
 
@@ -213,11 +228,24 @@ namespace InTheDogHouse
             else
             {
                 drCustomer = dsInTheDogHouse.Tables["Customer"].Rows.Find(dgvDisplay.SelectedRows[0].Cells[0].Value);
+
                 string tempName = drCustomer["Forename"].ToString() + " " + drCustomer["Surname"].ToString() + "'s";
-                if(MessageBox.Show("Are you sure you want to delete " + tempName + " details","Delete Customer",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                bool inUse = false;
+                foreach (DataRow dr in dsInTheDogHouse.Tables["Dog"].Rows)
                 {
-                    drCustomer.Delete();
-                    daCustomer.Update(dsInTheDogHouse, "Customer");
+                    if (dr["CustomerNo"].Equals(drCustomer["CustomerNo"])) inUse = true;
+                }
+                if (inUse)
+                {
+                    MessageBox.Show("Unable to delete customer because they have a dog", "Customer in Use ", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to delete " + tempName + " details", "Delete Customer", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        drCustomer.Delete();
+                        daCustomer.Update(dsInTheDogHouse, "Customer");
+                    }
                 }
             }
         }
