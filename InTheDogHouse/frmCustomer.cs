@@ -209,7 +209,7 @@ namespace InTheDogHouse
 
         private void btnEditCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to cancel editing customer no: " + lblAddCustomerNumber.Text + "?", "Cancel Edit Customer", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to cancel editing customer no: " + lblEditCustomerNumber.Text + "?", "Cancel Edit Customer", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 tabDogHouse.SelectedIndex = 0;
             }

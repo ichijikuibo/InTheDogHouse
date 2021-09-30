@@ -246,6 +246,7 @@
     <None Include="Images\large.png" />
     <None Include="Images\medium.png" />
     <None Include="Images\male.png" />
+    <Content Include="Images\menu.png" />
     <Content Include="Images\Slideshow\dogs2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
