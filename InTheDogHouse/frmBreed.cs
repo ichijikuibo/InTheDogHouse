@@ -23,27 +23,29 @@ namespace InTheDogHouse
         SqlCommandBuilder sqlBBreed;
         SqlDataAdapter daBreed,daSize,daDog;
         DataRow drBreed;
-        string connStr, sqlBreed,sqlSize,sqlDog;
-        public frmBreed()
+        string sqlBreed,sqlSize,sqlDog;
+
+        frmContainer container;
+        public frmBreed(frmContainer container)
         {
+            this.container = container;
             InitializeComponent();
         }
         private void frmBreed_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlBreed = @"select * from Breed";
-            daBreed = new SqlDataAdapter(sqlBreed, connStr);
+            daBreed = new SqlDataAdapter(sqlBreed, container.connStr);
             sqlBBreed = new SqlCommandBuilder(daBreed);
             daBreed.FillSchema(dsInTheDogHouse, SchemaType.Source, "Breed");
             daBreed.Fill(dsInTheDogHouse, "Breed");
 
             sqlSize = @"select * from Size";
-            daSize = new SqlDataAdapter(sqlSize, connStr);
+            daSize = new SqlDataAdapter(sqlSize, container.connStr);
             daSize.FillSchema(dsInTheDogHouse, SchemaType.Source, "Size");
             daSize.Fill(dsInTheDogHouse, "Size");
 
             sqlDog= @"select * from Dog";
-            daDog = new SqlDataAdapter(sqlDog, connStr);
+            daDog = new SqlDataAdapter(sqlDog, container.connStr);
             daDog.FillSchema(dsInTheDogHouse, SchemaType.Source, "Dog");
             daDog.Fill(dsInTheDogHouse, "Dog");
 

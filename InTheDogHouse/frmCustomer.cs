@@ -20,13 +20,15 @@ namespace InTheDogHouse
         DataSet dsInTheDogHouse = new DataSet();
         DataRow drCustomer;
         SqlCommandBuilder sqlBCustomer;
-        string connStr, sqlCustomer,sqlDog;
+        string sqlCustomer,sqlDog;
         int selectedTab = 0;
         bool custSelected = false;
         int custNoSelected = 0;
+        frmContainer container;
 
-        public frmCustomer()
+        public frmCustomer(frmContainer container)
         {
+            this.container = container;
             InitializeComponent();
             
         }
@@ -34,22 +36,21 @@ namespace InTheDogHouse
 
         private void MainPage_SizeChanged(object sender, EventArgs e)
         {
-            tabDogHouse.ItemSize = new Size((tabDogHouse.Width-5) / 3, tabDogHouse.ItemSize.Height);
+
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
             //this.customerTableAdapter.Fill(this.dsInTheDogHouse.Customer);
 
-            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlCustomer = @"select * from Customer";
-            daCustomer = new SqlDataAdapter(sqlCustomer, connStr);
+            daCustomer = new SqlDataAdapter(sqlCustomer, container.connStr);
             sqlBCustomer = new SqlCommandBuilder(daCustomer);
             daCustomer.FillSchema(dsInTheDogHouse, SchemaType.Source, "Customer");
             daCustomer.Fill(dsInTheDogHouse, "Customer");
 
             sqlDog = @"select * from Dog";
-            daDog = new SqlDataAdapter(sqlDog, connStr);
+            daDog = new SqlDataAdapter(sqlDog, container.connStr);
             daDog.FillSchema(dsInTheDogHouse, SchemaType.Source, "Dog");
             daDog.Fill(dsInTheDogHouse, "Dog");
 

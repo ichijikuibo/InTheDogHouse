@@ -20,8 +20,9 @@ namespace InTheDogHouse
         private int currentPictureIndex;
         private Image currentPicture;
         private Image nextImage;
-        private System.Timers.Timer transitionTimer;
-        private System.Timers.Timer changeTimer;
+        private System.Windows.Forms.Timer transitionTimer;
+        private System.Windows.Forms.Timer changeTimer;
+        private bool changed = true;
 
         private string[] pictures;
         [
@@ -87,6 +88,10 @@ namespace InTheDogHouse
         public SlideShow()
         {
             InitializeComponent();
+            changeTimer = new Timer();
+            transitionTimer = new Timer();
+            changeTimer.Tick += ChangeTimer_Tick; ;
+            transitionTimer.Tick += TransitionTimer_Tick;
 
         }
         private Stream downloadImage(string address)
@@ -106,49 +111,10 @@ namespace InTheDogHouse
 
 
         }
-        private void ChangeTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-
-            if (currentPictureIndex == pictures.Length - 1) currentPictureIndex = 0;
-            else currentPictureIndex++;
-
-            try
-            {
-                if (pictures[currentPictureIndex].ToLower().StartsWith("http"))
-                {
-                    nextImage = Image.FromStream(downloadImage(pictures[currentPictureIndex]));
-                }
-                else {
-                    nextImage = Image.FromFile(pictures[currentPictureIndex]);
-                }
-                transitionTimer.Start();
-            }
-            catch
-            {
-                return;
-            }
-        }
-
-        private void TransitionTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (nextPictureOpacity >= 100)
-            {
-                nextPictureOpacity = 0;
-                currentPictureOpacity = 100;
-                currentPicture = nextImage;
-                nextImage = null;
-                transitionTimer.Stop();
-            }
-            else
-            {
-                nextPictureOpacity += 2.5f;
-                currentPictureOpacity -= 2.5f;
-            }
-            Invalidate();
-        }
-
         private void SlideShow_Paint(object sender, PaintEventArgs e)
         {
+            //if (!changed) return;
+            //changed = false;
             if (pictures == null || currentPicture == null)
             {
                 Pen borderPen = new Pen(borderColour);
@@ -239,21 +205,62 @@ namespace InTheDogHouse
         {
             try
             {
-                if (pictures.Length > 0) currentPicture = Bitmap.FromFile(pictures[0]);
+                if (pictures.Length > 0&& currentPicture==null) currentPicture = Bitmap.FromFile(pictures[0]);
 
             }
             catch
             {
                 return;
             }
-            changeTimer = new System.Timers.Timer(changeRate);
-            transitionTimer = new System.Timers.Timer(1000 / 60);
-            changeTimer.Elapsed += ChangeTimer_Elapsed;
-            changeTimer.AutoReset = true;
-            transitionTimer.AutoReset = true;
-            transitionTimer.Elapsed += TransitionTimer_Elapsed;
+
+            changeTimer.Interval = changeRate;
+
+            transitionTimer.Interval = 1000 / 60;
+
             changeTimer.Start();
 
+        }
+
+        private void TransitionTimer_Tick(object sender, EventArgs e)
+        {
+            if (nextPictureOpacity >= 100)
+            {
+                currentPicture = nextImage;
+                nextPictureOpacity = 0;
+                currentPictureOpacity = 100;
+                nextImage = null;
+                transitionTimer.Stop();
+            }
+            else
+            {
+                nextPictureOpacity += 2.5f;
+                currentPictureOpacity -= 2.5f;
+            }
+            changed = true;
+            Invalidate();
+        }
+
+        private void ChangeTimer_Tick(object sender, EventArgs e)
+        {
+            if (currentPictureIndex == pictures.Length - 1) currentPictureIndex = 0;
+            else currentPictureIndex++;
+
+            try
+            {
+                if (pictures[currentPictureIndex].ToLower().StartsWith("http"))
+                {
+                    nextImage = Image.FromStream(downloadImage(pictures[currentPictureIndex]));
+                }
+                else
+                {
+                    nextImage = Image.FromFile(pictures[currentPictureIndex]);
+                }
+                transitionTimer.Start();
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

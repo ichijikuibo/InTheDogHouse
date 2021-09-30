@@ -69,11 +69,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContainer.Designer.cs">
+      <DependentUpon>frmContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKennel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmKennel.Designer.cs">
       <DependentUpon>frmKennel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSize.cs">
       <SubType>Form</SubType>
@@ -125,8 +137,14 @@
     <Compile Include="SlideShow.Designer.cs">
       <DependentUpon>SlideShow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmContainer.resx">
+      <DependentUpon>frmContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKennel.resx">
       <DependentUpon>frmKennel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSize.resx">
       <DependentUpon>frmSize.cs</DependentUpon>
