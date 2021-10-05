@@ -35,6 +35,7 @@ namespace InTheDogHouse
             this.btnBreed = new System.Windows.Forms.Button();
             this.btnDog = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,13 +79,13 @@ namespace InTheDogHouse
             // 
             this.btnBreed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBreed.Location = new System.Drawing.Point(269, 228);
+            this.btnBreed.Location = new System.Drawing.Point(535, 228);
             this.btnBreed.Name = "btnBreed";
-            this.btnBreed.Size = new System.Drawing.Size(260, 219);
+            this.btnBreed.Size = new System.Drawing.Size(262, 219);
             this.btnBreed.TabIndex = 3;
-            this.btnBreed.Text = "Breed";
+            this.btnBreed.Text = "Bookings";
             this.btnBreed.UseVisualStyleBackColor = true;
-            this.btnBreed.Click += new System.EventHandler(this.btnBreed_Click);
+            this.btnBreed.Click += new System.EventHandler(this.btnBreed_Click_1);
             // 
             // btnDog
             // 
@@ -104,6 +105,7 @@ namespace InTheDogHouse
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnCustomer, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnBreed, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnDog, 2, 0);
@@ -117,6 +119,17 @@ namespace InTheDogHouse
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(269, 228);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(260, 219);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Breed";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmMenu
             // 
@@ -143,5 +156,6 @@ namespace InTheDogHouse
         private System.Windows.Forms.Button btnBreed;
         private System.Windows.Forms.Button btnDog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button button1;
     }
 }
