@@ -30,6 +30,7 @@ namespace InTheDogHouse
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnNewDog = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lstKennel = new System.Windows.Forms.ListBox();
@@ -40,21 +41,23 @@ namespace InTheDogHouse
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lstCustomer = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.numDays = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblBookingRange = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lvBooking = new System.Windows.Forms.ListView();
+            this.rtbCustomerDetails = new System.Windows.Forms.RichTextBox();
             this.lblBooking = new System.Windows.Forms.Label();
             this.lblCustomerNo = new System.Windows.Forms.Label();
             this.lblCustomerNumber = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnNewDog = new System.Windows.Forms.Button();
+            this.clmDogNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDogName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmKennel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).BeginInit();
@@ -79,6 +82,18 @@ namespace InTheDogHouse
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(681, 198);
             this.panel1.TabIndex = 0;
+            // 
+            // btnNewDog
+            // 
+            this.btnNewDog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewDog.Location = new System.Drawing.Point(404, 38);
+            this.btnNewDog.Name = "btnNewDog";
+            this.btnNewDog.Size = new System.Drawing.Size(75, 26);
+            this.btnNewDog.TabIndex = 20;
+            this.btnNewDog.Text = "New";
+            this.btnNewDog.UseVisualStyleBackColor = true;
+            this.btnNewDog.Click += new System.EventHandler(this.btnNewDog_Click);
             // 
             // btnNew
             // 
@@ -147,6 +162,7 @@ namespace InTheDogHouse
             this.lstDog.Name = "lstDog";
             this.lstDog.Size = new System.Drawing.Size(212, 104);
             this.lstDog.TabIndex = 3;
+            this.lstDog.Click += new System.EventHandler(this.lstDog_Click);
             // 
             // label1
             // 
@@ -183,21 +199,22 @@ namespace InTheDogHouse
             this.lstCustomer.Name = "lstCustomer";
             this.lstCustomer.Size = new System.Drawing.Size(244, 104);
             this.lstCustomer.TabIndex = 0;
+            this.lstCustomer.Click += new System.EventHandler(this.lstCustomer_Click);
             this.lstCustomer.SelectedIndexChanged += new System.EventHandler(this.lstCustomer_SelectedIndexChanged);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnDelete);
+            this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.dtpStart);
             this.panel2.Controls.Add(this.numDays);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblBookingRange);
-            this.panel2.Controls.Add(this.listView1);
-            this.panel2.Controls.Add(this.richTextBox1);
+            this.panel2.Controls.Add(this.lvBooking);
+            this.panel2.Controls.Add(this.rtbCustomerDetails);
             this.panel2.Controls.Add(this.lblBooking);
             this.panel2.Controls.Add(this.lblCustomerNo);
             this.panel2.Controls.Add(this.lblCustomerNumber);
@@ -206,25 +223,29 @@ namespace InTheDogHouse
             this.panel2.Size = new System.Drawing.Size(681, 226);
             this.panel2.TabIndex = 1;
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(583, 155);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(583, 181);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 34);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(584, 126);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(584, 126);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 34);
+            this.btnAdd.TabIndex = 18;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dtpStart
             // 
@@ -293,27 +314,34 @@ namespace InTheDogHouse
             this.lblBookingRange.Text = "10000";
             this.lblBookingRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // listView1
+            // lvBooking
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lvBooking.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(330, 126);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(247, 89);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lvBooking.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmDogNo,
+            this.clmDogName,
+            this.clmKennel});
+            this.lvBooking.FullRowSelect = true;
+            this.lvBooking.HideSelection = false;
+            this.lvBooking.Location = new System.Drawing.Point(330, 126);
+            this.lvBooking.MultiSelect = false;
+            this.lvBooking.Name = "lvBooking";
+            this.lvBooking.Size = new System.Drawing.Size(247, 89);
+            this.lvBooking.TabIndex = 12;
+            this.lvBooking.UseCompatibleStateImageBehavior = false;
+            this.lvBooking.View = System.Windows.Forms.View.Details;
             // 
-            // richTextBox1
+            // rtbCustomerDetails
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtbCustomerDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(17, 37);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(288, 178);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.rtbCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbCustomerDetails.Location = new System.Drawing.Point(17, 37);
+            this.rtbCustomerDetails.Name = "rtbCustomerDetails";
+            this.rtbCustomerDetails.Size = new System.Drawing.Size(288, 178);
+            this.rtbCustomerDetails.TabIndex = 11;
+            this.rtbCustomerDetails.Text = "";
             // 
             // lblBooking
             // 
@@ -365,6 +393,7 @@ namespace InTheDogHouse
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -383,17 +412,17 @@ namespace InTheDogHouse
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // btnNewDog
+            // clmDogNo
             // 
-            this.btnNewDog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewDog.Location = new System.Drawing.Point(404, 38);
-            this.btnNewDog.Name = "btnNewDog";
-            this.btnNewDog.Size = new System.Drawing.Size(75, 26);
-            this.btnNewDog.TabIndex = 20;
-            this.btnNewDog.Text = "New";
-            this.btnNewDog.UseVisualStyleBackColor = true;
-            this.btnNewDog.Click += new System.EventHandler(this.btnNewDog_Click);
+            this.clmDogNo.Text = "Dog No";
+            // 
+            // clmDogName
+            // 
+            this.clmDogName.Text = "Name";
+            // 
+            // clmKennel
+            // 
+            this.clmKennel.Text = "Kennel";
             // 
             // frmBooking
             // 
@@ -430,18 +459,21 @@ namespace InTheDogHouse
         private System.Windows.Forms.Label lblCustomerNo;
         private System.Windows.Forms.Label lblCustomerNumber;
         private System.Windows.Forms.Label lblBookingRange;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ListView lvBooking;
+        private System.Windows.Forms.RichTextBox rtbCustomerDetails;
         private System.Windows.Forms.Label lblBooking;
         private System.Windows.Forms.DateTimePicker dtpStart;
         private System.Windows.Forms.NumericUpDown numDays;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnNewDog;
+        private System.Windows.Forms.ColumnHeader clmDogNo;
+        private System.Windows.Forms.ColumnHeader clmDogName;
+        private System.Windows.Forms.ColumnHeader clmKennel;
     }
 }
