@@ -253,23 +253,6 @@ namespace InTheDogHouse
             dsInTheDogHouse.Tables["Customer"].DefaultView.RowFilter = "ComboDisplay LIKE '%" + txtCustomer.Text + "%'";
             updateDogList();
         }
-
-        private void txtDog_TextChanged(object sender, EventArgs e)
-        {
-            dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "ComboDisplay LIKE '%" + txtDog.Text + "%'";
-            lstCustomer.SelectedIndex = 0;
-            updateKennelList();
-        }
-
-        private void btnNewDog_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void updateDogList()
         {
             if (lstDog.DataSource == null)
@@ -287,6 +270,23 @@ namespace InTheDogHouse
                 lstDog.DataSource = null;
             }
         }
+        private void txtDog_TextChanged(object sender, EventArgs e)
+        {
+            dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "ComboDisplay LIKE '%" + txtDog.Text + "%'";
+            lstCustomer.SelectedIndex = 0;
+            updateKennelList();
+        }
+
+        private void btnNewDog_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void updateKennelList()
         {
             if (lstDog.DataSource == null)
