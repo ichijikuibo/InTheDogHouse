@@ -44,7 +44,7 @@ namespace InTheDogHouse
             {
                 foreach (ListViewItem item in lvBooking.Items)
                 {
-                    if (item.SubItems[1].Text == lstDog.Text || item.SubItems[2].Text == lstKennel.SelectedValue.ToString())
+                    if (item.SubItems[1].Text == lstDog.SelectedValue.ToString() || item.SubItems[2].Text == lstKennel.SelectedValue.ToString())
                     {
                         MessageBox.Show("Dog or kennel already selected for this booking.", "Booking");
                         exists = true;
@@ -60,9 +60,15 @@ namespace InTheDogHouse
                         DateTime bookedDate = DateTime.Parse(dr["dateStart"].ToString());
                         if (start >= bookedDate && start <= bookedDate.AddDays((int)numDays.Value))
                         {
-                            if ((dr["dogNo"] == lstDog.SelectedValue) || (dr["kennelNo"].ToString() == lstKennel.SelectedValue.ToString()))
+                            if ((dr["dogNo"] == lstDog.SelectedValue))
                             {
-                                MessageBox.Show("Either the selected kennel or dog is already included in a booking for this date range. Please re-select.", "Booking");
+                                MessageBox.Show("Dog is already included in a booking for this date range. Please re-select.", "Booking");
+                                ok = false;
+                                break;
+                            }
+                            if (dr["kennelNo"].ToString() == lstKennel.SelectedValue.ToString())
+                            {
+                                MessageBox.Show("Kennel is already included in a booking for this date range. Please re-select.", "Booking");
                                 ok = false;
                                 break;
                             }
@@ -79,7 +85,8 @@ namespace InTheDogHouse
                         item.SubItems.Add(dog["name"].ToString());
                         item.SubItems.Add(lstKennel.SelectedValue.ToString());
                         lvBooking.Items.Add(item);
-
+                        lstCustomer.Enabled = false;
+                        txtCustomer.Enabled = false;
                         //}
                         //}
                     }
@@ -130,9 +137,30 @@ namespace InTheDogHouse
 
                 }
                 MessageBox.Show("Booking No: " + drBooking["bookingNo"].ToString() + " added to system");
+                resetForm();
             }
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            resetForm();
+        }
+
+        private void resetForm()
+        {
+            dsInTheDogHouse.Tables["Kennel"].Clear();
+            lstCustomer.SelectedIndex = -1;
+            lstKennel.SelectedIndex = -1;
+            lstDog.SelectedIndex = -1;
+            updateDogList();
+            lvBooking.Items.Clear();
+            lstCustomer.Enabled = true;
+            txtCustomer.Enabled = true;
+            rtbCustomerDetails.Clear();
+            numDays.Value = 1;
+            dtpStart.Value = DateTime.Now;
+            lblCustomerNumber.Text = "-";
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (lvBooking.SelectedItems.Count != 0)
@@ -144,8 +172,6 @@ namespace InTheDogHouse
         DataRow drCustomer;
         private void lstCustomer_Click(object sender, EventArgs e)
         {
-            updateDogList();
-
             drCustomer = dsInTheDogHouse.Tables["Customer"].Rows.Find(lstCustomer.SelectedValue);
             rtbCustomerDetails.Text = "";
             if (lstCustomer.SelectedIndex > -1)
@@ -156,7 +182,9 @@ namespace InTheDogHouse
                 rtbCustomerDetails.AppendText(drCustomer["Town"].ToString() + "\n");
                 rtbCustomerDetails.AppendText(drCustomer["County"].ToString() + "\n");
                 rtbCustomerDetails.AppendText(drCustomer["Postcode"].ToString() + "\n");
+
             }
+            updateDogList();
         }
 
         private void lstDog_Click(object sender, EventArgs e)
@@ -174,6 +202,8 @@ namespace InTheDogHouse
                 lstKennel.DisplayMember = "ComboDisplay";
                 lstKennel.ValueMember = "KennelNo";
                 lstKennel.SelectedIndex = -1;
+                txtCustomer.Enabled = false;
+                lstCustomer.Enabled = false;
             }
         }
 
@@ -270,13 +300,6 @@ namespace InTheDogHouse
                 lstDog.DataSource = null;
             }
         }
-        private void txtDog_TextChanged(object sender, EventArgs e)
-        {
-            dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "ComboDisplay LIKE '%" + txtDog.Text + "%'";
-            lstCustomer.SelectedIndex = 0;
-            updateKennelList();
-        }
-
         private void btnNewDog_Click(object sender, EventArgs e)
         {
 
@@ -287,23 +310,23 @@ namespace InTheDogHouse
 
         }
 
-        private void updateKennelList()
-        {
-            if (lstDog.DataSource == null)
-            {
-                lstKennel.DisplayMember = "ComboDisplay";
-                lstKennel.ValueMember = "KennelNo";
-                lstKennel.DataSource = dsInTheDogHouse.Tables["Kennel"].DefaultView;
-            }
-            if (lstCustomer.SelectedIndex > -1)
-            {
-                dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "CustomerNo = " + lstCustomer.SelectedValue;
-            }
-            else
-            {
-                lstDog.DataSource = null;
-            }
-        }
+        //private void updateKennelList()
+        //{
+        //    if (lstDog.DataSource == null)
+        //    {
+        //        lstKennel.DisplayMember = "ComboDisplay";
+        //        lstKennel.ValueMember = "KennelNo";
+        //        lstKennel.DataSource = dsInTheDogHouse.Tables["Kennel"].DefaultView;
+        //    }
+        //    if (lstCustomer.SelectedIndex > -1)
+        //    {
+        //        dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "CustomerNo = " + lstCustomer.SelectedValue;
+        //    }
+        //    else
+        //    {
+        //        lstDog.DataSource = null;
+        //    }
+        //}
 
 
         private void btnNew_Click(object sender, EventArgs e)
