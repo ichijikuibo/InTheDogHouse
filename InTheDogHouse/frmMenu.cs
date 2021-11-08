@@ -48,5 +48,10 @@ namespace InTheDogHouse
         {
             container.changeForm(new frmBooking2(container));
         }
+
+        private void BtnEditBookings_Click(object sender, EventArgs e)
+        {
+            container.changeForm(new frmBookingEdit(container));
+        }
     }
 }

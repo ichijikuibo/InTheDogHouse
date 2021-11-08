@@ -30,17 +30,17 @@ namespace InTheDogHouse
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.lstKennel = new System.Windows.Forms.ListBox();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.lstDog = new System.Windows.Forms.ListBox();
+            this.lstKennel = new System.Windows.Forms.ListBox();
             this.numDays = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblBookingRange = new System.Windows.Forms.Label();
+            this.lblBooked = new System.Windows.Forms.Label();
             this.lvBooking = new System.Windows.Forms.ListView();
             this.clmDogNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDogName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +49,7 @@ namespace InTheDogHouse
             this.lblCustomerNo = new System.Windows.Forms.Label();
             this.lblCustomerNumber = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstBookings = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
@@ -73,10 +73,11 @@ namespace InTheDogHouse
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.label2);
@@ -86,24 +87,26 @@ namespace InTheDogHouse
             this.panel2.Controls.Add(this.numDays);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.lblBookingRange);
+            this.panel2.Controls.Add(this.lblBooked);
             this.panel2.Controls.Add(this.lvBooking);
             this.panel2.Controls.Add(this.lblBooking);
             this.panel2.Location = new System.Drawing.Point(15, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 263);
+            this.panel2.Size = new System.Drawing.Size(718, 319);
             this.panel2.TabIndex = 48;
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(367, 222);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 34);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Delete Item";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(366, 270);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(123, 34);
+            this.btnDelete.TabIndex = 21;
+            this.btnDelete.Text = "Delete Item";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label6
             // 
@@ -118,14 +121,16 @@ namespace InTheDogHouse
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Enabled = false;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(557, 222);
+            this.btnAdd.Location = new System.Drawing.Point(557, 270);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(123, 34);
             this.btnAdd.TabIndex = 18;
             this.btnAdd.Text = "Add Item";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label2
             // 
@@ -138,21 +143,10 @@ namespace InTheDogHouse
             this.label2.Text = "Dogs";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lstKennel
-            // 
-            this.lstKennel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstKennel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstKennel.FormattingEnabled = true;
-            this.lstKennel.ItemHeight = 20;
-            this.lstKennel.Location = new System.Drawing.Point(525, 40);
-            this.lstKennel.Name = "lstKennel";
-            this.lstKennel.Size = new System.Drawing.Size(183, 164);
-            this.lstKennel.TabIndex = 6;
-            // 
             // dtpStart
             // 
-            this.dtpStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpStart.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpStart.Location = new System.Drawing.Point(127, 55);
@@ -169,12 +163,28 @@ namespace InTheDogHouse
             this.lstDog.ItemHeight = 20;
             this.lstDog.Location = new System.Drawing.Point(329, 40);
             this.lstDog.Name = "lstDog";
-            this.lstDog.Size = new System.Drawing.Size(190, 164);
+            this.lstDog.Size = new System.Drawing.Size(190, 204);
             this.lstDog.TabIndex = 3;
+            this.lstDog.Click += new System.EventHandler(this.lstDog_Click);
+            this.lstDog.SelectedIndexChanged += new System.EventHandler(this.lstDog_SelectedIndexChanged);
+            // 
+            // lstKennel
+            // 
+            this.lstKennel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstKennel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstKennel.FormattingEnabled = true;
+            this.lstKennel.ItemHeight = 20;
+            this.lstKennel.Location = new System.Drawing.Point(525, 40);
+            this.lstKennel.Name = "lstKennel";
+            this.lstKennel.Size = new System.Drawing.Size(183, 204);
+            this.lstKennel.TabIndex = 6;
+            this.lstKennel.SelectedIndexChanged += new System.EventHandler(this.lstKennel_SelectedIndexChanged);
             // 
             // numDays
             // 
-            this.numDays.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numDays.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numDays.Location = new System.Drawing.Point(127, 98);
             this.numDays.Maximum = new decimal(new int[] {
@@ -198,7 +208,6 @@ namespace InTheDogHouse
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(2, 97);
             this.label5.Name = "label5";
@@ -209,7 +218,6 @@ namespace InTheDogHouse
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(2, 53);
             this.label4.Name = "label4";
@@ -218,16 +226,17 @@ namespace InTheDogHouse
             this.label4.Text = "Start Date";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblBookingRange
+            // lblBooked
             // 
-            this.lblBookingRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBookingRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookingRange.Location = new System.Drawing.Point(127, 15);
-            this.lblBookingRange.Name = "lblBookingRange";
-            this.lblBookingRange.Size = new System.Drawing.Size(212, 24);
-            this.lblBookingRange.TabIndex = 13;
-            this.lblBookingRange.Text = "10000";
-            this.lblBookingRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBooked.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBooked.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBooked.Location = new System.Drawing.Point(127, 15);
+            this.lblBooked.Name = "lblBooked";
+            this.lblBooked.Size = new System.Drawing.Size(192, 24);
+            this.lblBooked.TabIndex = 13;
+            this.lblBooked.Text = "-";
+            this.lblBooked.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lvBooking
             // 
@@ -238,31 +247,35 @@ namespace InTheDogHouse
             this.clmDogNo,
             this.clmDogName,
             this.clmKennel});
+            this.lvBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvBooking.FullRowSelect = true;
             this.lvBooking.HideSelection = false;
             this.lvBooking.Location = new System.Drawing.Point(6, 134);
             this.lvBooking.MultiSelect = false;
             this.lvBooking.Name = "lvBooking";
-            this.lvBooking.Size = new System.Drawing.Size(317, 114);
+            this.lvBooking.Size = new System.Drawing.Size(317, 170);
             this.lvBooking.TabIndex = 12;
             this.lvBooking.UseCompatibleStateImageBehavior = false;
             this.lvBooking.View = System.Windows.Forms.View.Details;
+            this.lvBooking.SelectedIndexChanged += new System.EventHandler(this.lvBooking_SelectedIndexChanged);
             // 
             // clmDogNo
             // 
             this.clmDogNo.Text = "Dog No";
+            this.clmDogNo.Width = 114;
             // 
             // clmDogName
             // 
             this.clmDogName.Text = "Name";
+            this.clmDogName.Width = 101;
             // 
             // clmKennel
             // 
             this.clmKennel.Text = "Kennel";
+            this.clmKennel.Width = 83;
             // 
             // lblBooking
             // 
-            this.lblBooking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBooking.Location = new System.Drawing.Point(2, 12);
             this.lblBooking.Name = "lblBooking";
@@ -300,7 +313,7 @@ namespace InTheDogHouse
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.lstBookings);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtCustomer);
@@ -310,28 +323,30 @@ namespace InTheDogHouse
             this.panel1.Controls.Add(this.rtbCustomerDetails);
             this.panel1.Location = new System.Drawing.Point(15, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(721, 267);
+            this.panel1.Size = new System.Drawing.Size(721, 211);
             this.panel1.TabIndex = 47;
             // 
-            // listBox1
+            // lstBookings
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lstBookings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(503, 37);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(215, 224);
-            this.listBox1.TabIndex = 51;
+            this.lstBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBookings.FormattingEnabled = true;
+            this.lstBookings.ItemHeight = 20;
+            this.lstBookings.Location = new System.Drawing.Point(496, 38);
+            this.lstBookings.Name = "lstBookings";
+            this.lstBookings.Size = new System.Drawing.Size(212, 164);
+            this.lstBookings.TabIndex = 51;
+            this.lstBookings.Click += new System.EventHandler(this.lstBookings_Click);
+            this.lstBookings.SelectedIndexChanged += new System.EventHandler(this.lstBookings_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(503, 5);
+            this.label3.Location = new System.Drawing.Point(496, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(215, 27);
+            this.label3.Size = new System.Drawing.Size(212, 27);
             this.label3.TabIndex = 8;
             this.label3.Text = "Bookings";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -357,6 +372,7 @@ namespace InTheDogHouse
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.Size = new System.Drawing.Size(225, 26);
             this.txtCustomer.TabIndex = 1;
+            this.txtCustomer.TextChanged += new System.EventHandler(this.txtCustomer_TextChanged);
             // 
             // lstCustomer
             // 
@@ -368,42 +384,45 @@ namespace InTheDogHouse
             this.lstCustomer.ItemHeight = 20;
             this.lstCustomer.Location = new System.Drawing.Point(17, 77);
             this.lstCustomer.Name = "lstCustomer";
-            this.lstCustomer.Size = new System.Drawing.Size(225, 184);
+            this.lstCustomer.Size = new System.Drawing.Size(225, 124);
             this.lstCustomer.TabIndex = 0;
+            this.lstCustomer.Click += new System.EventHandler(this.lstCustomer_Click);
+            this.lstCustomer.SelectedIndexChanged += new System.EventHandler(this.lstCustomer_SelectedIndexChanged);
             // 
             // rtbCustomerDetails
             // 
             this.rtbCustomerDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbCustomerDetails.Location = new System.Drawing.Point(248, 39);
+            this.rtbCustomerDetails.Location = new System.Drawing.Point(252, 39);
             this.rtbCustomerDetails.Name = "rtbCustomerDetails";
             this.rtbCustomerDetails.ReadOnly = true;
-            this.rtbCustomerDetails.Size = new System.Drawing.Size(232, 222);
+            this.rtbCustomerDetails.Size = new System.Drawing.Size(228, 162);
             this.rtbCustomerDetails.TabIndex = 11;
             this.rtbCustomerDetails.Text = "";
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::InTheDogHouse.Properties.Resources.pepsiIcon;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.Location = new System.Drawing.Point(754, 17);
+            this.btnSave.Location = new System.Drawing.Point(771, 17);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(161, 55);
+            this.btnSave.Size = new System.Drawing.Size(144, 55);
             this.btnSave.TabIndex = 50;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -417,9 +436,13 @@ namespace InTheDogHouse
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // splitContainer1
             // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(12, 12);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -432,7 +455,7 @@ namespace InTheDogHouse
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel4);
             this.splitContainer1.Size = new System.Drawing.Size(753, 607);
-            this.splitContainer1.SplitterDistance = 300;
+            this.splitContainer1.SplitterDistance = 244;
             this.splitContainer1.TabIndex = 51;
             // 
             // panel3
@@ -442,7 +465,7 @@ namespace InTheDogHouse
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(753, 300);
+            this.panel3.Size = new System.Drawing.Size(753, 244);
             this.panel3.TabIndex = 48;
             // 
             // panel4
@@ -452,7 +475,7 @@ namespace InTheDogHouse
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(753, 303);
+            this.panel4.Size = new System.Drawing.Size(753, 359);
             this.panel4.TabIndex = 49;
             // 
             // frmBookingEdit
@@ -465,6 +488,7 @@ namespace InTheDogHouse
             this.Controls.Add(this.btnCancel);
             this.Name = "frmBookingEdit";
             this.Text = "frmBookingEdit";
+            this.Load += new System.EventHandler(this.frmBookingEdit_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -486,7 +510,7 @@ namespace InTheDogHouse
         private System.Windows.Forms.NumericUpDown numDays;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblBookingRange;
+        private System.Windows.Forms.Label lblBooked;
         private System.Windows.Forms.ListView lvBooking;
         private System.Windows.Forms.ColumnHeader clmDogNo;
         private System.Windows.Forms.ColumnHeader clmDogName;
@@ -502,9 +526,9 @@ namespace InTheDogHouse
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.ListBox lstCustomer;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstBookings;
         private System.Windows.Forms.RichTextBox rtbCustomerDetails;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;

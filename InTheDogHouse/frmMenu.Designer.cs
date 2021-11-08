@@ -36,7 +36,7 @@ namespace InTheDogHouse
             this.btnDog = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnEditBookings = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +112,7 @@ namespace InTheDogHouse
             this.tableLayoutPanel1.Controls.Add(this.btnDog, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSize, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnKennel, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.BtnEditBookings, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -134,16 +134,17 @@ namespace InTheDogHouse
             this.button1.Text = "Breed";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BtnEditBookings
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(3, 302);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(260, 145);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Edit Bookings";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnEditBookings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnEditBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEditBookings.Location = new System.Drawing.Point(3, 302);
+            this.BtnEditBookings.Name = "BtnEditBookings";
+            this.BtnEditBookings.Size = new System.Drawing.Size(260, 145);
+            this.BtnEditBookings.TabIndex = 6;
+            this.BtnEditBookings.Text = "Edit Bookings";
+            this.BtnEditBookings.UseVisualStyleBackColor = true;
+            this.BtnEditBookings.Click += new System.EventHandler(this.BtnEditBookings_Click);
             // 
             // frmMenu
             // 
@@ -171,6 +172,6 @@ namespace InTheDogHouse
         private System.Windows.Forms.Button btnDog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnEditBookings;
     }
 }
