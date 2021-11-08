@@ -81,6 +81,12 @@
     <Compile Include="frmBooking2.Designer.cs">
       <DependentUpon>frmBooking2.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBookingEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBookingEdit.Designer.cs">
+      <DependentUpon>frmBookingEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBooking2.resx">
       <DependentUpon>frmBooking2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBookingEdit.resx">
+      <DependentUpon>frmBookingEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmContainer.resx">
       <DependentUpon>frmContainer.cs</DependentUpon>
