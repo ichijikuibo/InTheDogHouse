@@ -20,9 +20,6 @@ namespace InTheDogHouse
         SqlCommand cmdKennelDetails;
         string sqlCustomer, sqlDog, sqlKennel, sqlKennelDetails, sqlBookedKennels, sqlBooking, sqlBookingDet;
         int selectedTab = 0;
-
-
-
         bool custSelected = false;
         int custNoSelected = 0;
         SqlConnection conn;
@@ -87,8 +84,14 @@ namespace InTheDogHouse
             cmdBBooking = new SqlCommandBuilder(daBooking);
             daBooking.FillSchema(dsInTheDogHouse, SchemaType.Source, "Booking");
             daBooking.Fill(dsInTheDogHouse, "Booking");
+            dsInTheDogHouse.Tables["Booking"].Columns.Add("DateOnly", typeof(string), "");
+            foreach (DataRow row in dsInTheDogHouse.Tables["Booking"].Rows)
+            {
+                DateTime dt = DateTime.Parse(row["DateStart"].ToString());
+                row["DateOnly"] = dt.ToShortDateString();
+            }
 
-            dsInTheDogHouse.Tables["Booking"].Columns.Add("ComboDisplay", typeof(string), "BookingNo + ' - ' + DateStart  + ' ' + NoDays");
+            dsInTheDogHouse.Tables["Booking"].Columns.Add("ComboDisplay", typeof(string), "BookingNo + ' - ' + DateOnly  + ' - ' + NoDays + ' Days'");
 
 
             lstBookings.ValueMember = "bookingNo";
@@ -126,7 +129,16 @@ namespace InTheDogHouse
             }
             if (lstCustomer.SelectedIndex > -1)
             {
-                dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "CustomerNo = " + lstCustomer.SelectedValue;
+                string addedDogs = "(";
+                foreach (ListViewItem item in lvBooking.Items)
+                {
+                    addedDogs += item.Text;
+                }
+                addedDogs = addedDogs.TrimEnd(',') + ")";
+                if (lvBooking.Items.Count > 0)
+                    dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "CustomerNo = " + lstCustomer.SelectedValue + " and dogNo NOT IN " + addedDogs;
+                else
+                    dsInTheDogHouse.Tables["Dog"].DefaultView.RowFilter = "CustomerNo = " + lstCustomer.SelectedValue;
             }
             else
             {
@@ -196,6 +208,7 @@ namespace InTheDogHouse
                         lvBooking.Items.Add(item);
                         lstCustomer.Enabled = false;
                         txtCustomer.Enabled = false;
+                        updateDogList();
                         //}
                         //}
                     }
@@ -208,7 +221,9 @@ namespace InTheDogHouse
             if (lvBooking.SelectedItems.Count != 0)
             {
                 lvBooking.Items.Remove(lvBooking.SelectedItems[0]);
+                updateDogList();
             }
+
         }
 
         private void updateBookings()
@@ -306,7 +321,7 @@ namespace InTheDogHouse
                 rtbCustomerDetails.AppendText(drCustomer["Postcode"].ToString() + "\n");
 
             }
-            updateDogList();
+            
             //updateBookings();
         }
         private void updateBooking()
@@ -356,6 +371,7 @@ namespace InTheDogHouse
         {
 
         }
+        bool dontUpdate = false;
         private void lstBookings_Click(object sender, EventArgs e)
         {
             if (lstBookings.SelectedIndex > -1)
@@ -363,8 +379,10 @@ namespace InTheDogHouse
                 DataRow selectBooking = dsInTheDogHouse.Tables["Booking"].Rows.Find(lstBookings.SelectedValue);
                 if (lstCustomer.SelectedValue == null || lstCustomer.SelectedValue.ToString() != selectBooking["CustomerNo"].ToString())
                 {
+                    dontUpdate = true;
                     lstCustomer.SelectedValue = int.Parse(selectBooking["CustomerNo"].ToString());
-                    updateCustomer();
+                    dontUpdate = false;
+                    //updateCustomer();
                 }
             }
         }
@@ -376,8 +394,14 @@ namespace InTheDogHouse
         private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateCustomer();
-            updateBookings();
+            if (!dontUpdate)
+            {
+                updateBookings();
+                
+            }
+
             updateBooking();
+            updateDogList();
             updateKennels();
         }
 

@@ -92,7 +92,7 @@ namespace InTheDogHouse
             this.panel2.Controls.Add(this.lblBooking);
             this.panel2.Location = new System.Drawing.Point(15, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 319);
+            this.panel2.Size = new System.Drawing.Size(718, 320);
             this.panel2.TabIndex = 48;
             // 
             // btnDelete
@@ -100,7 +100,7 @@ namespace InTheDogHouse
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(366, 270);
+            this.btnDelete.Location = new System.Drawing.Point(366, 271);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(123, 34);
             this.btnDelete.TabIndex = 21;
@@ -124,7 +124,7 @@ namespace InTheDogHouse
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Enabled = false;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(557, 270);
+            this.btnAdd.Location = new System.Drawing.Point(557, 271);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(123, 34);
             this.btnAdd.TabIndex = 18;
@@ -253,7 +253,7 @@ namespace InTheDogHouse
             this.lvBooking.Location = new System.Drawing.Point(6, 134);
             this.lvBooking.MultiSelect = false;
             this.lvBooking.Name = "lvBooking";
-            this.lvBooking.Size = new System.Drawing.Size(317, 170);
+            this.lvBooking.Size = new System.Drawing.Size(317, 171);
             this.lvBooking.TabIndex = 12;
             this.lvBooking.UseCompatibleStateImageBehavior = false;
             this.lvBooking.View = System.Windows.Forms.View.Details;
@@ -323,7 +323,7 @@ namespace InTheDogHouse
             this.panel1.Controls.Add(this.rtbCustomerDetails);
             this.panel1.Location = new System.Drawing.Point(15, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(721, 211);
+            this.panel1.Size = new System.Drawing.Size(721, 210);
             this.panel1.TabIndex = 47;
             // 
             // lstBookings
@@ -397,7 +397,7 @@ namespace InTheDogHouse
             this.rtbCustomerDetails.Location = new System.Drawing.Point(252, 39);
             this.rtbCustomerDetails.Name = "rtbCustomerDetails";
             this.rtbCustomerDetails.ReadOnly = true;
-            this.rtbCustomerDetails.Size = new System.Drawing.Size(228, 162);
+            this.rtbCustomerDetails.Size = new System.Drawing.Size(228, 161);
             this.rtbCustomerDetails.TabIndex = 11;
             this.rtbCustomerDetails.Text = "";
             // 
@@ -455,7 +455,7 @@ namespace InTheDogHouse
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel4);
             this.splitContainer1.Size = new System.Drawing.Size(753, 607);
-            this.splitContainer1.SplitterDistance = 244;
+            this.splitContainer1.SplitterDistance = 243;
             this.splitContainer1.TabIndex = 51;
             // 
             // panel3
@@ -465,7 +465,7 @@ namespace InTheDogHouse
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(753, 244);
+            this.panel3.Size = new System.Drawing.Size(753, 243);
             this.panel3.TabIndex = 48;
             // 
             // panel4
@@ -475,7 +475,7 @@ namespace InTheDogHouse
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(753, 359);
+            this.panel4.Size = new System.Drawing.Size(753, 360);
             this.panel4.TabIndex = 49;
             // 
             // frmBookingEdit
