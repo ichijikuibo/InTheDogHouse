@@ -41,8 +41,6 @@ namespace InTheDogHouse
             this.dgvDisplay = new System.Windows.Forms.DataGridView();
             this.tabAdd = new System.Windows.Forms.TabPage();
             this.pGender = new System.Windows.Forms.Panel();
-            this.prbFemale = new InTheDogHouse.PictureRadioButton();
-            this.prbMale = new InTheDogHouse.PictureRadioButton();
             this.dtpAddDOB = new System.Windows.Forms.DateTimePicker();
             this.txtAddColour = new System.Windows.Forms.TextBox();
             this.cmbAddCustomer = new System.Windows.Forms.ComboBox();
@@ -61,8 +59,6 @@ namespace InTheDogHouse
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.pEditGender = new System.Windows.Forms.Panel();
-            this.prbEditFemale = new InTheDogHouse.PictureRadioButton();
-            this.prbEditMale = new InTheDogHouse.PictureRadioButton();
             this.dtpEditDOB = new System.Windows.Forms.DateTimePicker();
             this.txtEditColour = new System.Windows.Forms.TextBox();
             this.cmbEditCustomer = new System.Windows.Forms.ComboBox();
@@ -80,8 +76,10 @@ namespace InTheDogHouse
             this.btnEditCancel = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ssDogs = new InTheDogHouse.SlideShow();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.prbFemale = new InTheDogHouse.PictureRadioButton();
+            this.prbMale = new InTheDogHouse.PictureRadioButton();
+            this.prbEditFemale = new InTheDogHouse.PictureRadioButton();
+            this.prbEditMale = new InTheDogHouse.PictureRadioButton();
             this.tabDogHouse.SuspendLayout();
             this.tabDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).BeginInit();
@@ -93,26 +91,24 @@ namespace InTheDogHouse
             this.pEditGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDogHouse
             // 
-            this.tabDogHouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabDogHouse.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabDogHouse.Controls.Add(this.tabDisplay);
             this.tabDogHouse.Controls.Add(this.tabAdd);
             this.tabDogHouse.Controls.Add(this.tabEdit);
+            this.tabDogHouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabDogHouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabDogHouse.ItemSize = new System.Drawing.Size(250, 30);
-            this.tabDogHouse.Location = new System.Drawing.Point(9, 194);
+            this.tabDogHouse.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabDogHouse.Location = new System.Drawing.Point(0, 0);
             this.tabDogHouse.Margin = new System.Windows.Forms.Padding(0);
             this.tabDogHouse.Multiline = true;
             this.tabDogHouse.Name = "tabDogHouse";
             this.tabDogHouse.Padding = new System.Drawing.Point(0, 0);
             this.tabDogHouse.SelectedIndex = 0;
-            this.tabDogHouse.Size = new System.Drawing.Size(760, 489);
+            this.tabDogHouse.Size = new System.Drawing.Size(778, 499);
             this.tabDogHouse.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabDogHouse.TabIndex = 50;
             this.tabDogHouse.SelectedIndexChanged += new System.EventHandler(this.tabDogHouse_SelectedIndexChanged);
@@ -127,10 +123,10 @@ namespace InTheDogHouse
             this.tabDisplay.Controls.Add(this.imgAddDog);
             this.tabDisplay.Controls.Add(this.dgvDisplay);
             this.tabDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabDisplay.Location = new System.Drawing.Point(4, 34);
+            this.tabDisplay.Location = new System.Drawing.Point(4, 5);
             this.tabDisplay.Name = "tabDisplay";
             this.tabDisplay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDisplay.Size = new System.Drawing.Size(752, 451);
+            this.tabDisplay.Size = new System.Drawing.Size(770, 490);
             this.tabDisplay.TabIndex = 0;
             this.tabDisplay.Text = "Display";
             // 
@@ -142,7 +138,7 @@ namespace InTheDogHouse
             this.btnDisplayExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayExit.Image = global::InTheDogHouse.Properties.Resources.pepsiIcon2;
             this.btnDisplayExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayExit.Location = new System.Drawing.Point(587, 186);
+            this.btnDisplayExit.Location = new System.Drawing.Point(605, 186);
             this.btnDisplayExit.Name = "btnDisplayExit";
             this.btnDisplayExit.Size = new System.Drawing.Size(159, 55);
             this.btnDisplayExit.TabIndex = 5;
@@ -160,7 +156,7 @@ namespace InTheDogHouse
             this.btnDisplayDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayDelete.Image")));
             this.btnDisplayDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayDelete.Location = new System.Drawing.Point(587, 126);
+            this.btnDisplayDelete.Location = new System.Drawing.Point(605, 126);
             this.btnDisplayDelete.Name = "btnDisplayDelete";
             this.btnDisplayDelete.Size = new System.Drawing.Size(159, 55);
             this.btnDisplayDelete.TabIndex = 4;
@@ -178,7 +174,7 @@ namespace InTheDogHouse
             this.btnDisplayEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayEdit.Image = global::InTheDogHouse.Properties.Resources.keanoIcon;
             this.btnDisplayEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayEdit.Location = new System.Drawing.Point(587, 66);
+            this.btnDisplayEdit.Location = new System.Drawing.Point(605, 66);
             this.btnDisplayEdit.Name = "btnDisplayEdit";
             this.btnDisplayEdit.Size = new System.Drawing.Size(159, 55);
             this.btnDisplayEdit.TabIndex = 3;
@@ -196,7 +192,7 @@ namespace InTheDogHouse
             this.btnDisplayAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayAdd.Image")));
             this.btnDisplayAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayAdd.Location = new System.Drawing.Point(587, 6);
+            this.btnDisplayAdd.Location = new System.Drawing.Point(605, 6);
             this.btnDisplayAdd.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnDisplayAdd.Name = "btnDisplayAdd";
             this.btnDisplayAdd.Size = new System.Drawing.Size(159, 55);
@@ -213,7 +209,7 @@ namespace InTheDogHouse
             this.imgAddDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.imgAddDog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgAddDog.Image = global::InTheDogHouse.Properties.Resources.pepsi;
-            this.imgAddDog.Location = new System.Drawing.Point(587, 247);
+            this.imgAddDog.Location = new System.Drawing.Point(605, 286);
             this.imgAddDog.Name = "imgAddDog";
             this.imgAddDog.Size = new System.Drawing.Size(159, 201);
             this.imgAddDog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,7 +231,7 @@ namespace InTheDogHouse
             this.dgvDisplay.ReadOnly = true;
             this.dgvDisplay.RowTemplate.Height = 25;
             this.dgvDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisplay.Size = new System.Drawing.Size(575, 439);
+            this.dgvDisplay.Size = new System.Drawing.Size(593, 478);
             this.dgvDisplay.TabIndex = 0;
             // 
             // tabAdd
@@ -259,10 +255,10 @@ namespace InTheDogHouse
             this.tabAdd.Controls.Add(this.btnAddAdd);
             this.tabAdd.Controls.Add(this.pictureBox2);
             this.tabAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabAdd.Location = new System.Drawing.Point(4, 34);
+            this.tabAdd.Location = new System.Drawing.Point(4, 5);
             this.tabAdd.Name = "tabAdd";
             this.tabAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdd.Size = new System.Drawing.Size(752, 451);
+            this.tabAdd.Size = new System.Drawing.Size(752, 472);
             this.tabAdd.TabIndex = 1;
             this.tabAdd.Text = "Add";
             // 
@@ -274,28 +270,6 @@ namespace InTheDogHouse
             this.pGender.Name = "pGender";
             this.pGender.Size = new System.Drawing.Size(308, 89);
             this.pGender.TabIndex = 68;
-            // 
-            // prbFemale
-            // 
-            this.prbFemale.ButtonText = "Female";
-            this.prbFemale.Location = new System.Drawing.Point(149, 3);
-            this.prbFemale.Name = "prbFemale";
-            this.prbFemale.Picture = global::InTheDogHouse.Properties.Resources.female;
-            this.prbFemale.Selected = false;
-            this.prbFemale.SelectedColour = System.Drawing.Color.Green;
-            this.prbFemale.Size = new System.Drawing.Size(156, 83);
-            this.prbFemale.TabIndex = 68;
-            // 
-            // prbMale
-            // 
-            this.prbMale.ButtonText = "Male";
-            this.prbMale.Location = new System.Drawing.Point(3, 3);
-            this.prbMale.Name = "prbMale";
-            this.prbMale.Picture = global::InTheDogHouse.Properties.Resources.male;
-            this.prbMale.Selected = true;
-            this.prbMale.SelectedColour = System.Drawing.Color.Green;
-            this.prbMale.Size = new System.Drawing.Size(140, 83);
-            this.prbMale.TabIndex = 67;
             // 
             // dtpAddDOB
             // 
@@ -466,7 +440,7 @@ namespace InTheDogHouse
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.Image = global::InTheDogHouse.Properties.Resources.keano;
-            this.pictureBox2.Location = new System.Drawing.Point(565, 252);
+            this.pictureBox2.Location = new System.Drawing.Point(565, 273);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(181, 193);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -494,9 +468,9 @@ namespace InTheDogHouse
             this.tabEdit.Controls.Add(this.btnEditCancel);
             this.tabEdit.Controls.Add(this.pictureBox3);
             this.tabEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabEdit.Location = new System.Drawing.Point(4, 34);
+            this.tabEdit.Location = new System.Drawing.Point(4, 5);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(752, 451);
+            this.tabEdit.Size = new System.Drawing.Size(752, 472);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Edit";
             // 
@@ -509,28 +483,6 @@ namespace InTheDogHouse
             this.pEditGender.Name = "pEditGender";
             this.pEditGender.Size = new System.Drawing.Size(308, 86);
             this.pEditGender.TabIndex = 69;
-            // 
-            // prbEditFemale
-            // 
-            this.prbEditFemale.ButtonText = "Female";
-            this.prbEditFemale.Location = new System.Drawing.Point(149, 3);
-            this.prbEditFemale.Name = "prbEditFemale";
-            this.prbEditFemale.Picture = global::InTheDogHouse.Properties.Resources.female;
-            this.prbEditFemale.Selected = false;
-            this.prbEditFemale.SelectedColour = System.Drawing.Color.Green;
-            this.prbEditFemale.Size = new System.Drawing.Size(156, 80);
-            this.prbEditFemale.TabIndex = 68;
-            // 
-            // prbEditMale
-            // 
-            this.prbEditMale.ButtonText = "Male";
-            this.prbEditMale.Location = new System.Drawing.Point(3, 3);
-            this.prbEditMale.Name = "prbEditMale";
-            this.prbEditMale.Picture = global::InTheDogHouse.Properties.Resources.male;
-            this.prbEditMale.Selected = true;
-            this.prbEditMale.SelectedColour = System.Drawing.Color.Green;
-            this.prbEditMale.Size = new System.Drawing.Size(140, 80);
-            this.prbEditMale.TabIndex = 67;
             // 
             // dtpEditDOB
             // 
@@ -704,7 +656,7 @@ namespace InTheDogHouse
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox3.Image = global::InTheDogHouse.Properties.Resources.coco;
-            this.pictureBox3.Location = new System.Drawing.Point(563, 266);
+            this.pictureBox3.Location = new System.Drawing.Point(563, 287);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(181, 171);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -715,48 +667,55 @@ namespace InTheDogHouse
             // 
             this.errP.ContainerControl = this;
             // 
-            // ssDogs
+            // prbFemale
             // 
-            this.ssDogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ssDogs.BackColor = System.Drawing.SystemColors.Control;
-            this.ssDogs.BorderColour = System.Drawing.Color.SaddleBrown;
-            this.ssDogs.BorderSize = 5;
-            this.ssDogs.ChangeRate = 5000;
-            this.ssDogs.Location = new System.Drawing.Point(526, 12);
-            this.ssDogs.Name = "ssDogs";
-            this.ssDogs.Pictures = new string[] {
-        "Images\\Slideshow\\dogs.jpg",
-        "Images\\Slideshow\\dogs2.jpg",
-        "Images\\Slideshow\\dogs3.jpg",
-        "Images\\Slideshow\\dogs4.jpg",
-        "Images\\Slideshow\\dogs5.jpg",
-        "Images\\Slideshow\\dogs6.jpg",
-        "Images\\Slideshow\\dogs7.jpg",
-        "Images\\Slideshow\\dogs8.jpg"};
-            this.ssDogs.Size = new System.Drawing.Size(233, 165);
-            this.ssDogs.TabIndex = 52;
+            this.prbFemale.ButtonText = "Female";
+            this.prbFemale.Location = new System.Drawing.Point(149, 3);
+            this.prbFemale.Name = "prbFemale";
+            this.prbFemale.Picture = global::InTheDogHouse.Properties.Resources.female;
+            this.prbFemale.Selected = false;
+            this.prbFemale.SelectedColour = System.Drawing.Color.Green;
+            this.prbFemale.Size = new System.Drawing.Size(156, 83);
+            this.prbFemale.TabIndex = 68;
             // 
-            // pictureBox4
+            // prbMale
             // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.ImageLocation = "";
-            this.pictureBox4.Location = new System.Drawing.Point(13, 12);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(507, 160);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 51;
-            this.pictureBox4.TabStop = false;
+            this.prbMale.ButtonText = "Male";
+            this.prbMale.Location = new System.Drawing.Point(3, 3);
+            this.prbMale.Name = "prbMale";
+            this.prbMale.Picture = global::InTheDogHouse.Properties.Resources.male;
+            this.prbMale.Selected = true;
+            this.prbMale.SelectedColour = System.Drawing.Color.Green;
+            this.prbMale.Size = new System.Drawing.Size(140, 83);
+            this.prbMale.TabIndex = 67;
+            // 
+            // prbEditFemale
+            // 
+            this.prbEditFemale.ButtonText = "Female";
+            this.prbEditFemale.Location = new System.Drawing.Point(149, 3);
+            this.prbEditFemale.Name = "prbEditFemale";
+            this.prbEditFemale.Picture = global::InTheDogHouse.Properties.Resources.female;
+            this.prbEditFemale.Selected = false;
+            this.prbEditFemale.SelectedColour = System.Drawing.Color.Green;
+            this.prbEditFemale.Size = new System.Drawing.Size(156, 80);
+            this.prbEditFemale.TabIndex = 68;
+            // 
+            // prbEditMale
+            // 
+            this.prbEditMale.ButtonText = "Male";
+            this.prbEditMale.Location = new System.Drawing.Point(3, 3);
+            this.prbEditMale.Name = "prbEditMale";
+            this.prbEditMale.Picture = global::InTheDogHouse.Properties.Resources.male;
+            this.prbEditMale.Selected = true;
+            this.prbEditMale.SelectedColour = System.Drawing.Color.Green;
+            this.prbEditMale.Size = new System.Drawing.Size(140, 80);
+            this.prbEditMale.TabIndex = 67;
             // 
             // frmDog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 692);
-            this.Controls.Add(this.ssDogs);
-            this.Controls.Add(this.pictureBox4);
+            this.ClientSize = new System.Drawing.Size(778, 499);
             this.Controls.Add(this.tabDogHouse);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -764,7 +723,6 @@ namespace InTheDogHouse
             this.Text = "Dog";
             this.Load += new System.EventHandler(this.Dog_Load);
             this.Shown += new System.EventHandler(this.MainPage_Shown);
-            this.Resize += new System.EventHandler(this.frmDog_Resize);
             this.tabDogHouse.ResumeLayout(false);
             this.tabDisplay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).EndInit();
@@ -778,15 +736,11 @@ namespace InTheDogHouse
             this.pEditGender.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private SlideShow ssDogs;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TabControl tabDogHouse;
         private System.Windows.Forms.TabPage tabDisplay;
         private System.Windows.Forms.Button btnDisplayExit;

@@ -23,22 +23,24 @@ namespace InTheDogHouse
         SqlCommandBuilder sqlBKennel;
         SqlDataAdapter daKennel,daSize;
         DataRow drKennel;
-        string connStr, sqlKennel, sqlSize;
-        public frmKennel()
+        string sqlKennel, sqlSize;
+
+        frmContainer container;
+        public frmKennel(frmContainer container)
         {
+            this.container = container;
             InitializeComponent();
         }
         private void frmBreed_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlKennel = @"select * from Kennel";
-            daKennel = new SqlDataAdapter(sqlKennel, connStr);
+            daKennel = new SqlDataAdapter(sqlKennel, container.connStr);
             sqlBKennel = new SqlCommandBuilder(daKennel);
             daKennel.FillSchema(dsInTheDogHouse, SchemaType.Source, "Kennel");
             daKennel.Fill(dsInTheDogHouse, "Kennel");
 
             sqlSize = @"select * from Size";
-            daSize = new SqlDataAdapter(sqlSize, connStr);
+            daSize = new SqlDataAdapter(sqlSize, container.connStr);
             daSize.FillSchema(dsInTheDogHouse, SchemaType.Source, "Size");
             daSize.Fill(dsInTheDogHouse, "Size");
 

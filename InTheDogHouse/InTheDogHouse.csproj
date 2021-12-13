@@ -69,11 +69,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBooking.Designer.cs">
+      <DependentUpon>frmBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBooking2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBooking2.Designer.cs">
+      <DependentUpon>frmBooking2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBookingEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBookingEdit.Designer.cs">
+      <DependentUpon>frmBookingEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContainer.Designer.cs">
+      <DependentUpon>frmContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKennel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmKennel.Designer.cs">
       <DependentUpon>frmKennel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSize.cs">
       <SubType>Form</SubType>
@@ -125,8 +155,23 @@
     <Compile Include="SlideShow.Designer.cs">
       <DependentUpon>SlideShow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmBooking.resx">
+      <DependentUpon>frmBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBooking2.resx">
+      <DependentUpon>frmBooking2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBookingEdit.resx">
+      <DependentUpon>frmBookingEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContainer.resx">
+      <DependentUpon>frmContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKennel.resx">
       <DependentUpon>frmKennel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSize.resx">
       <DependentUpon>frmSize.cs</DependentUpon>
@@ -228,6 +273,7 @@
     <None Include="Images\large.png" />
     <None Include="Images\medium.png" />
     <None Include="Images\male.png" />
+    <Content Include="Images\menu.png" />
     <Content Include="Images\Slideshow\dogs2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

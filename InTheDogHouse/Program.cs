@@ -21,8 +21,8 @@ namespace InTheDogHouse
             //Application.Run(new frmSize());
             //Application.Run(new frmDog());
             //Application.Run(new frmBreed());
-            Application.Run(new frmKennel());
-
+            //Application.Run(new frmKennel());
+            Application.Run(new frmContainer());
         }
     }
 }

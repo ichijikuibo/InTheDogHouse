@@ -9,6 +9,7 @@ namespace InTheDogHouse.Models
 {
     class BreedModel
     {
+
         string breed;
         int breedSize, breedNo;
 

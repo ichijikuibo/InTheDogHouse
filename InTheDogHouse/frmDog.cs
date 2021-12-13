@@ -19,32 +19,34 @@ namespace InTheDogHouse
         DataSet dsInTheDogHouse = new DataSet();
         SqlCommandBuilder sqlBDog;
         DataRow drDog;
-        string connStr, sqlCustomer,sqlDog,sqlBreed;
+        string sqlCustomer,sqlDog,sqlBreed;
         int selectedTab = 0;
         bool dogSelected = false;
         int dogNoSelected = 0;
-        public frmDog()
+
+        frmContainer container;
+        public frmDog(frmContainer container)
         {
+            this.container = container;
             InitializeComponent();
         }
 
         private void Dog_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlCustomer = @"select * from Customer";
-            daCustomer = new SqlDataAdapter(sqlCustomer, connStr);
+            daCustomer = new SqlDataAdapter(sqlCustomer, container.connStr);
 
             daCustomer.FillSchema(dsInTheDogHouse, SchemaType.Source, "Customer");
             daCustomer.Fill(dsInTheDogHouse, "Customer");
 
             sqlDog = @"select * from Dog";
-            daDog = new SqlDataAdapter(sqlDog, connStr);
+            daDog = new SqlDataAdapter(sqlDog, container.connStr);
             sqlBDog = new SqlCommandBuilder(daDog);
             daDog.FillSchema(dsInTheDogHouse, SchemaType.Source, "Dog");
             daDog.Fill(dsInTheDogHouse, "Dog");
 
             sqlBreed = @"select * from Breed";
-            daBreed = new SqlDataAdapter(sqlBreed, connStr);
+            daBreed = new SqlDataAdapter(sqlBreed, container.connStr);
             daBreed.FillSchema(dsInTheDogHouse, SchemaType.Source, "Breed");
             daBreed.Fill(dsInTheDogHouse, "Breed");
 
@@ -330,10 +332,7 @@ namespace InTheDogHouse
 
         private void frmDog_Resize(object sender, EventArgs e)
         {
-            if (tabDogHouse.Width > 8)
-            {
-                tabDogHouse.ItemSize = new Size((tabDogHouse.Width - 5) / 3, tabDogHouse.ItemSize.Height);
-            }
+
         }
 
         private void getNumber(int noRows)

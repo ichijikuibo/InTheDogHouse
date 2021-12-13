@@ -84,8 +84,6 @@ namespace InTheDogHouse
             this.lblEditTitle = new System.Windows.Forms.Label();
             this.lblEditCustomerNo = new System.Windows.Forms.Label();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.ssDogs = new InTheDogHouse.SlideShow();
             this.tabDogHouse.SuspendLayout();
             this.tabDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).BeginInit();
@@ -95,26 +93,24 @@ namespace InTheDogHouse
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDogHouse
             // 
-            this.tabDogHouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabDogHouse.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabDogHouse.Controls.Add(this.tabDisplay);
             this.tabDogHouse.Controls.Add(this.tabAdd);
             this.tabDogHouse.Controls.Add(this.tabEdit);
+            this.tabDogHouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabDogHouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabDogHouse.ItemSize = new System.Drawing.Size(250, 30);
-            this.tabDogHouse.Location = new System.Drawing.Point(13, 180);
+            this.tabDogHouse.ItemSize = new System.Drawing.Size(1, 1);
+            this.tabDogHouse.Location = new System.Drawing.Point(0, 0);
             this.tabDogHouse.Margin = new System.Windows.Forms.Padding(0);
             this.tabDogHouse.Multiline = true;
             this.tabDogHouse.Name = "tabDogHouse";
             this.tabDogHouse.Padding = new System.Drawing.Point(0, 0);
             this.tabDogHouse.SelectedIndex = 0;
-            this.tabDogHouse.Size = new System.Drawing.Size(760, 537);
+            this.tabDogHouse.Size = new System.Drawing.Size(784, 518);
             this.tabDogHouse.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabDogHouse.TabIndex = 0;
             this.tabDogHouse.SelectedIndexChanged += new System.EventHandler(this.tabDogHouse_SelectedIndexChanged);
@@ -129,10 +125,10 @@ namespace InTheDogHouse
             this.tabDisplay.Controls.Add(this.imgAddDog);
             this.tabDisplay.Controls.Add(this.dgvDisplay);
             this.tabDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabDisplay.Location = new System.Drawing.Point(4, 34);
+            this.tabDisplay.Location = new System.Drawing.Point(4, 5);
             this.tabDisplay.Name = "tabDisplay";
             this.tabDisplay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDisplay.Size = new System.Drawing.Size(752, 499);
+            this.tabDisplay.Size = new System.Drawing.Size(776, 509);
             this.tabDisplay.TabIndex = 0;
             this.tabDisplay.Text = "Display";
             // 
@@ -144,7 +140,7 @@ namespace InTheDogHouse
             this.btnDisplayExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayExit.Image = global::InTheDogHouse.Properties.Resources.pepsiIcon2;
             this.btnDisplayExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayExit.Location = new System.Drawing.Point(565, 186);
+            this.btnDisplayExit.Location = new System.Drawing.Point(589, 186);
             this.btnDisplayExit.Name = "btnDisplayExit";
             this.btnDisplayExit.Size = new System.Drawing.Size(181, 55);
             this.btnDisplayExit.TabIndex = 5;
@@ -162,7 +158,7 @@ namespace InTheDogHouse
             this.btnDisplayDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayDelete.Image")));
             this.btnDisplayDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayDelete.Location = new System.Drawing.Point(565, 126);
+            this.btnDisplayDelete.Location = new System.Drawing.Point(589, 126);
             this.btnDisplayDelete.Name = "btnDisplayDelete";
             this.btnDisplayDelete.Size = new System.Drawing.Size(181, 55);
             this.btnDisplayDelete.TabIndex = 4;
@@ -180,7 +176,7 @@ namespace InTheDogHouse
             this.btnDisplayEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayEdit.Image = global::InTheDogHouse.Properties.Resources.keanoIcon;
             this.btnDisplayEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayEdit.Location = new System.Drawing.Point(565, 66);
+            this.btnDisplayEdit.Location = new System.Drawing.Point(589, 66);
             this.btnDisplayEdit.Name = "btnDisplayEdit";
             this.btnDisplayEdit.Size = new System.Drawing.Size(181, 55);
             this.btnDisplayEdit.TabIndex = 3;
@@ -198,7 +194,7 @@ namespace InTheDogHouse
             this.btnDisplayAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayAdd.Image")));
             this.btnDisplayAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDisplayAdd.Location = new System.Drawing.Point(565, 6);
+            this.btnDisplayAdd.Location = new System.Drawing.Point(589, 6);
             this.btnDisplayAdd.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnDisplayAdd.Name = "btnDisplayAdd";
             this.btnDisplayAdd.Size = new System.Drawing.Size(181, 55);
@@ -215,7 +211,7 @@ namespace InTheDogHouse
             this.imgAddDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.imgAddDog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgAddDog.Image = global::InTheDogHouse.Properties.Resources.pepsi;
-            this.imgAddDog.Location = new System.Drawing.Point(565, 258);
+            this.imgAddDog.Location = new System.Drawing.Point(589, 268);
             this.imgAddDog.Name = "imgAddDog";
             this.imgAddDog.Size = new System.Drawing.Size(181, 238);
             this.imgAddDog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -237,7 +233,7 @@ namespace InTheDogHouse
             this.dgvDisplay.ReadOnly = true;
             this.dgvDisplay.RowTemplate.Height = 25;
             this.dgvDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisplay.Size = new System.Drawing.Size(553, 487);
+            this.dgvDisplay.Size = new System.Drawing.Size(577, 497);
             this.dgvDisplay.TabIndex = 0;
             // 
             // tabAdd
@@ -265,10 +261,10 @@ namespace InTheDogHouse
             this.tabAdd.Controls.Add(this.lblAddTitle);
             this.tabAdd.Controls.Add(this.lblAddCustomerNo);
             this.tabAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabAdd.Location = new System.Drawing.Point(4, 34);
+            this.tabAdd.Location = new System.Drawing.Point(4, 5);
             this.tabAdd.Name = "tabAdd";
             this.tabAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdd.Size = new System.Drawing.Size(752, 499);
+            this.tabAdd.Size = new System.Drawing.Size(776, 509);
             this.tabAdd.TabIndex = 1;
             this.tabAdd.Text = "Add";
             // 
@@ -280,7 +276,7 @@ namespace InTheDogHouse
             this.btnAddCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCancel.Image = global::InTheDogHouse.Properties.Resources._2DogsIcon;
             this.btnAddCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddCancel.Location = new System.Drawing.Point(541, 100);
+            this.btnAddCancel.Location = new System.Drawing.Point(565, 100);
             this.btnAddCancel.Name = "btnAddCancel";
             this.btnAddCancel.Size = new System.Drawing.Size(181, 55);
             this.btnAddCancel.TabIndex = 20;
@@ -298,7 +294,7 @@ namespace InTheDogHouse
             this.btnAddAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAdd.Image")));
             this.btnAddAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddAdd.Location = new System.Drawing.Point(541, 28);
+            this.btnAddAdd.Location = new System.Drawing.Point(565, 28);
             this.btnAddAdd.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnAddAdd.Name = "btnAddAdd";
             this.btnAddAdd.Size = new System.Drawing.Size(181, 55);
@@ -315,7 +311,7 @@ namespace InTheDogHouse
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.Image = global::InTheDogHouse.Properties.Resources.keano;
-            this.pictureBox2.Location = new System.Drawing.Point(541, 278);
+            this.pictureBox2.Location = new System.Drawing.Point(565, 288);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(181, 193);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -329,7 +325,7 @@ namespace InTheDogHouse
             this.txtAddTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddTelephone.Location = new System.Drawing.Point(199, 440);
             this.txtAddTelephone.Name = "txtAddTelephone";
-            this.txtAddTelephone.Size = new System.Drawing.Size(307, 31);
+            this.txtAddTelephone.Size = new System.Drawing.Size(331, 31);
             this.txtAddTelephone.TabIndex = 17;
             // 
             // txtAddPostcode
@@ -339,7 +335,7 @@ namespace InTheDogHouse
             this.txtAddPostcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddPostcode.Location = new System.Drawing.Point(199, 385);
             this.txtAddPostcode.Name = "txtAddPostcode";
-            this.txtAddPostcode.Size = new System.Drawing.Size(307, 31);
+            this.txtAddPostcode.Size = new System.Drawing.Size(331, 31);
             this.txtAddPostcode.TabIndex = 16;
             // 
             // txtAddCounty
@@ -349,7 +345,7 @@ namespace InTheDogHouse
             this.txtAddCounty.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddCounty.Location = new System.Drawing.Point(199, 334);
             this.txtAddCounty.Name = "txtAddCounty";
-            this.txtAddCounty.Size = new System.Drawing.Size(307, 31);
+            this.txtAddCounty.Size = new System.Drawing.Size(331, 31);
             this.txtAddCounty.TabIndex = 15;
             // 
             // txtAddTown
@@ -359,7 +355,7 @@ namespace InTheDogHouse
             this.txtAddTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddTown.Location = new System.Drawing.Point(199, 283);
             this.txtAddTown.Name = "txtAddTown";
-            this.txtAddTown.Size = new System.Drawing.Size(307, 31);
+            this.txtAddTown.Size = new System.Drawing.Size(331, 31);
             this.txtAddTown.TabIndex = 14;
             // 
             // txtAddStreet
@@ -369,7 +365,7 @@ namespace InTheDogHouse
             this.txtAddStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddStreet.Location = new System.Drawing.Point(199, 232);
             this.txtAddStreet.Name = "txtAddStreet";
-            this.txtAddStreet.Size = new System.Drawing.Size(307, 31);
+            this.txtAddStreet.Size = new System.Drawing.Size(331, 31);
             this.txtAddStreet.TabIndex = 13;
             // 
             // txtAddForename
@@ -379,7 +375,7 @@ namespace InTheDogHouse
             this.txtAddForename.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddForename.Location = new System.Drawing.Point(199, 181);
             this.txtAddForename.Name = "txtAddForename";
-            this.txtAddForename.Size = new System.Drawing.Size(307, 31);
+            this.txtAddForename.Size = new System.Drawing.Size(331, 31);
             this.txtAddForename.TabIndex = 12;
             // 
             // txtAddSurname
@@ -389,7 +385,7 @@ namespace InTheDogHouse
             this.txtAddSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddSurname.Location = new System.Drawing.Point(199, 130);
             this.txtAddSurname.Name = "txtAddSurname";
-            this.txtAddSurname.Size = new System.Drawing.Size(307, 31);
+            this.txtAddSurname.Size = new System.Drawing.Size(331, 31);
             this.txtAddSurname.TabIndex = 11;
             // 
             // cmbAddTitle
@@ -533,9 +529,9 @@ namespace InTheDogHouse
             this.tabEdit.Controls.Add(this.lblEditTitle);
             this.tabEdit.Controls.Add(this.lblEditCustomerNo);
             this.tabEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabEdit.Location = new System.Drawing.Point(4, 34);
+            this.tabEdit.Location = new System.Drawing.Point(4, 5);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(752, 499);
+            this.tabEdit.Size = new System.Drawing.Size(776, 509);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Edit";
             // 
@@ -547,7 +543,7 @@ namespace InTheDogHouse
             this.btnEditEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditEdit.Image = global::InTheDogHouse.Properties.Resources.keanoIcon;
             this.btnEditEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditEdit.Location = new System.Drawing.Point(541, 28);
+            this.btnEditEdit.Location = new System.Drawing.Point(565, 28);
             this.btnEditEdit.Name = "btnEditEdit";
             this.btnEditEdit.Size = new System.Drawing.Size(181, 55);
             this.btnEditEdit.TabIndex = 42;
@@ -565,7 +561,7 @@ namespace InTheDogHouse
             this.btnEditCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditCancel.Image = global::InTheDogHouse.Properties.Resources._2DogsIcon;
             this.btnEditCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditCancel.Location = new System.Drawing.Point(541, 100);
+            this.btnEditCancel.Location = new System.Drawing.Point(565, 100);
             this.btnEditCancel.Name = "btnEditCancel";
             this.btnEditCancel.Size = new System.Drawing.Size(181, 55);
             this.btnEditCancel.TabIndex = 41;
@@ -581,7 +577,7 @@ namespace InTheDogHouse
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox3.Image = global::InTheDogHouse.Properties.Resources.coco;
-            this.pictureBox3.Location = new System.Drawing.Point(541, 300);
+            this.pictureBox3.Location = new System.Drawing.Point(565, 310);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(181, 171);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -596,7 +592,7 @@ namespace InTheDogHouse
             this.txtEditTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditTelephone.Location = new System.Drawing.Point(199, 440);
             this.txtEditTelephone.Name = "txtEditTelephone";
-            this.txtEditTelephone.Size = new System.Drawing.Size(307, 31);
+            this.txtEditTelephone.Size = new System.Drawing.Size(331, 31);
             this.txtEditTelephone.TabIndex = 38;
             // 
             // txtEditPostcode
@@ -607,7 +603,7 @@ namespace InTheDogHouse
             this.txtEditPostcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditPostcode.Location = new System.Drawing.Point(199, 385);
             this.txtEditPostcode.Name = "txtEditPostcode";
-            this.txtEditPostcode.Size = new System.Drawing.Size(307, 31);
+            this.txtEditPostcode.Size = new System.Drawing.Size(331, 31);
             this.txtEditPostcode.TabIndex = 37;
             // 
             // txtEditCounty
@@ -618,7 +614,7 @@ namespace InTheDogHouse
             this.txtEditCounty.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditCounty.Location = new System.Drawing.Point(199, 334);
             this.txtEditCounty.Name = "txtEditCounty";
-            this.txtEditCounty.Size = new System.Drawing.Size(307, 31);
+            this.txtEditCounty.Size = new System.Drawing.Size(331, 31);
             this.txtEditCounty.TabIndex = 36;
             // 
             // txtEditTown
@@ -629,7 +625,7 @@ namespace InTheDogHouse
             this.txtEditTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditTown.Location = new System.Drawing.Point(199, 283);
             this.txtEditTown.Name = "txtEditTown";
-            this.txtEditTown.Size = new System.Drawing.Size(307, 31);
+            this.txtEditTown.Size = new System.Drawing.Size(331, 31);
             this.txtEditTown.TabIndex = 35;
             // 
             // txtEditStreet
@@ -640,7 +636,7 @@ namespace InTheDogHouse
             this.txtEditStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditStreet.Location = new System.Drawing.Point(199, 232);
             this.txtEditStreet.Name = "txtEditStreet";
-            this.txtEditStreet.Size = new System.Drawing.Size(307, 31);
+            this.txtEditStreet.Size = new System.Drawing.Size(331, 31);
             this.txtEditStreet.TabIndex = 34;
             // 
             // txtEditForename
@@ -651,7 +647,7 @@ namespace InTheDogHouse
             this.txtEditForename.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditForename.Location = new System.Drawing.Point(199, 181);
             this.txtEditForename.Name = "txtEditForename";
-            this.txtEditForename.Size = new System.Drawing.Size(307, 31);
+            this.txtEditForename.Size = new System.Drawing.Size(331, 31);
             this.txtEditForename.TabIndex = 33;
             // 
             // txtEditSurname
@@ -662,7 +658,7 @@ namespace InTheDogHouse
             this.txtEditSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditSurname.Location = new System.Drawing.Point(199, 130);
             this.txtEditSurname.Name = "txtEditSurname";
-            this.txtEditSurname.Size = new System.Drawing.Size(307, 31);
+            this.txtEditSurname.Size = new System.Drawing.Size(331, 31);
             this.txtEditSurname.TabIndex = 32;
             // 
             // cmbEditTitle
@@ -786,56 +782,19 @@ namespace InTheDogHouse
             // 
             this.errP.ContainerControl = this;
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.ImageLocation = "";
-            this.pictureBox4.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(522, 165);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 20;
-            this.pictureBox4.TabStop = false;
-            // 
-            // ssDogs
-            // 
-            this.ssDogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ssDogs.BackColor = System.Drawing.SystemColors.Control;
-            this.ssDogs.BorderColour = System.Drawing.Color.SaddleBrown;
-            this.ssDogs.BorderSize = 5;
-            this.ssDogs.ChangeRate = 5000;
-            this.ssDogs.Location = new System.Drawing.Point(540, 12);
-            this.ssDogs.Name = "ssDogs";
-            this.ssDogs.Pictures = new string[] {
-        "Images\\Slideshow\\dogs.jpg",
-        "Images\\Slideshow\\dogs2.jpg",
-        "Images\\Slideshow\\dogs3.jpg",
-        "Images\\Slideshow\\dogs4.jpg",
-        "Images\\Slideshow\\dogs5.jpg",
-        "Images\\Slideshow\\dogs6.jpg",
-        "Images\\Slideshow\\dogs7.jpg",
-        "Images\\Slideshow\\dogs8.jpg"};
-            this.ssDogs.Size = new System.Drawing.Size(233, 165);
-            this.ssDogs.TabIndex = 49;
-            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 729);
-            this.Controls.Add(this.ssDogs);
-            this.Controls.Add(this.pictureBox4);
+            this.ClientSize = new System.Drawing.Size(784, 518);
             this.Controls.Add(this.tabDogHouse);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(562, 768);
+            this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "frmCustomer";
             this.Text = "In The Dog House - Customer ";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.Shown += new System.EventHandler(this.MainPage_Shown);
-            this.SizeChanged += new System.EventHandler(this.MainPage_SizeChanged);
             this.tabDogHouse.ResumeLayout(false);
             this.tabDisplay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgAddDog)).EndInit();
@@ -847,7 +806,6 @@ namespace InTheDogHouse
             this.tabEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -879,7 +837,6 @@ namespace InTheDogHouse
         private System.Windows.Forms.TextBox txtAddTown;
         private System.Windows.Forms.TextBox txtAddStreet;
         private System.Windows.Forms.TextBox txtAddForename;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnDisplayExit;
         private System.Windows.Forms.Button btnDisplayDelete;
         private System.Windows.Forms.Button btnDisplayEdit;
@@ -909,7 +866,6 @@ namespace InTheDogHouse
         private System.Windows.Forms.Button btnEditEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn postcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.ErrorProvider errP;
-        private SlideShow ssDogs;
     }
 }
 

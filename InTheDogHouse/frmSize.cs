@@ -22,22 +22,24 @@ namespace InTheDogHouse
         DataSet dsInTheDogHouse = new DataSet();
         SqlDataAdapter daSize, daBreed;
         DataRow drSize;
-        string connStr, sqlSize,sqlBreed;
-        public frmSize()
+        string sqlSize,sqlBreed;
+
+        frmContainer container;
+        public frmSize(frmContainer container)
         {
+            this.container = container;
             InitializeComponent();
         }
         private void frmBreed_Load(object sender, EventArgs e)
         {
-            connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
             sqlSize = @"select * from Size";
-            daSize = new SqlDataAdapter(sqlSize, connStr);
+            daSize = new SqlDataAdapter(sqlSize, container.connStr);
             sqlBSize = new SqlCommandBuilder(daSize);
             daSize.FillSchema(dsInTheDogHouse, SchemaType.Source, "Size");
             daSize.Fill(dsInTheDogHouse, "Size");
 
             sqlBreed = @"select * from Breed";
-            daBreed = new SqlDataAdapter(sqlBreed, connStr);
+            daBreed = new SqlDataAdapter(sqlBreed, container.connStr);
             daBreed.FillSchema(dsInTheDogHouse, SchemaType.Source, "Breed");
             daBreed.Fill(dsInTheDogHouse, "Breed");
 
