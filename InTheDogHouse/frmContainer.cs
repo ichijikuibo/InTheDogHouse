@@ -15,7 +15,7 @@ namespace InTheDogHouse
         Timer menuTimer;
         Form openForm;
         bool menuOpen = false;
-        public string connStr = @"Data Source = .; Initial Catalog = InTheDogHouse; Integrated Security = true";
+        public string connStr = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = InTheDogHouse; Integrated Security = true";
         List<Form> openForms;
         bool fullScreen = false;
         public frmContainer()
